@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1547269065 source:d:\classxis\classes_github\school_classes\winter2019\cs162c++\homework\assign1tictactoe\ticktactoe\main.cpp
+	<iostream>
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+
+1547068441 source:c:\users\student\downloads\cis162christy\ticktactoe\main.cpp
+	<iostream>
+
