@@ -2,7 +2,8 @@
 Class: 162c++
 Written by : Christy Ganger
 Assignment 1
-Special thanks to http://www.cplusplus.com/reference/cstdlib/rand/ for reminding me on how to do the srand.
+thanks to http://www.cplusplus.com/reference/cstdlib/rand/ for reminding me on how to do the srand.
+Special thanks to my wife Michelle Wear, for testing and recommending changes.
 */
 //includes
 #include <iostream>
@@ -19,7 +20,7 @@ const int secondsize =12;
 //prototypes
 
 //selection of user X or O
-void displayinstructions(char &xo);
+void displayinstructions(char &xo, int number_player_wins, int number_player_losses, int number_ties);
 
 //show boards both play board and demonstration of number placement
 void showBoard(char boardcurrent[firstsize][secondsize],char ease_of_use_play_field_copy[firstsize][secondsize]);
@@ -53,6 +54,9 @@ int main()
 
     {
         // variables reset on new game..
+        static int number_player_wins = 0;
+        static int number_player_losses = 0;
+        static int number_ties = 0;
         char xo;
         char xoPC;
         bool done = false;
@@ -83,7 +87,7 @@ int main()
          *point_to_field_ease_five, *point_to_field_ease_six, *point_to_field_ease_seven, *point_to_field_ease_eight, *point_to_field_ease_nine;
 
         //requests player select x or o, then assigns computer to opposite.
-        displayinstructions(xo);
+        displayinstructions(xo,number_player_wins,number_player_losses,number_ties);
          if(xo == 'X')
         {
             xoPC = 'O';
@@ -158,6 +162,7 @@ int main()
                         if(PCwon == true)
                         {
                             cout << "You lose!" << "\n";
+                            number_player_losses++;
                              //set turn condition loop off.
                              done = true;
 
@@ -169,6 +174,7 @@ int main()
                         if(won == true)
                         {
                             cout << "You win!" << "\n";
+                            number_player_wins++;
                              //set turn condition loop off.
                              done = true;
 
@@ -189,7 +195,7 @@ int main()
                                  if(check_tie == true)
                                     {
                                         cout << "It's a Tie Game." << "\n";
-
+                                        number_ties++;
                                         // set turn condition loop off.
                                         done = true;
 
@@ -237,6 +243,7 @@ int main()
                     // if computer player won.
                     if(PCwon == true)
                     {
+                        number_player_losses++;
                         cout << "You lose!" << "\n";
                         // end the turn condition loop.
                         done = true;
@@ -246,6 +253,7 @@ int main()
                     // if player won this round.. somehow?
                     if(won == true)
                     {
+                        number_player_wins++;
                         cout << "You win!" << "\n";
                         // end the turn condition loop
                         done = true;
@@ -265,7 +273,7 @@ int main()
                                  if(check_tie == true)
                                  {
                                      cout << "It's a Tie Game." << "\n";
-
+                                    number_ties++;
                                      //end turn condition loop
                                      done = true;
                                      continue;
@@ -284,12 +292,46 @@ int main()
 }
 
 // displays instructions, and asks users to select X or O, if it's lower case, make it capital, verify it's an X or O
-void displayinstructions(char &xo)
+void displayinstructions(char &xo, int number_player_wins, int number_player_losses, int number_ties)
 {
-    cout << "Welcome to Tic - Tac - Toe!" << "\n";
-    cout << "To win you need to get a full row filled with your X or O, across, up and down, or diagnially" << "\n";
-    cout << "To play First Select X or O" << "\n";
-    cout << "Then Select which number of the field you'd like to place the X or O into." << "\n";
+    cout << "\n\n\n";
+    cout << "Current Player wins: " << number_player_wins << "\n";
+    cout << "Current Player losses: " << number_player_losses << "\n\n\n";
+    cout << "Current computer wins: " << number_player_losses << "\n";
+    cout << "Current computer losses: " << number_player_wins << "\n\n\n";
+    cout << "Current Tie games : " << number_ties << "\n";
+    cout << "\n\n\n";
+
+    if(number_player_wins == 0 && number_player_losses == 0 && number_ties == 0)
+    {
+        cout << "Welcome to Tic - Tac - Toe!" << "\n";
+        cout << "To win you need to get a full row filled with your X or O, across, up and down, or diagnially" << "\n";
+        cout << "To play First Select X or O" << "\n";
+        cout << "Then Select which number of the field you'd like to place the X or O into." << "\n";
+
+    }
+
+    if(number_player_wins == number_player_losses && number_player_losses+number_player_wins != 0)
+    {
+        cout << "Computer says: \"You think you can beat me?\"" << "\n";
+    }
+    if(number_player_wins > number_player_losses)
+    {
+        cout << "Computer says: \"I was going easy on you!\"" << "\n";
+    }
+
+    if(number_player_losses > number_player_wins)
+    {
+        cout << "Computer says: \"How could you possibly lose? I was going easy on you!\"" << "\n";
+    }
+
+    if(number_ties > number_player_wins+number_player_losses)
+    {
+        cout << "Computer says: \"A tie?\"" << "\n";
+        cout << "Computer says: \"That means I won and you lost.\"" << "\n";
+        cout << "Computer says: \"Wait, .. That means you won and I lost.\"" << "\n";
+        cout << "Computer says: \"No, I want a rematch!\"" << "\n";
+    }
 
     // loop until user gives valid x,o, X , O
     do
