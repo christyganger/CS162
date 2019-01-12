@@ -8,39 +8,52 @@ Special thanks to http://www.cplusplus.com/reference/cstdlib/rand/ for reminding
 #include <stdio.h>      /* printf, scanf, puts, NULL */
 #include <stdlib.h>     /* srand, rand */
 #include <time.h>       /* time */
+#include <iomanip>
 
 using namespace std;
 const int firstsize = 10;
 const int secondsize =12;
 void displayinstructions(char &xo);
-void showBoard(char boardcurrent[firstsize][secondsize]);
+void showBoard(char boardcurrent[firstsize][secondsize],char ease_of_use_play_field_copy[firstsize][secondsize]);
 char getMove(char &xo);
 bool checkWin(char &xo, char &xoPC, bool &PCwon, bool &won, const char *pointtofieldone, const char *pointtofieldtwo, const char *pointtofieldthree,
               const char *pointtofieldfour, const char *pointtofieldfive, const char *pointtofieldsix, const char *pointtofieldseven, const char *pointtofieldeight, const char *pointtofieldnine );
 bool checkDraw(int movefield, char &xo, char *pointtofieldone, char *pointtofieldtwo, char *pointtofieldthree, char *pointtofieldfour,char *pointtofieldfive,
                 char *pointtofieldsix, char *pointtofieldseven, char *pointtofieldeight, char *pointtofieldnine );
+bool checkTieNoWin(const char *pointtofieldone, const char *pointtofieldtwo, const char *pointtofieldthree, const char *pointtofieldfour,
+const char *pointtofieldfive, const char *pointtofieldsix, const char *pointtofieldseven, const char *pointtofieldeight, const char *pointtofieldnine);
 bool PCplayer(char &xoPC, char *pointtofieldone, char *pointtofieldtwo, char *pointtofieldthree, char *pointtofieldfour,char *pointtofieldfive,
                 char *pointtofieldsix, char *pointtofieldseven, char *pointtofieldeight, char *pointtofieldnine);
 bool playagain();
 
 int main()
 {
-    char xo;
-    char xoPC;
-    bool done = false;
-    bool playersturn = false;
-    bool won = false;
-    bool PCwon = false;
-    /* initialize random seed: */
-    srand (time(NULL));
-    playersturn = rand() % 1 + 0;
+
     do
-        {char boardcurrent[firstsize][secondsize] = {{' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '},{' ',' ',' ',' ','|',' ',' ',' ','|',' ',' ',' '},{' ',' ',' ',' ','|',' ',' ',' ','|',' ',' ',' '},
+
+    {
+        char xo;
+        char xoPC;
+        bool done = false;
+        bool playersturn = false;
+        bool won = false;
+        bool PCwon = false;
+        bool verified_move = false;
+        bool check_win = false;
+        bool check_tie = false;
+        /* initialize random seed: */
+        srand (time(NULL));
+        playersturn = rand() % 1 + 0;
+        char boardcurrent[firstsize][secondsize] = {{' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '},{' ',' ',' ',' ','|',' ',' ',' ','|',' ',' ',' '},{' ',' ',' ',' ','|',' ',' ',' ','|',' ',' ',' '},
         {' ','_','_','_','|','_','_','_','|','_','_','_'},{' ',' ',' ',' ','|',' ',' ',' ','|',' ',' ',' '},{' ',' ',' ',' ','|',' ',' ',' ','|',' ',' ',' '},
         {' ','_','_','_','|','_','_','_','|','_','_','_'},{' ',' ',' ',' ','|',' ',' ',' ','|',' ',' ',' '},{' ',' ',' ',' ','|',' ',' ',' ','|',' ',' ',' '},
         {' ',' ',' ',' ','|',' ',' ',' ','|',' ',' ',' '} },*pointtofieldone, *pointtofieldtwo, *pointtofieldthree, *pointtofieldfour, *pointtofieldfive, *pointtofieldsix,
         *pointtofieldseven, *pointtofieldeight, *pointtofieldnine;
-
+        char ease_of_use_play_field_copy[firstsize][secondsize] = {{' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '},{' ',' ',' ',' ','|',' ',' ',' ','|',' ',' ',' '},{' ',' ',' ',' ','|',' ',' ',' ','|',' ',' ',' '},
+        {' ','_','_','_','|','_','_','_','|','_','_','_'},{' ',' ',' ',' ','|',' ',' ',' ','|',' ',' ',' '},{' ',' ',' ',' ','|',' ',' ',' ','|',' ',' ',' '},
+        {' ','_','_','_','|','_','_','_','|','_','_','_'},{' ',' ',' ',' ','|',' ',' ',' ','|',' ',' ',' '},{' ',' ',' ',' ','|',' ',' ',' ','|',' ',' ',' '},
+        {' ',' ',' ',' ','|',' ',' ',' ','|',' ',' ',' '} },*point_to_field_ease_one, *point_to_field_ease_two, *point_to_field_ease_three, *point_to_field_ease_four,
+         *point_to_field_ease_five, *point_to_field_ease_six, *point_to_field_ease_seven, *point_to_field_ease_eight, *point_to_field_ease_nine;
 
         displayinstructions(xo);
          if(xo == 'X')
@@ -62,15 +75,27 @@ int main()
         pointtofieldeight = &boardcurrent[8][6];
         pointtofieldnine = &boardcurrent[8][10];
 
-        *pointtofieldone = '1';
-        *pointtofieldtwo = '2';
-        *pointtofieldthree = '3';
-        *pointtofieldfour  = '4';
-        *pointtofieldfive = '5';
-        *pointtofieldsix  = '6';
-        *pointtofieldseven = '7';
-        *pointtofieldeight = '8';
-        *pointtofieldnine = '9';
+        point_to_field_ease_one = &ease_of_use_play_field_copy[2][2];
+        point_to_field_ease_two = &ease_of_use_play_field_copy[2][6];
+        point_to_field_ease_three = &ease_of_use_play_field_copy[2][10];
+        point_to_field_ease_four = &ease_of_use_play_field_copy[5][2];
+        point_to_field_ease_five = &ease_of_use_play_field_copy[5][6];
+        point_to_field_ease_six = &ease_of_use_play_field_copy[5][10];
+        point_to_field_ease_seven = &ease_of_use_play_field_copy[8][2];
+        point_to_field_ease_eight = &ease_of_use_play_field_copy[8][6];
+        point_to_field_ease_nine = &ease_of_use_play_field_copy[8][10];
+
+
+        *point_to_field_ease_one = '1';
+        *point_to_field_ease_two = '2';
+        *point_to_field_ease_three = '3';
+        *point_to_field_ease_four  = '4';
+        *point_to_field_ease_five = '5';
+        *point_to_field_ease_six  = '6';
+        *point_to_field_ease_seven = '7';
+        *point_to_field_ease_eight = '8';
+        *point_to_field_ease_nine = '9';
+
 
 
         while(!done)
@@ -79,30 +104,44 @@ int main()
             {
 
                 playersturn = false;
-                if (checkDraw(getMove(xo), xo, pointtofieldone, pointtofieldtwo, pointtofieldthree, pointtofieldfour, pointtofieldfive,
-                    pointtofieldsix, pointtofieldseven, pointtofieldeight, pointtofieldnine) == true)
+                verified_move  = checkDraw(getMove(xo), xo, pointtofieldone, pointtofieldtwo, pointtofieldthree, pointtofieldfour, pointtofieldfive,
+                    pointtofieldsix, pointtofieldseven, pointtofieldeight, pointtofieldnine);
+                if (verified_move  == true)
                 {
-                    showBoard(boardcurrent);
-                    if(checkWin(xo, xoPC, PCwon, won, pointtofieldone, pointtofieldtwo, pointtofieldthree, pointtofieldfour,
-                                 pointtofieldfive, pointtofieldsix, pointtofieldseven, pointtofieldeight, pointtofieldnine) == true)
+                    showBoard(boardcurrent,ease_of_use_play_field_copy);
+
+                    check_win = checkWin(xo, xoPC, PCwon, won, pointtofieldone, pointtofieldtwo, pointtofieldthree, pointtofieldfour,
+                                 pointtofieldfive, pointtofieldsix, pointtofieldseven, pointtofieldeight, pointtofieldnine);
+                    if(check_win == true)
                     {
                         if(PCwon == true)
                         {
                             cout << "You lose!" << "\n";
+                             done = true;
                         }
                         if(won == true)
                         {
                             cout << "You win!" << "\n";
+                             done = true;
                         }
-                        done = true;
-                        continue;
+
+
+                    }
+                    if(check_win == false)
+                    {
+                        check_tie = checkTieNoWin(pointtofieldone, pointtofieldtwo, pointtofieldthree, pointtofieldfour,
+                                 pointtofieldfive, pointtofieldsix, pointtofieldseven, pointtofieldeight, pointtofieldnine);
+                                 if(check_tie == true)
+                                    {
+                                        cout << "It's a Tie Game." << "\n";
+                                        done = true;
+                                    }
                     }
 
                 }
-                if (checkDraw(getMove(xo), xo, pointtofieldone, pointtofieldtwo, pointtofieldthree, pointtofieldfour, pointtofieldfive,
-                    pointtofieldsix, pointtofieldseven, pointtofieldeight, pointtofieldnine) == false)
+                if (verified_move  == false)
                 {
-                    showBoard(boardcurrent);
+                    showBoard(boardcurrent,ease_of_use_play_field_copy);
                     cout << "invalid move" << "\n";
                     checkDraw(getMove(xo), xo, pointtofieldone, pointtofieldtwo, pointtofieldthree, pointtofieldfour, pointtofieldfive,
                     pointtofieldsix, pointtofieldseven, pointtofieldeight, pointtofieldnine);
@@ -114,22 +153,33 @@ int main()
                 playersturn = true;
                 PCplayer(xoPC, pointtofieldone, pointtofieldtwo, pointtofieldthree, pointtofieldfour, pointtofieldfive, pointtofieldsix, pointtofieldseven,
                         pointtofieldeight, pointtofieldnine);
-                showBoard(boardcurrent);
-                if(checkWin(xo, xoPC, PCwon, won, pointtofieldone, pointtofieldtwo, pointtofieldthree, pointtofieldfour, pointtofieldfive, pointtofieldsix, pointtofieldseven,
-                    pointtofieldeight, pointtofieldnine ) == true)
-                      {
-                        if(PCwon == true)
-                        {
-                            cout << "You lose!" << "\n";
-                        }
-                        if(won == true)
-                        {
-                            cout << "You win!" << "\n";
-                        }
+                showBoard(boardcurrent,ease_of_use_play_field_copy);
+                check_win = checkWin(xo, xoPC, PCwon, won, pointtofieldone, pointtofieldtwo, pointtofieldthree, pointtofieldfour, pointtofieldfive, pointtofieldsix, pointtofieldseven,
+                    pointtofieldeight, pointtofieldnine) ;
+                if(check_win == true)
+                {
+                    if(PCwon == true)
+                    {
+                        cout << "You lose!" << "\n";
                         done = true;
-                        continue;
-                        }
+                    }
+                    if(won == true)
+                    {
+                        cout << "You win!" << "\n";
+                        done = true;
+                    }
 
+                }
+                if(check_win == false)
+                    {
+                        check_tie = checkTieNoWin(pointtofieldone, pointtofieldtwo, pointtofieldthree, pointtofieldfour,
+                                 pointtofieldfive, pointtofieldsix, pointtofieldseven, pointtofieldeight, pointtofieldnine);
+                                 if(check_tie == true)
+                                 {
+                                     cout << "It's a Tie Game." << "\n";
+                                     done = true;
+                                 }
+                    }
 
             }
 
@@ -151,22 +201,35 @@ void displayinstructions(char &xo)
     {
         cout << "Would you like to play as X or O?" << "\n";
         cin >> xo;
+        if (xo != 'X' || xo != 'O')
+        {xo = xo-32;}
 
     }while(!(xo == 'X' || xo == 'O'));
 
 
 }
-void showBoard(char boardcurrent[firstsize][secondsize])
+void showBoard(char boardcurrent[firstsize][secondsize],char ease_of_use_play_field_copy[firstsize][secondsize])
 {
     for(int i =0; i < firstsize; i++)
     {
      for(int j =0; j < secondsize; j++)
      {
         cout << boardcurrent[i][j];
+
      }
      cout << "\n";
     }
 
+
+    for(int i =0; i < firstsize; i++)
+    {
+     for(int j =0; j < secondsize; j++)
+     {
+        cout << ease_of_use_play_field_copy[i][j];
+
+     }
+     cout << "\n";
+    }
 }
 char getMove(char &xo)
 {
@@ -198,6 +261,7 @@ bool checkWin(char &xo, char &xoPC, bool &PCwon, bool &won, const char *pointtof
 const char *pointtofieldfive, const char *pointtofieldsix, const char *pointtofieldseven, const char *pointtofieldeight, const char *pointtofieldnine )
 {
     bool winner = false;
+    //player across win
     if (*pointtofieldone == xo && *pointtofieldtwo == xo && *pointtofieldthree == xo)
     {
         won = true;
@@ -213,6 +277,23 @@ const char *pointtofieldfive, const char *pointtofieldsix, const char *pointtofi
         won = true;
         winner = true;
     }
+    // player up and down win
+    if (*pointtofieldone == xo && *pointtofieldfour == xo && *pointtofieldseven == xo)
+    {
+        won = true;
+        winner = true;
+    }
+    if (*pointtofieldtwo == xo && *pointtofieldfive ==xo && *pointtofieldeight == xo)
+    {
+        won = true;
+        winner = true;
+    }
+    if (*pointtofieldthree == xo && *pointtofieldsix==xo && *pointtofieldnine == xo)
+    {
+        won = true;
+        winner = true;
+    }
+    //player diagnal win
     if (*pointtofieldone == xo && *pointtofieldfive == xo && *pointtofieldnine == xo)
     {
         won = true;
@@ -223,7 +304,7 @@ const char *pointtofieldfive, const char *pointtofieldsix, const char *pointtofi
         won = true;
         winner = true;
     }
-    //pc win check
+    //pc across win check
     if (*pointtofieldone == xoPC && *pointtofieldtwo == xoPC && *pointtofieldthree == xoPC)
     {
         PCwon = true;
@@ -239,6 +320,23 @@ const char *pointtofieldfive, const char *pointtofieldsix, const char *pointtofi
         PCwon = true;
         winner = true;
     }
+    // pc up and down win
+        if (*pointtofieldone == xoPC && *pointtofieldfour == xoPC && *pointtofieldseven == xoPC)
+    {
+        PCwon = true;
+        winner = true;
+    }
+    if (*pointtofieldtwo == xoPC && *pointtofieldfive == xoPC && *pointtofieldeight == xoPC)
+    {
+        PCwon = true;
+        winner = true;
+    }
+    if (*pointtofieldthree == xoPC && *pointtofieldsix==xoPC && *pointtofieldnine == xoPC)
+    {
+        PCwon = true;
+        winner = true;
+    }
+    //pc diagnal win check
     if (*pointtofieldone == xoPC && *pointtofieldfive == xoPC && *pointtofieldnine == xoPC)
     {
         PCwon = true;
@@ -262,7 +360,7 @@ bool checkDraw(int movefield, char &xo, char *pointtofieldone,  char *pointtofie
         switch(movefield)
     {
     case 9:
-        if (*pointtofieldnine == '9')
+        if (*pointtofieldnine == ' ')
         {
            *pointtofieldnine = xo;
             isvalid = true;
@@ -271,7 +369,7 @@ bool checkDraw(int movefield, char &xo, char *pointtofieldone,  char *pointtofie
         break;
 
     case 8:
-        if (*pointtofieldeight == '8')
+        if (*pointtofieldeight == ' ')
         {
             *pointtofieldeight = xo;
             isvalid = true;
@@ -279,7 +377,7 @@ bool checkDraw(int movefield, char &xo, char *pointtofieldone,  char *pointtofie
         break;
 
     case 7:
-        if (*pointtofieldseven == '7')
+        if (*pointtofieldseven == ' ')
         {
             *pointtofieldseven = xo;
             isvalid = true;
@@ -287,7 +385,7 @@ bool checkDraw(int movefield, char &xo, char *pointtofieldone,  char *pointtofie
         break;
 
     case 6:
-        if (*pointtofieldsix == '6')
+        if (*pointtofieldsix == ' ')
         {
             *pointtofieldsix = xo;
             isvalid = true;
@@ -295,7 +393,7 @@ bool checkDraw(int movefield, char &xo, char *pointtofieldone,  char *pointtofie
         break;
 
     case 5:
-        if (*pointtofieldfive == '5')
+        if (*pointtofieldfive == ' ')
         {
            *pointtofieldfive = xo;
             isvalid = true;
@@ -303,7 +401,7 @@ bool checkDraw(int movefield, char &xo, char *pointtofieldone,  char *pointtofie
         break;
 
     case 4:
-        if (*pointtofieldfour == '4')
+        if (*pointtofieldfour == ' ')
         {
             *pointtofieldfour = xo;
             isvalid = true;
@@ -311,7 +409,7 @@ bool checkDraw(int movefield, char &xo, char *pointtofieldone,  char *pointtofie
         break;
 
     case 3:
-        if (*pointtofieldthree == '3')
+        if (*pointtofieldthree == ' ')
         {
             *pointtofieldthree = xo;
             isvalid = true;
@@ -319,7 +417,7 @@ bool checkDraw(int movefield, char &xo, char *pointtofieldone,  char *pointtofie
         break;
 
     case 2:
-        if (*pointtofieldtwo == '2')
+        if (*pointtofieldtwo == ' ')
         {
             *pointtofieldtwo = xo;
             isvalid = true;
@@ -327,7 +425,7 @@ bool checkDraw(int movefield, char &xo, char *pointtofieldone,  char *pointtofie
         break;
 
     case 1:
-        if (*pointtofieldone == '1')
+        if (*pointtofieldone == ' ')
         {
             *pointtofieldone = xo;
             isvalid = true;
@@ -389,75 +487,84 @@ bool PCplayer(char &xoPC,char *pointtofieldone, char *pointtofieldtwo, char *poi
         switch(PCmoving)
         {
         case 9:
-            if (*pointtofieldnine == '9')
+            if (*pointtofieldnine == ' ')
             {
                *pointtofieldnine = xoPC;
                 isvalid = true;
+                cout << "PC chose 9" << "\n";
             }
 
             break;
 
         case 8:
-            if (*pointtofieldeight == '8')
+            if (*pointtofieldeight == ' ')
             {
                 *pointtofieldeight = xoPC;
                 isvalid = true;
+                cout << "PC chose 8" << "\n";
             }
             break;
 
         case 7:
-            if (*pointtofieldseven == '7')
+            if (*pointtofieldseven == ' ')
             {
                 *pointtofieldseven = xoPC;
                 isvalid = true;
+                cout << "PC chose 7" << "\n";
             }
             break;
 
         case 6:
-            if (*pointtofieldsix == '6')
+            if (*pointtofieldsix == ' ')
             {
                 *pointtofieldsix = xoPC;
                 isvalid = true;
+                cout << "PC chose 6" << "\n";
             }
             break;
 
         case 5:
-            if (*pointtofieldfive == '5')
+            if (*pointtofieldfive == ' ')
             {
                *pointtofieldfive = xoPC;
                 isvalid = true;
+                cout << "PC chose 5" << "\n";
             }
             break;
 
         case 4:
-            if (*pointtofieldfour == '4')
+            if (*pointtofieldfour == ' ')
             {
                 *pointtofieldfour = xoPC;
                 isvalid = true;
+                cout << "PC chose 4" << "\n";
             }
             break;
 
         case 3:
-            if (*pointtofieldthree == '3')
+            if (*pointtofieldthree == ' ')
             {
                 *pointtofieldthree = xoPC;
                 isvalid = true;
+                cout << "PC chose 3" << "\n";
             }
             break;
 
         case 2:
-            if (*pointtofieldtwo == '2')
+            if (*pointtofieldtwo == ' ')
             {
                 *pointtofieldtwo = xoPC;
                 isvalid = true;
+                cout << "PC chose 2" << "\n";
             }
             break;
 
         case 1:
-            if (*pointtofieldone == '1')
+            if (*pointtofieldone == ' ')
             {
                 *pointtofieldone = xoPC;
                 isvalid = true;
+                cout << "PC chose 1" << "\n";
             }
             break;
 
@@ -468,4 +575,16 @@ bool PCplayer(char &xoPC,char *pointtofieldone, char *pointtofieldtwo, char *poi
         }
     }while(!isvalid);
 return isvalid;
+}
+
+bool checkTieNoWin(const char *pointtofieldone, const char *pointtofieldtwo, const char *pointtofieldthree, const char *pointtofieldfour,
+const char *pointtofieldfive, const char *pointtofieldsix, const char *pointtofieldseven, const char *pointtofieldeight, const char *pointtofieldnine)
+{
+    bool IsItATieGame = false;
+    if (*pointtofieldone != ' ' && *pointtofieldtwo != ' ' && *pointtofieldthree != ' ' && *pointtofieldfour != ' ' && *pointtofieldfive != ' '
+        && *pointtofieldsix != ' ' && *pointtofieldseven != ' ' && *pointtofieldeight != ' ' && *pointtofieldnine != ' ')
+    {
+        IsItATieGame = true;
+    }
+    return IsItATieGame;
 }
