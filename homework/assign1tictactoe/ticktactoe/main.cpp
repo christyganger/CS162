@@ -15,7 +15,7 @@ using namespace std;
 
 //const
 const int firstsize = 10;
-const int secondsize =12;
+const int secondsize = 12;
 
 //prototypes
 
@@ -352,9 +352,9 @@ void displayinstructions(char &xo, int number_player_wins, int number_player_los
 void showBoard(char boardcurrent[firstsize][secondsize],char ease_of_use_play_field_copy[firstsize][secondsize])
 {
     // couts each field in order to create the playboard.
-    for(int i =0; i < firstsize; i++)
+    for(int i = 0; i < firstsize; i++)
     {
-     for(int j =0; j < secondsize; j++)
+     for(int j = 0; j < secondsize; j++)
      {
         cout << boardcurrent[i][j];
 
@@ -363,9 +363,9 @@ void showBoard(char boardcurrent[firstsize][secondsize],char ease_of_use_play_fi
     }
 
     //couts the demo boar array, for each field to create the demo board
-    for(int i =0; i < firstsize; i++)
+    for(int i = 0; i < firstsize; i++)
     {
-     for(int j =0; j < secondsize; j++)
+     for(int j = 0; j < secondsize; j++)
      {
         cout << ease_of_use_play_field_copy[i][j];
 
