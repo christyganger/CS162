@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1547797807 source:d:\classxis\classes_github\school_classes\winter2019\cs162\homework\assign1tictactoe\evalhelpother\fixingthings\main (1).cpp
+	<iostream>
+	<windows.h>
+	<cstdlib>
+	<ctime>
+

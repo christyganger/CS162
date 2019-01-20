@@ -29,7 +29,7 @@ void showBoard(char boardcurrent[firstsize][secondsize],char ease_of_use_play_fi
 char getMove(char &xo);
 
 //checks for win condition
-bool checkWin(char &xo, char &xoPC, bool &PCwon, bool &won, const char *pointtofieldone, const char *pointtofieldtwo, const char *pointtofieldthree,
+bool checkWin(char xo, char xoPC, bool &PCwon, bool &won, const char *pointtofieldone, const char *pointtofieldtwo, const char *pointtofieldthree,
               const char *pointtofieldfour, const char *pointtofieldfive, const char *pointtofieldsix, const char *pointtofieldseven, const char *pointtofieldeight, const char *pointtofieldnine );
 
 // checks if field is taken, and if it's ok to draw the xo or ask for another move
@@ -404,7 +404,7 @@ char getMove(char &xo)
 }
 
 // checks for win condition across / up down/ diagnal for computer and player
-bool checkWin(char &xo, char &xoPC, bool &PCwon, bool &won, const char *pointtofieldone, const char *pointtofieldtwo, const char *pointtofieldthree, const char *pointtofieldfour,
+bool checkWin(char xo, char xoPC, bool &PCwon, bool &won, const char *pointtofieldone, const char *pointtofieldtwo, const char *pointtofieldthree, const char *pointtofieldfour,
 const char *pointtofieldfive, const char *pointtofieldsix, const char *pointtofieldseven, const char *pointtofieldeight, const char *pointtofieldnine )
 {
     //return value if winner detected
