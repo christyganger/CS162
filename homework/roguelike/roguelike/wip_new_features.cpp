@@ -17,7 +17,7 @@ added something_triggered function to clean up main a bit.
 //these includes from http://www.cplusplus.com/reference/cstdlib/srand/
 #include <stdio.h>      /* printf, NULL */
 #include <stdlib.h>     /* srand, rand */
-#include <time.h>       /* time */
+#include <ctime>       /* time */
 
 using namespace std;
 
@@ -29,6 +29,7 @@ const char Player = '@';
 const char space = ' ';
 const char TRAP = '#';
 const char CASH = '$';
+const char fireball = '*';
 
 // this prototype generates the base dungeon playfield.
 void MakeDungeon(char level[][MAX_SIZE]);
@@ -98,8 +99,13 @@ void MakeDungeon(char level[][MAX_SIZE])
 
         for(int j = 0; j < MAX_SIZE;j++) // for each column of the playfield for max playfield size incriment
             {
-                level[i][j] = Play_Field;  // puts the character for play field '.' into each field of the array for each position of the array.
 
+                    if (j % 2 != 0)
+                    {
+                        level[i][j] = Play_Field;  // puts the character for play field '.' into each field of the array for each position of the array.
+                    }
+                    if (j % 2 == 0)
+                        level[i][j] = space;
             }
 
     }
@@ -118,7 +124,7 @@ void displayDungeon(char level[][MAX_SIZE], int win_counter, int lose_counter)
         for(int L = 0; L < MAX_SIZE; L++) // starts a loop incrimnent for l for max size
         {
             cout << level[k][L];   // displays play field char in each array spot for l and k (row column)
-            cout << space; // puts a space between each so the field is less dense.
+           cout << space; // puts a space between each so the field is less dense.
         }
         cout << "\n"; // moves to next row
     }
@@ -211,6 +217,12 @@ char getMove()
             done = true; // ends loop
             break; // ends switch
 
+        case 'f':
+        case 'F':
+            player_move = 'f';
+            done = true;
+            break;
+
         default:  // if input is anything else
             cout << "invalid move" << "\n"; // outs to player invalid move.
             cin.clear(); // clears cin.fail flag that wrong input got put in char.
@@ -269,6 +281,13 @@ bool checkMove(char level[][MAX_SIZE],char move_return_getmove,int player_positi
             }
 
             break; // exit switch
+
+        case 'f':
+        case 'F':
+            {
+                isvalid = true;
+            }
+            break;
       }
 
 
@@ -287,13 +306,20 @@ while(can_move) // loops while move hasn't been made yet.
             if (player_positionX > 0) // if move is greater than 0 !redundant check
             {
 
-                if(level[player_positionX-1][player_positionY] != Play_Field) // checks if board position is already filled
+                if(level[player_positionX-1][player_positionY] != Play_Field || level[player_positionX-1][player_positionY] != space) // checks if board position is already filled
                 {
                     is_trigger = true; // says yes there is something there already
                     what_trigger = level[player_positionX-1][player_positionY]; // copies what's already there into the trigger field for later
                 }
                 level[player_positionX-1][player_positionY] = Player; // moves player character to new position
-                level[player_positionX][player_positionY]= Play_Field; // removes old player character from field, and places normal play field
+                if (player_positionY % 2 != 0)
+                    {
+                       level[player_positionX][player_positionY] = Play_Field;  // puts the character for play field '.' into each field of the array for each position of the array.
+                    }
+                    if (player_positionY % 2 == 0)
+                    {
+                        level[player_positionX][player_positionY] = space; // removes old player character from field, and places normal play field
+                    }
 
             }
             can_move = false; // ends while loop as turn is done.
@@ -310,7 +336,14 @@ while(can_move) // loops while move hasn't been made yet.
                     what_trigger = level[player_positionX+1][player_positionY]; // copies what's already there into the trigger field for later
                 }
                 level[player_positionX+1][player_positionY] = Player; // moves player character to new position
-                level[player_positionX][player_positionY]= Play_Field; // removes old player character from field, and places normal play field
+                 if (player_positionY % 2 != 0)
+                    {
+                       level[player_positionX][player_positionY] = Play_Field;  // puts the character for play field '.' into each field of the array for each position of the array.
+                    }
+                    if (player_positionY % 2 == 0)
+                    {
+                        level[player_positionX][player_positionY] = space; // removes old player character from field, and places normal play field
+                    }
             }
             can_move = false; // ends while loop as turn is done.
 
@@ -325,8 +358,16 @@ while(can_move) // loops while move hasn't been made yet.
                     is_trigger = true; // says yes there is something there already
                     what_trigger = level[player_positionX][player_positionY-1]; // copies what's already there into the trigger field for later
                 }
+
                 level[player_positionX][player_positionY-1] = Player; // moves player character to new position
-                level[player_positionX][player_positionY]= Play_Field; // removes old player character from field, and places normal play field
+                if (player_positionY % 2 != 0)
+                    {
+                       level[player_positionX][player_positionY] = Play_Field;  // puts the character for play field '.' into each field of the array for each position of the array.
+                    }
+                    if (player_positionY % 2 == 0)
+                    {
+                        level[player_positionX][player_positionY] = space; // removes old player character from field, and places normal play field
+                    }
             }
             can_move = false; // ends while loop as turn is done.
 
@@ -343,11 +384,69 @@ while(can_move) // loops while move hasn't been made yet.
                     what_trigger = level[player_positionX][player_positionY+1]; // copies what's already there into the trigger field for later
                 }
                 level[player_positionX][player_positionY+1] = Player; // moves player character to new position
-                level[player_positionX][player_positionY]= Play_Field; // removes old player character from field, and places normal play field
+                 if (player_positionY % 2 != 0)
+                    {
+                       level[player_positionX][player_positionY] = Play_Field;  // puts the character for play field '.' into each field of the array for each position of the array.
+                    }
+                    if (player_positionY % 2 == 0)
+                    {
+                        level[player_positionX][player_positionY] = space; // removes old player character from field, and places normal play field
+                    }
             }
             can_move = false; // ends while loop as turn is done.
 
             break; // exits switch
+
+        case 'f':
+        case 'F':
+
+
+            int curiousity = 0;
+            time_t sec = str_time.tm_sec;
+            time_t timecurrently = sec + 10;
+            char temp[6];
+            curiousity = timecurrently + 10;
+            temp[0] = level[player_positionX-1][player_positionY-1];
+            temp[1] = level[player_positionX-1][player_positionY+1];
+            temp[2] = level[player_positionX][player_positionY-1];
+            temp[3] = level[player_positionX][player_positionY+1];
+            temp[4] = level[player_positionX+1][player_positionY-1];
+            temp[5] = level[player_positionX+1][player_positionY+1];
+            cout << timecurrently;
+             do
+             {
+
+                if(timecurrently % 2 != 0)
+                level[player_positionX-1][player_positionY-1] = fireball;
+                level[player_positionX-1][player_positionY+1] = fireball;
+                level[player_positionX][player_positionY-1] = fireball;
+                level[player_positionX][player_positionY+1] = fireball;
+                level[player_positionX+1][player_positionY-1] = fireball;
+                level[player_positionX+1][player_positionY+1] = fireball;
+                void displayDungeon(char level[][MAX_SIZE], int win_counter, int lose_counter);
+                if(timecurrently % 2 == 0)
+                {
+                    level[player_positionX-1][player_positionY-1] = temp[0];
+                    level[player_positionX-1][player_positionY+1] = temp[1];
+                    level[player_positionX][player_positionY-1] = temp[2];
+                    level[player_positionX][player_positionY+1] = temp[3];
+                    level[player_positionX+1][player_positionY-1] = temp[4];
+                    level[player_positionX+1][player_positionY+1] = temp[5];
+                    void displayDungeon(char level[][MAX_SIZE], int win_counter, int lose_counter);
+                }
+
+             }while(sec < timecurrently);
+               cout << timecurrently;
+                level[player_positionX-1][player_positionY-1] = temp[0];
+                level[player_positionX-1][player_positionY+1] = temp[1];
+                level[player_positionX][player_positionY-1] = temp[2];
+                level[player_positionX][player_positionY+1] = temp[3];
+                level[player_positionX+1][player_positionY-1] = temp[4];
+                level[player_positionX+1][player_positionY+1] = temp[5];
+                void displayDungeon(char level[][MAX_SIZE], int win_counter, int lose_counter);
+
+            can_move = false;
+            break;
       }
    }
 

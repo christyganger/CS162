@@ -40,18 +40,18 @@ using namespace std;
         char Square7('7');
         char Square8('8');
         char Square9('9');
+        char player_choice;
+        char player1 = X;
+        char player2 = O;
 
     // function declarations
         void showInstructions();
         char playerchoiceXO();
-        char player_choice;
-        char player1 = x;
-        char player2 = o;
         void showBoard();
         void initBoard();
+        int getMove();
         char get_Move;
-        int getMove(char &get_Move);
-        char repeatMove();
+        bool repeatMove();
         int repeat_Move();
         void updateBoard();
         bool win, tie;
@@ -85,7 +85,7 @@ int main()
                         // display board
                         showBoard();
                         // get next move
-                        getMove(get_Move);
+                        getMove();
                         repeatMove();
                         // update board
                         updateBoard();
@@ -123,7 +123,7 @@ int main()
 return 0;
 }
 
-// function definitions
+// instructions
 	void showInstructions()
 	{
 		cout << " \n " << " Tic-Tac-Toe " << endl;
@@ -191,12 +191,12 @@ return 0;
             if (player_choice == x || player_choice == X)
             {
                 cout << " You have chosen to play " << player_choice << "'s" << endl;
-                player1 = x;
+                player1 = X;
             }
             else
             {
                 cout << " You have chosen to play " << player_choice << "'s" << endl;
-                player2 = o;
+                player2 = O;
             }
         return player_choice;
 	}
@@ -204,7 +204,6 @@ return 0;
 	// show board
 	void showBoard()
 	{
-		//cout << "\033[2J\033[1;1H";
 		cout << " \n " << endl;
 		cout << "     -----+-----+-----" << endl;
 		cout << "       " << Square1 << "  |  " << Square2 << "  |  " << Square3 << endl;
@@ -217,13 +216,12 @@ return 0;
 	}
 
 	// get player move
-	int getMove(char &get_Move)
+	int getMove()
 	{
     cout << " \n It is player " << player_choice << "'s turn! " << endl;
         int get_select;
 		cout << " \n " << " Pick a space you would like to play (1-9): ";
 		cin >> get_select;
-		cout << "christy debug getMove func line 226 " << get_select << "\n";
 		do
         {
             while (get_select < 1 || get_select > 9)
@@ -235,11 +233,10 @@ return 0;
                 cin >> get_select;
             }
                 cout << "\033[2J\033[1;1H";
-            cout << "christy debug getMove func line 238 " << get_select << "\n";
             switch(get_select)
             {
                 case 1:
-                        if (get_select == 1)
+                        if (get_select ==1)
                             {
                         get_Move = Square1;
                         Square1 = player_choice;
@@ -248,68 +245,79 @@ return 0;
                             }
                 case 2:
                         if (get_select == 2)
-            {
+                        {
                         get_Move = Square2;
                         Square2 = player_choice;
                         cout << " You have chosen space " << get_select << "." << endl;
                         break;
-            }
+                        }
                 case 3:
                         if (get_select == 3)
-            {
+                        {
                         get_Move = Square3;
                         Square3 = player_choice;
                         cout << " You have chosen space " << get_select << "." << endl;
                         break;
-            }
+                        }
                 case 4:
                         if (get_select == 4)
-            {
+                        {
                         get_Move = Square4;
                         Square4 = player_choice;
                         cout << " You have chosen space " << get_select << "." << endl;
                         break;
-            }
+                        }
                 case 5:
                         if (get_select == 5)
-            {
+                        {
                         get_Move = Square5;
                         Square5 = player_choice;
                         cout << " You have chosen space " << get_select << "." << endl;
                         break;
-            }
+                        }
                 case 6:
                         if (get_select == 6)
-            {
+                        {
                         get_Move = Square6;
                         Square6 = player_choice;
                         cout << " You have chosen space " << get_select << "." << endl;
                         break;
-            }
+                        }
                 case 7:
                         if (get_select == 7)
-            {
+                        {
                         get_Move = Square7;
                         Square7 = player_choice;
                         cout << " You have chosen space " << get_select << "." << endl;
                         break;
-            }
+                        }
                 case 8:
                         if (get_select == 8)
-            {
+                        {
                         get_Move = Square8;
                         Square8 = player_choice;
                         cout << " You have chosen space " << get_select << "." << endl;
                         break;
-            }
+                        }
                 case 9:
                         if (get_select == 9);
-            {
+                        {
                         get_Move = Square9;
                         Square9 = player_choice;
                         cout << " You have chosen space " << get_select << "." << endl;
                         break;
-            }
+                        }
+                    default:
+                        {
+                        cin.clear();
+                        cin.ignore();
+                        cout << " Space is used! " << endl;
+                        cout << " Please select another space " << endl;
+                        cin >> get_select;
+                        break;
+                        }
+
+
             }
         }while(!getMove);
 
@@ -317,30 +325,32 @@ return 0;
 	}
 
 	// check for valid move
-	char repeatMove()
+	bool repeatMove()
 	{
+	    {
 	    cout << " checking for valid move " << Square1 << endl;
-	    cout << "christy debug repeatMove func line 323 " << get_Move << "\n";
-	    switch(get_Move)
+	    if (get_Move == 'x')
             {
-                case 'o':
-                        if (get_Move == 'o')
-                            {
-                            cout << " Space is used! " << endl;
-                            cout << " Please select another space " << endl;
-                            break;
-                            }
-                case 'x':
-                        if (get_Move == 'x')
-                            {
-                            cout << " Space is used! " << endl;
-                            cout << " Please select another space " << endl;
-                            break;
-                            }
-
-
+            player_choice = 'o';
+            showBoard();
+            cout << " Space is used! " << endl;
+            cout << " Please select another space " << endl;
+            getMove();
             }
-          return true;
+        if (get_Move == 'o')
+            {
+            player_choice = 'x';
+            showBoard();
+            cout << " Space is used! " << endl;
+            cout << " Please select another space " << endl;
+            getMove();
+            }
+            else
+            {
+            return true;
+            }
+
+        }
 	}
 
 	// update board
@@ -348,6 +358,7 @@ return 0;
 	{
 		cout << " Updating board" << endl;
 		cout << get_Move << endl;
+		cout << getMove << endl;
 		cout << player_choice << endl;
 		cout <<  Square1 << endl;
 	}
@@ -395,6 +406,13 @@ return 0;
         }
     }
 
+    bool repeat()
+    {
+        cout << "checking for repeat" << endl;
+        return false;
+    }
+
+
     // check for tie
 	bool checkTie()
 	{
@@ -405,13 +423,6 @@ return 0;
                 return true;
             }
 		return false;
-	}
-
-	// repeat
-	bool repeat()
-	{
-        cout << " checking for repeat" <<  Square1 << endl;
-		return true;
 	}
 
 	// toggle players
@@ -452,6 +463,16 @@ return 0;
                             // exit switch loop
                             cin.clear();
                             cin.ignore();
+                                    Square1 = '1';
+                                    Square2 = '2';
+                                    Square3 = '3';
+                                    Square4 = '4';
+                                    Square5 = '5';
+                                    Square6 = '6';
+                                    Square7 = '7';
+                                    Square8 = '8';
+                                    Square9 = '9';
+                                    player_choice;
                             cout << "\033[2J\033[1;1H";
                                 prog_end = false;
                                 done = true;
