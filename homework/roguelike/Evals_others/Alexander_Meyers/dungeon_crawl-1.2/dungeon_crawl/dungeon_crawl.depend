@@ -1,0 +1,123 @@
+# depslib dependency file v1.0
+1547964715 source:/home/tadrith/lcc/cis162cpp/week2/dungeon_crawl/main.cpp
+	<iostream>
+	"dungeon.hpp"
+
+1548033068 /home/tadrith/lcc/cis162cpp/week2/dungeon_crawl/dungeon.hpp
+	<iostream>
+	<string>
+	<cstdio>
+	<string>
+	<sstream>
+	"qolife.hpp"
+
+1548035890 source:/home/tadrith/lcc/cis162cpp/week2/dungeon_crawl/logic.cpp
+	<iostream>
+	<iomanip>
+	<string>
+	"dungeon.hpp"
+
+1547959805 source:/home/tadrith/lcc/cis162cpp/week2/dungeon_crawl/funcs.cpp
+	<iostream>
+	<iomanip>
+	<vector>
+	<cstdio>
+	<locale>
+	<limits>
+	<sstream>
+	<thread>
+	<chrono>
+	"qolife.hpp"
+
+1547959805 /home/tadrith/lcc/cis162cpp/week2/dungeon_crawl/qolife.hpp
+	<iostream>
+	<iomanip>
+	<vector>
+	<cstdio>
+	<string>
+
+1548021143 source:/home/tadrith/lcc/cis162cpp/week2/dungeon_crawl/monster.cpp
+	"dungeon.hpp"
+
+1548017609 source:/home/tadrith/lcc/cis162cpp/week2/dungeon_crawl/room.cpp
+	<iostream>
+	<iomanip>
+	"dungeon.hpp"
+
+1547959805 source:/home/tadrith/lcc/cis162cpp/week2/dungeon_crawl/tools.cpp
+	<iostream>
+	<vector>
+	<string>
+	<thread>
+	<chrono>
+	"qolife.hpp"
+
+1548034607 source:/home/tadrith/lcc/cis162cpp/week2/dungeon_crawl/display.cpp
+	<iostream>
+	<iomanip>
+	<sstream>
+	<string>
+	<map>
+	"dungeon.hpp"
+
+1548017609 source:d:\classxis\classes_github\school_classes\winter2019\cs162\homework\roguelike\evals_others\alexander_meyers\dungeon_crawl-1.2\dungeon_crawl\room.cpp
+	<iostream>
+	<iomanip>
+	"dungeon.hpp"
+
+1548185087 d:\classxis\classes_github\school_classes\winter2019\cs162\homework\roguelike\evals_others\alexander_meyers\dungeon_crawl-1.2\dungeon_crawl\dungeon.hpp
+	<iostream>
+	<string>
+	<cstdio>
+	<string>
+	<sstream>
+	"qolife.hpp"
+
+1547959805 d:\classxis\classes_github\school_classes\winter2019\cs162\homework\roguelike\evals_others\alexander_meyers\dungeon_crawl-1.2\dungeon_crawl\qolife.hpp
+	<iostream>
+	<iomanip>
+	<vector>
+	<cstdio>
+	<string>
+
+1548034607 source:d:\classxis\classes_github\school_classes\winter2019\cs162\homework\roguelike\evals_others\alexander_meyers\dungeon_crawl-1.2\dungeon_crawl\display.cpp
+	<iostream>
+	<iomanip>
+	<sstream>
+	<string>
+	<map>
+	"dungeon.hpp"
+
+1547959805 source:d:\classxis\classes_github\school_classes\winter2019\cs162\homework\roguelike\evals_others\alexander_meyers\dungeon_crawl-1.2\dungeon_crawl\funcs.cpp
+	<iostream>
+	<iomanip>
+	<vector>
+	<cstdio>
+	<locale>
+	<limits>
+	<sstream>
+	<thread>
+	<chrono>
+	"qolife.hpp"
+
+1548185087 source:d:\classxis\classes_github\school_classes\winter2019\cs162\homework\roguelike\evals_others\alexander_meyers\dungeon_crawl-1.2\dungeon_crawl\logic.cpp
+	<iostream>
+	<iomanip>
+	<string>
+	"dungeon.hpp"
+
+1548186936 source:d:\classxis\classes_github\school_classes\winter2019\cs162\homework\roguelike\evals_others\alexander_meyers\dungeon_crawl-1.2\dungeon_crawl\main.cpp
+	<iostream>
+	"dungeon.hpp"
+
+1548021143 source:d:\classxis\classes_github\school_classes\winter2019\cs162\homework\roguelike\evals_others\alexander_meyers\dungeon_crawl-1.2\dungeon_crawl\monster.cpp
+	"dungeon.hpp"
+
+1547959805 source:d:\classxis\classes_github\school_classes\winter2019\cs162\homework\roguelike\evals_others\alexander_meyers\dungeon_crawl-1.2\dungeon_crawl\tools.cpp
+	<iostream>
+	<vector>
+	<string>
+	<thread>
+	<chrono>
+	"qolife.hpp"
+
