@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1548451988 source:d:\classxis\classes_github\school_classes\winter2019\cs162\homework\stringstream\stringstream\main.cpp
+	<iostream>
+	<fstream>
+	<string>
+	<cctype>
+
