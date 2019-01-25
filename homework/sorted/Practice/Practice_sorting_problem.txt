@@ -1,0 +1,18 @@
+Practice sorting problem
+Create a method that is passed an array and fills it with random numbers between 1 and 99
+
+Create a method that is passed an array and displays it, five numbers per line
+
+Create a method that is passed an array and performs an insertion sort on it
+
+Create a method that is passed an array and performs a selection sort on it
+
+----------
+
+You can start with the Framework for sorting that I provided.  It has the methods described above.  There is a single mySort function, you can replace that with your specific code
+
+---------
+
+When you are done, you can compare your result with my Example Selection and Insertion Sort
+
+Last modified: Wednesday, January 16, 2019, 1:56 PM

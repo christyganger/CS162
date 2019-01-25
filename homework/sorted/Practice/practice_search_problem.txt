@@ -1,0 +1,15 @@
+Create a method that is passed an array and fills it with random numbers between 1 and 99
+
+Create a method that is passed an array and displays it, five numbers per line
+
+Create a method that is passed an array and performs an linear search, returning true if the value is found, otherwise false
+
+Create a method that is passed an array and performs a binary search, returning true if the value is found, otherwise false
+
+----------
+
+You can start with the Framework for searching that I provided.  It has the methods described above, except for completing linFind and binFind.
+
+---------
+
+When you are done, you can compare your result with my Example Linear and Binary Search
