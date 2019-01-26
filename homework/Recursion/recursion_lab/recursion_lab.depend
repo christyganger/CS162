@@ -1,0 +1,14 @@
+# depslib dependency file v1.0
+1548408066 source:d:\classxis\classes_github\school_classes\winter2019\cs162\homework\recursion\recursion_lab\main.cpp
+	<iostream>
+	"recursion.h"
+
+1548408096 d:\classxis\classes_github\school_classes\winter2019\cs162\homework\recursion\recursion_lab\recursion.h
+	<string>
+
+1548484043 source:d:\classxis\classes_github\school_classes\winter2019\cs162\homework\recursion\recursion_lab\recursion.cpp
+	"recursion.h"
+	<iostream>
+	<bits/stdc++.h>
+	<algorithm>
+
