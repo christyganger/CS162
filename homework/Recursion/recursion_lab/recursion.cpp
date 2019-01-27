@@ -12,7 +12,7 @@
 #include <algorithm>
 
 using namespace std;
-void swapper(string &word, int &a, int &b);
+
 // this is your recursive palindrome program
 // it might have different arguments, depending on how you solved the problem
 bool recPalindrome(std::string word, int first = 0, int last =0)
@@ -51,33 +51,33 @@ bool isPalindrome(std::string word)
 
 // this is your recursive subset generating program
 // you might have a different set of arguments, depending on how you code it
-void recPrintAllSubsets(std::string word, int b, unsigned f)
+void recPrintAllSubsets(std::string word, int b, int a, int d)
 {
-
-
-
-    if (b == 0)
-        {
-         int a = 0;
-         int d = 1;
-         swapper(word, a, d);
-        a++;
-        d++;
-        f++;
-        if (f == word.length())
-         {
-            return;
-         }
-        cout << "yep";
-        b = word.length();
-        return recPrintAllSubsets(word,  b, f);
-        }
-
-
-    cout << word.substr(0, b) << ", ";
-
-    b--;
-    recPrintAllSubsets(word, b, 0);
+int sizeofword = word.length();
+char word_array[sizeofword+1];
+word.copy(word_array, sizeofword);
+char temp;
+int c = 0;
+cout << word.substr(c, b) << ", ";
+if (d >= sizeofword)
+ {
+     b--;
+     a=0;
+     d=1;
+  return;
+ }
+if (b == 0)
+{
+temp = word_array[a];
+word_array[a] = word_array[d];
+ word_array[d] = temp;
+for(unsigned i =0; i > word.length()-1; i++)
+ {word = word_array[i];}
+a++;
+d++;
+b = sizeofword;
+return;}
+    recPrintAllSubsets(word, b, a , d);
 //recPrintAllSubsets(word, output, n, counter);
 
 }
@@ -86,15 +86,6 @@ void recPrintAllSubsets(std::string word, int b, unsigned f)
 // change it to match your function signature
 void printAllSubsets(std::string word)
 {
-    recPrintAllSubsets(word, word.length(), 0);
+    recPrintAllSubsets(word, word.length(), 0, 1);
 }
 
-void swapper(string &word, int &a, int &b)
-{
-
-        string temp;
-        temp = word.substr(a, word.length());
-        word.substr(a, word.length()) = word.substr(b, word.length());
-        word.substr(b, word.length()) = temp;
-        return;
-}
