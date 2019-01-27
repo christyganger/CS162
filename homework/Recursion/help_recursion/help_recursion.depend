@@ -1,5 +1,6 @@
 # depslib dependency file v1.0
-1548620885 source:d:\classxis\what\main.cpp
+1548622756 source:d:\classxis\what\main.cpp
 	<iostream>
 	<algorithm>
+	<string>
 
