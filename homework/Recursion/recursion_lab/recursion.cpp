@@ -15,6 +15,10 @@ using namespace std;
 
 // this is your recursive palindrome program
 // it might have different arguments, depending on how you solved the problem
+
+///// referenced this code from youtube video, plan to revisit after
+// I figured the second part out.. bit more practice with recursion.
+// https://www.youtube.com/watch?v=GqANqWsOJpo
 bool recPalindrome(std::string word, int first = 0, int last =0)
 {
 if(word.length() == 1)
@@ -51,33 +55,27 @@ bool isPalindrome(std::string word)
 
 // this is your recursive subset generating program
 // you might have a different set of arguments, depending on how you code it
-void recPrintAllSubsets(std::string word, int b, int a, int d)
+void recPrintAllSubsets(std::string word,string output, unsigned index, unsigned amount_of_letters)
 {
-int sizeofword = word.length();
-char word_array[sizeofword+1];
-word.copy(word_array, sizeofword);
-char temp;
-int c = 0;
-cout << word.substr(c, b) << ", ";
-if (d >= sizeofword)
- {
-     b--;
-     a=0;
-     d=1;
-  return;
- }
-if (b == 0)
+if (amount_of_letters == word.length())
 {
-temp = word_array[a];
-word_array[a] = word_array[d];
- word_array[d] = temp;
-for(unsigned i =0; i > word.length()-1; i++)
- {word = word_array[i];}
-a++;
-d++;
-b = sizeofword;
-return;}
-    recPrintAllSubsets(word, b, a , d);
+    return;
+}
+
+if (index == word.length())
+{
+    amount_of_letters++;
+  return recPrintAllSubsets(word, output, 0, amount_of_letters);
+}
+
+output = word.substr(index, amount_of_letters) + ",";
+index++;
+ recPrintAllSubsets(word, output, index, amount_of_letters);
+
+cout << output;
+return;
+
+
 //recPrintAllSubsets(word, output, n, counter);
 
 }
@@ -86,6 +84,6 @@ return;}
 // change it to match your function signature
 void printAllSubsets(std::string word)
 {
-    recPrintAllSubsets(word, word.length(), 0, 1);
+    recPrintAllSubsets(word, "", 0, 0);
 }
 
