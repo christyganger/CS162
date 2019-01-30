@@ -12,3 +12,16 @@
 	<bits/stdc++.h>
 	<algorithm>
 
+1548878618 source:c:\users\student\documents\github\cs162\homework\recursion\recursion_lab\main.cpp
+	<iostream>
+	"recursion.h"
+
+1548878618 c:\users\student\documents\github\cs162\homework\recursion\recursion_lab\recursion.h
+	<string>
+
+1548878618 source:c:\users\student\documents\github\cs162\homework\recursion\recursion_lab\recursion.cpp
+	"recursion.h"
+	<iostream>
+	<bits/stdc++.h>
+	<algorithm>
+
