@@ -37,6 +37,8 @@ int main()
     for(int j = 0; j < cin_buff_size; j++)
         cout << ptr_arr_new[j]<< "\n";
 
+
+
     // clear heap array memory
     delete [] ptr_arr_new;
     return 0;
