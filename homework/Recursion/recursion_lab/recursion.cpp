@@ -57,13 +57,18 @@ bool isPalindrome(std::string word)
 // you might have a different set of arguments, depending on how you code it
 void recPrintAllSubsets(std::string word,string output, unsigned index, unsigned amount_of_letters)
 {
+
 if (amount_of_letters == 0)
+
+if (amount_of_letters == word.length())
+
 {
     return;
 }
 
 if (index == word.length())
 {
+
     return;
 }
 
@@ -73,6 +78,15 @@ index++;
  recPrintAllSubsets(word, output, index, amount_of_letters);
 amount_of_letters--;
  recPrintAllSubsets(word, output, index, amount_of_letters);
+
+    amount_of_letters++;
+  return recPrintAllSubsets(word, output, 0, amount_of_letters);
+}
+
+output = word.substr(index, amount_of_letters) + ",";
+index++;
+ recPrintAllSubsets(word, output, index, amount_of_letters);
+
 cout << output;
 return;
 
@@ -85,6 +99,10 @@ return;
 // change it to match your function signature
 void printAllSubsets(std::string word)
 {
+
     recPrintAllSubsets(word, "", 0, word.length());
+
+    recPrintAllSubsets(word, "", 0, 0);
+
 }
 
