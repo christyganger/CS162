@@ -1,18 +1,86 @@
+/*
+// Lab 4 written by christy wear.
+// version 1
+// thanks for bin search from https://www.geeksforgeeks.org/binary-search/
+*/
+
 #include <iostream>
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
 using namespace std;
-
+int binarySearch(int arr[], int l, int r, int x);
+void getSize(int &cin_buff_size);
+int* createArray(int cin_buff_size);
+void sortArray(int* ptr_arr_new, int cin_buff_size);
+void displayArray(const int* ptr_arr_new, int cin_buff_size);
 int main()
 {
-    srand(time(NULL));
+srand(time(NULL));
+int cin_buff_size;
+        // get input
+getSize(cin_buff_size);
 
-    int cin_buff_size;
+int* ptr_arr_new = createArray(cin_buff_size);
+sortArray(ptr_arr_new, cin_buff_size);
+    //display
+displayArray(ptr_arr_new, cin_buff_size);
 
-    // get input
-    cout << "please enter number of size of array you want, between 10 and 20: " << "\n";
-    cin >> cin_buff_size;
+
+//get in for 3
+int what_to_find[3];
+
+for(int n =0; n < 3; n++ )
+ {
+     // get input to search
+     cout << "please enter digits to search array for: " << "\n";
+     cin >> what_to_find[n];
+    //binary search
+       for(int p =0; p < 3; p++)
+        {int result = binarySearch(ptr_arr_new, 0, cin_buff_size - 1, what_to_find[p]);
+        (result == -1) ? cout << what_to_find[p] << " is not present in array"
+                   : cout << what_to_find[p] << " is present at index " << result;
+        cout << "\n";
+        }
+ }
+// clear heap array memory
+delete [] ptr_arr_new;
+return 0;
+}
+
+int binarySearch(int arr[], int l, int r, int x)
+{
+    if (r >= l) {
+        int mid = l + (r - l) / 2;
+
+        // If the element is present at the middle
+        // itself
+        if (arr[mid] == x)
+            return mid;
+
+        // If element is smaller than mid, then
+        // it can only be present in left subarray
+        if (arr[mid] > x)
+            return binarySearch(arr, l, mid - 1, x);
+
+        // Else the element can only be present
+        // in right subarray
+        return binarySearch(arr, mid + 1, r, x);
+    }
+
+    // We reach here when element is not
+    // present in array
+    return -1;
+}
+
+void getSize(int &cin_buff_size)
+{
+        cout << "please enter number of size of array you want, between 10 and 20: " << "\n";
+        cin >> cin_buff_size;
+}
+
+int* createArray(int cin_buff_size)
+{
     // declare dynamic array
     int * ptr_arr_new = new int[cin_buff_size];
     //fill array randomly
@@ -21,7 +89,13 @@ int main()
             ptr_arr_new[i] = rand() % 100 + 1;
         }
 
-       // sort
+
+return ptr_arr_new;
+}
+
+void sortArray(int* ptr_arr_new, int cin_buff_size)
+{
+    // sort
         int k, l, min_m;
         for(k = 0; k < cin_buff_size-1; k++)
         {
@@ -32,60 +106,10 @@ int main()
 
             swap(ptr_arr_new[min_m], ptr_arr_new[k]);
         }
+}
 
-    //display
+void displayArray(const int* ptr_arr_new, int cin_buff_size)
+{
     for(int j = 0; j < cin_buff_size; j++)
         cout << ptr_arr_new[j]<< "\n";
-
-//get in for 3
-int what_to_find[3];
-cout << "please enter digits to search array for: " << "\n";
-for(int n =0; n < 3; n++ )
-    cin >> what_to_find[n];
-
-    //binary search
-
-        for(int p =0; p < 3; p++)
-        {
-            int mid = 0;
-            int low = 0;
-            int high = 0;
-            high = cin_buff_size -1;
-            mid = cin_buff_size / 2;
-            bool done_with_find = false;
-            while(!done_with_find)
-            {
-            if(what_to_find[p] > ptr_arr_new[mid])
-            {
-                low = mid + 1;
-
-                mid = (low+ high) / 2;
-
-
-            }
-            if(what_to_find[p] < ptr_arr_new[mid])
-            {
-
-                high = mid-1;
-                mid = (low+ high)/2;
-
-            }
-            if(what_to_find[p] == ptr_arr_new[mid])
-            {
-                done_with_find=true;
-                cout << "found " << what_to_find[p] << "\n";
-
-            }
-            if(mid == cin_buff_size -1 || mid == 0)
-            {
-                cout << p << " not found" << "\n";
-                done_with_find = true;
-
-            }
-            }
-        }
-
-    // clear heap array memory
-    delete [] ptr_arr_new;
-    return 0;
 }
