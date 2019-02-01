@@ -1,0 +1,40 @@
+# depslib dependency file v1.0
+1548791531 source:g:\my drive\lane cc\winter 19\cs 162c+\homework\week 3\recursion\main.cpp
+	<iostream>
+	"recursion.h"
+
+1548790419 g:\my drive\lane cc\winter 19\cs 162c+\homework\week 3\recursion\recursion.h
+	<string>
+
+1548791437 source:g:\my drive\lane cc\winter 19\cs 162c+\homework\week 3\recursion\recursion.cpp
+	"recursion.h"
+	<iostream>
+
+1548791699 source:g:\my drive\lane cc\winter 19\cs 162c+\homework\week 3\lab 3\recursion\main.cpp
+	<iostream>
+	"recursion.h"
+
+1548791717 g:\my drive\lane cc\winter 19\cs 162c+\homework\week 3\lab 3\recursion\recursion.h
+	<string>
+
+1548385244 source:g:\my drive\lane cc\winter 19\cs 162c+\homework\week 3\lab 3\starting code for lab 3\recursion.cpp
+	"recursion.h"
+	<iostream>
+
+1548996043 g:\my drive\lane cc\winter 19\cs 162c+\homework\week 3\lab 3\starting code for lab 3\recursion.h
+	<string>
+
+1548651106 source:g:\my drive\lane cc\winter 19\cs 162c+\homework\week 3\lab 3\starting code for lab 3\main.cpp
+	<iostream>
+
+1548999169 source:g:\classxis\classes_github\school_classes\winter2019\cs162\homework\recursion\recursion_eval\recursion\main.cpp
+	<iostream>
+	"recursion.h"
+
+1548999169 g:\classxis\classes_github\school_classes\winter2019\cs162\homework\recursion\recursion_eval\recursion\recursion.h
+	<string>
+
+1548999169 source:g:\classxis\classes_github\school_classes\winter2019\cs162\homework\recursion\recursion_eval\recursion\recursion.cpp
+	"recursion.h"
+	<iostream>
+

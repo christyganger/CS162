@@ -5,15 +5,20 @@
 	<stdlib.h>
 	<time.h>
 
-1548902153 source:g:\classxis\classes_github\school_classes\winter2019\cs162\homework\lab4\lab4\main.cpp
+1548989550 source:g:\classxis\classes_github\school_classes\winter2019\cs162\homework\lab4\lab4\main.cpp
 	<iostream>
 	<stdio.h>
 	<stdlib.h>
 	<time.h>
+	<cctype>
+	"function_header.h"
 
 1548980888 source:c:\users\chris\documents\github\cs162\homework\lab4\lab4\main.cpp
 	<iostream>
 	<stdio.h>
 	<stdlib.h>
 	<time.h>
+
+1548989653 g:\classxis\classes_github\school_classes\winter2019\cs162\homework\lab4\lab4\function_header.h
+	<iostream>
 
