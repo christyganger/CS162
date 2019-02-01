@@ -1,12 +1,14 @@
 /*
 // Lab 4 written by christy wear.
-// version 1.2
+// version 1.3
 // thanks for bin search from https://www.geeksforgeeks.org/binary-search/
 // Special thanks to michelle wear for testing.
-// *feedback: not sure whats going on..
+// *feedback version 1.1: not sure whats going on..
 // *response, added more couts.
-// *feedback: window closes can't see output
+// *feedback version 1.2: window closes can't see output
 // *response, added windows appreciation for phallic objects to hold open window.
+// *feedback version 1.3: I dont understand why i'm entering digit
+// *response: Added, comments as to what that portion is doing
 */
 
 #include <iostream>
@@ -154,13 +156,15 @@ void displayArray(const int* ptr_arr_new, int cin_buff_size)
 
 void get_search_numbers(int what_to_find[], const int how_many_to_search)
 {
+    cout << "Searching the " << how_many_to_search << "number's that where randomly generated." << "\n";
+    cout << " I need you to enter 3 numbers between 0 and 100 to look for " << "\n";
  for(int n =0; n < how_many_to_search; n++ )
  {
       bool done = false;
         do
         {
          // get input to search
-         cout << "please enter the " << n+1 << " digit to search array for: " << "\n";
+         cout << "please enter the " << n+1 << " number to search array for: " << "\n";
          cin >> what_to_find[n];
          if (cin.fail())
             {
