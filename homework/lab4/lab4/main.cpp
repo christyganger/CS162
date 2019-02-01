@@ -1,10 +1,12 @@
 /*
 // Lab 4 written by christy wear.
-// version 1.1
+// version 1.2
 // thanks for bin search from https://www.geeksforgeeks.org/binary-search/
 // Special thanks to michelle wear for testing.
 // *feedback: not sure whats going on..
 // *response, added more couts.
+// *feedback: window closes can't see output
+// *response, added windows appreciation for phallic objects to hold open window.
 */
 
 #include <iostream>
@@ -54,6 +56,9 @@ for(int p =0; p < how_many_to_search; p++)
 
 // clear heap array memory
 delete [] ptr_arr_new;
+cout << "Because Microsoft Windows maintains a vacuum on phallic objects even in non vacuum, Press enter to exit." << "\n";
+std::cin.clear(); std::cin.ignore(INT_MAX, '\n');
+std::cin.get();
 return 0;
 }
 
