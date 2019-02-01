@@ -1,13 +1,17 @@
 /*
 // Lab 4 written by christy wear.
-// version 1
+// version 1.1
 // thanks for bin search from https://www.geeksforgeeks.org/binary-search/
+// Special thanks to michelle wear for testing.
+// *feedback: not sure whats going on..
+// *response, added more couts.
 */
 
 #include <iostream>
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <cctype>
 
 using namespace std;
 
@@ -39,6 +43,7 @@ int what_to_find[how_many_to_search];
 get_search_numbers(what_to_find,how_many_to_search);
 
  //binary search 3 times
+ cout << "Now searching for the numbers you entered." << "\n";
 for(int p =0; p < how_many_to_search; p++)
 {
     int result = binarySearch(ptr_arr_new, 0, cin_buff_size - 1, what_to_find[p]);
@@ -92,9 +97,9 @@ void getSize(int &cin_buff_size)
                 cin.ignore(2000, '\n');
                 cout << "BAD INPUT" << "\n";
             }
-
-            if ((cin_buff_size <= 20) && (cin_buff_size >= 10))
+           if ((cin_buff_size <= 20) && (cin_buff_size >= 10))
                 done = true;
+
         }while(!done);
 }
 
@@ -146,8 +151,25 @@ void get_search_numbers(int what_to_find[], const int how_many_to_search)
 {
  for(int n =0; n < how_many_to_search; n++ )
  {
-     // get input to search
-     cout << "please enter digits to search array for: " << "\n";
-     cin >> what_to_find[n];
+      bool done = false;
+        do
+        {
+         // get input to search
+         cout << "please enter the " << n+1 << " digit to search array for: " << "\n";
+         cin >> what_to_find[n];
+         if (cin.fail())
+            {
+                cin.clear();
+                cin.ignore(2000, '\n');
+                cout << "BAD INPUT" << "\n";
+            }
+
+
+                if ((what_to_find[n] <= 100) && (what_to_find[n] >= 0))
+                {
+                    done = true;
+                }
+
+        }while(!done);
  }
 }
