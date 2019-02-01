@@ -11,11 +11,12 @@
 
 using namespace std;
 
-int binarySearch(int arr[], int l, int r, int x);
+int binarySearch(const int* ptr_arr_new, int l, int r, int x);
 void getSize(int &cin_buff_size);
-int* createArray(int cin_buff_size);
-void sortArray(int* ptr_arr_new, int cin_buff_size);
-void displayArray(const int* ptr_arr_new, int cin_buff_size);
+int* createArray(int const cin_buff_size);
+void sortArray(int* ptr_arr_new, const int cin_buff_size);
+void displayArray(const int* ptr_arr_new, const int cin_buff_size);
+void get_search_numbers(int what_to_find[], const int how_many_to_search);
 
 int main()
 {
@@ -31,18 +32,14 @@ sortArray(ptr_arr_new, cin_buff_size);
     //display
 displayArray(ptr_arr_new, cin_buff_size);
 
-
+int how_many_to_search = 3;
 //get in for 3
-int what_to_find[3];
+int what_to_find[how_many_to_search];
 // loop 3 times input
-for(int n =0; n < 3; n++ )
- {
-     // get input to search
-     cout << "please enter digits to search array for: " << "\n";
-     cin >> what_to_find[n];
- }
+get_search_numbers(what_to_find,how_many_to_search);
+
  //binary search 3 times
-for(int p =0; p < 3; p++)
+for(int p =0; p < how_many_to_search; p++)
 {
     int result = binarySearch(ptr_arr_new, 0, cin_buff_size - 1, what_to_find[p]);
     (result == -1) ? cout << what_to_find[p] << " is not present in array"
@@ -56,24 +53,24 @@ return 0;
 }
 
 // searches array for number
-int binarySearch(int arr[], int l, int r, int x)
+int binarySearch(const int* ptr_arr_new, int l, int r, int x)
 {
     if (r >= l) {
         int mid = l + (r - l) / 2;
 
         // If the element is present at the middle
         // itself
-        if (arr[mid] == x)
+        if (ptr_arr_new[mid] == x)
             return mid;
 
         // If element is smaller than mid, then
         // it can only be present in left subarray
-        if (arr[mid] > x)
-            return binarySearch(arr, l, mid - 1, x);
+        if (ptr_arr_new[mid] > x)
+            return binarySearch(ptr_arr_new, l, mid - 1, x);
 
         // Else the element can only be present
         // in right subarray
-        return binarySearch(arr, mid + 1, r, x);
+        return binarySearch(ptr_arr_new, mid + 1, r, x);
     }
 
     // We reach here when element is not
@@ -138,4 +135,14 @@ void displayArray(const int* ptr_arr_new, int cin_buff_size)
 {
     for(int j = 0; j < cin_buff_size; j++)
         cout << ptr_arr_new[j]<< "\n";
+}
+
+void get_search_numbers(int what_to_find[], const int how_many_to_search)
+{
+ for(int n =0; n < how_many_to_search; n++ )
+ {
+     // get input to search
+     cout << "please enter digits to search array for: " << "\n";
+     cin >> what_to_find[n];
+ }
 }
