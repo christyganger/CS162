@@ -8,20 +8,25 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+
 using namespace std;
+
 int binarySearch(int arr[], int l, int r, int x);
 void getSize(int &cin_buff_size);
 int* createArray(int cin_buff_size);
 void sortArray(int* ptr_arr_new, int cin_buff_size);
 void displayArray(const int* ptr_arr_new, int cin_buff_size);
+
 int main()
 {
 srand(time(NULL));
 int cin_buff_size;
-        // get input
-getSize(cin_buff_size);
 
+// get input
+getSize(cin_buff_size);
+// make array
 int* ptr_arr_new = createArray(cin_buff_size);
+// sort array
 sortArray(ptr_arr_new, cin_buff_size);
     //display
 displayArray(ptr_arr_new, cin_buff_size);
@@ -29,25 +34,28 @@ displayArray(ptr_arr_new, cin_buff_size);
 
 //get in for 3
 int what_to_find[3];
-
+// loop 3 times input
 for(int n =0; n < 3; n++ )
  {
      // get input to search
      cout << "please enter digits to search array for: " << "\n";
      cin >> what_to_find[n];
-    //binary search
-       for(int p =0; p < 3; p++)
-        {int result = binarySearch(ptr_arr_new, 0, cin_buff_size - 1, what_to_find[p]);
-        (result == -1) ? cout << what_to_find[p] << " is not present in array"
-                   : cout << what_to_find[p] << " is present at index " << result;
-        cout << "\n";
-        }
  }
+ //binary search 3 times
+for(int p =0; p < 3; p++)
+{
+    int result = binarySearch(ptr_arr_new, 0, cin_buff_size - 1, what_to_find[p]);
+    (result == -1) ? cout << what_to_find[p] << " is not present in array"
+           : cout << what_to_find[p] << " is present at index " << result;
+    cout << "\n";
+}
+
 // clear heap array memory
 delete [] ptr_arr_new;
 return 0;
 }
 
+// searches array for number
 int binarySearch(int arr[], int l, int r, int x)
 {
     if (r >= l) {
@@ -73,12 +81,28 @@ int binarySearch(int arr[], int l, int r, int x)
     return -1;
 }
 
+// asks user to input array size.
 void getSize(int &cin_buff_size)
 {
-        cout << "please enter number of size of array you want, between 10 and 20: " << "\n";
-        cin >> cin_buff_size;
+        bool done = false;
+        do
+        {
+            cout << "please enter number of size of array you want, between 10 and 20: " << "\n";
+            cin >> cin_buff_size;
+            if (cin.fail())
+            {
+                cin.clear();
+                cin.ignore(2000, '\n');
+                cout << "BAD INPUT" << "\n";
+            }
+
+            if ((cin_buff_size <= 20) && (cin_buff_size >= 10))
+                done = true;
+        }while(!done);
 }
 
+
+// creates dynamically sized array
 int* createArray(int cin_buff_size)
 {
     // declare dynamic array
@@ -93,6 +117,7 @@ int* createArray(int cin_buff_size)
 return ptr_arr_new;
 }
 
+// sorts the new array
 void sortArray(int* ptr_arr_new, int cin_buff_size)
 {
     // sort
@@ -108,6 +133,7 @@ void sortArray(int* ptr_arr_new, int cin_buff_size)
         }
 }
 
+// display the numebrs in the array
 void displayArray(const int* ptr_arr_new, int cin_buff_size)
 {
     for(int j = 0; j < cin_buff_size; j++)
