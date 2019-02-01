@@ -102,6 +102,8 @@ void getSize(int &cin_buff_size)
 // creates dynamically sized array
 int* createArray(int cin_buff_size)
 {
+    cout << " Creating an array of random numbers with size of " << cin_buff_size << "\n";
+
     // declare dynamic array
     int * ptr_arr_new = new int[cin_buff_size];
     //fill array randomly
@@ -118,6 +120,7 @@ return ptr_arr_new;
 void sortArray(int* ptr_arr_new, int cin_buff_size)
 {
     // sort
+    cout << "The Array is now sorting" << "\n";
         int k, l, min_m;
         for(k = 0; k < cin_buff_size-1; k++)
         {
@@ -133,6 +136,8 @@ void sortArray(int* ptr_arr_new, int cin_buff_size)
 // display the numebrs in the array
 void displayArray(const int* ptr_arr_new, int cin_buff_size)
 {
+    cout << "\n\n\n\n\n";
+    cout << "These are the " << cin_buff_size << " random numbers generated" << "\n";
     for(int j = 0; j < cin_buff_size; j++)
         cout << ptr_arr_new[j]<< "\n";
 }
