@@ -54,7 +54,10 @@ void getSize(int &cin_buff_size)
             {
                 cin.clear();
                 cin.ignore(2000, '\n');
-                cout << "BAD INPUT" << "\n";
+                cout << "BAD INPUT" << "\n\n\n\n";
+                cout << "HEY LASER LIPS!" << "\n";
+                cout << "YOUR MOMMA WAS A SNOW BLOWER!" << "\n\n\n";
+
             }
            if ((cin_buff_size <= 20) && (cin_buff_size >= 10))
                 done = true;
@@ -122,14 +125,19 @@ void get_search_numbers(int what_to_find[], const int how_many_to_search)
             {
                 cin.clear();
                 cin.ignore(2000, '\n');
-                cout << "BAD INPUT" << "\n";
+                cout << "BAD INPUT" << "\n\n\n";
+                cout << "RETURN TO D-STATION." << "\n\n\n\n";
+                cout << "Wouldn't" << "\n";
+                cout << "you like to be" << "\n";
+                cout << "a Pepper" << "\n";
+                cout << "too?_" << "\n\n\n";
             }
 
 
-                if ((what_to_find[n] <= 100) && (what_to_find[n] >= 0))
-                {
-                    done = true;
-                }
+            else if ((what_to_find[n] <= 100) && (what_to_find[n] >= 0))
+            {
+                done = true;
+            }
 
         }while(!done);
  }
