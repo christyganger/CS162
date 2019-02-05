@@ -13,12 +13,19 @@
 	<cctype>
 	"function_header.h"
 
-1548980888 source:c:\users\chris\documents\github\cs162\homework\lab4\lab4\main.cpp
+1549052601 source:c:\users\chris\documents\github\cs162\homework\lab4\lab4\main.cpp
+	"function_header.h"
+
+1548989653 g:\classxis\classes_github\school_classes\winter2019\cs162\homework\lab4\lab4\function_header.h
+	<iostream>
+
+1549309159 source:c:\users\chris\documents\github\cs162\homework\lab4\lab4\functions.cpp
+	"function_header.h"
+
+1549052601 c:\users\chris\documents\github\cs162\homework\lab4\lab4\function_header.h
 	<iostream>
 	<stdio.h>
 	<stdlib.h>
 	<time.h>
-
-1548989653 g:\classxis\classes_github\school_classes\winter2019\cs162\homework\lab4\lab4\function_header.h
-	<iostream>
+	<cctype>
 
