@@ -1,0 +1,34 @@
+/*
+Program written by christy wear
+last modified: 3/26/2019
+version 1.3
+cis 162C+
+*/
+
+/* psuedocode for program..
+
+player dataset, is
+{array playfield,
+move_1
+move_2
+match
+}
+const 8 symbols
+const 16 cards
+
+display face down.
+do player loop
+display all remaining face down 0-15
+ask user move_1
+ask user move_2
+.. Pass struct to check match
+display those cards at those positions
+If no match,
+{display normal all  remaining face down,
+ restart play loop}
+if match
+{ remove cards at those locations,
+display normal all remaining face down,
+Check win condition,
+ restart loop}
+ */
