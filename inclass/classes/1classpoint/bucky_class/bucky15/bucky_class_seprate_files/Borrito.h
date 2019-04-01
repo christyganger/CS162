@@ -1,6 +1,7 @@
 #ifndef BORRITO_H
 #define BORRITO_H
 #include <string>
+#include <iostream>
 using namespace std;
 class Borrito
 {
@@ -11,6 +12,7 @@ class Borrito
         string getName();
     private:
         string name;
+        int age = 66;
 
 
 };
