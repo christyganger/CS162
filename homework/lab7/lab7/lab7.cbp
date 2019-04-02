@@ -36,7 +36,7 @@
 		<Unit filename="CreditCard.h" />
 		<Unit filename="Person.cpp" />
 		<Unit filename="Person.h" />
-		<Unit filename="main.cpp" />
+		<Unit filename="cc_person_driver.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />

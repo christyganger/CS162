@@ -1,53 +1,92 @@
+/*
+Christy Ganger(wear)
+CIS161c++
+4/1/2019
+Lab 7
+Version 2
+*/
+
+
 #include <iostream>
 #include <string>
 #include "CreditCard.h"
 using namespace std;
 
-
-CreditCard::CreditCard(string person, string first, string last, string address, string CCNumber, int Climit)
+/*
+CreditCard::CreditCard()
 {
-    person_internal = person;
-    First_Name = first;
-    Last_Name = last;
-    Address = address;
+    //default
+}
+*/
+
+CreditCard::CreditCard(string first, string last, string address, double CCNumber, int Climit)
+{
+    obj_for_data.setFirstName(first);
+    obj_for_data.setLastName(last);
+    obj_for_data.setAddress(address);
     Card_Number = CCNumber;
     Credit_Limit = Climit;
+
 }
 
 double CreditCard::getBalance()
 {
     //no idea where this comes from so for now.. answer to universe
-    return 42;
+    return Balance;
 }
 
-string CreditCard::getCardNumber()
+double CreditCard::getCardNumber()
 {
-    return this->Card_Number;
+    return Card_Number;
 }
 
-string CreditCard::getOwnerName()
+std::string CreditCard::getOwnerName()
 {
-    return this->First_Name + this->Last_Name;
+   std::string TEMP;
+   TEMP = (obj_for_data.getFirstName() + " " + obj_for_data.getLastName());
+   return TEMP;
 }
 
-string CreditCard::getAddress()
+std::string CreditCard::getAddress()
 {
-    return this->Address;
+    return obj_for_data.getAddress();
 }
 
-double CreditCard::payBalance(double)
+bool CreditCard::payBalance(double payment_on_balance)
 {
-    //what??
-    return 42;
+    bool is_valid = false;
+    if(payment_on_balance  > 0)
+    {
+        Balance = (Balance-payment_on_balance);
+        is_valid = true;
+    }
+    else
+    {
+        is_valid = false;
+    }
+    return is_valid;
 }
 
-bool CreditCard::makeChange()
+bool CreditCard::makeCharge(double charge_amount)
 {
-    bool have_not_done_this_part_yet = true;
-    return have_not_done_this_part_yet;
+    bool is_valid_transation = false;
+    if(Balance+charge_amount <= Credit_Limit && charge_amount > 0)
+    {
+        Balance = (Balance+charge_amount);
+        is_valid_transation = true;
+    }
+    else
+    {
+        is_valid_transation = false;
+    }
+
+    return is_valid_transation;
 }
 
-void CreditCard::setCreditLimit(double)
+void CreditCard::setCreditLimit(double new_credit_limit)
 {
-
+    if(new_credit_limit >= 0)
+       {
+            Credit_Limit = new_credit_limit;
+       }
 }

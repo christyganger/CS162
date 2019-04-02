@@ -1,46 +1,55 @@
+/*
+Christy Ganger(wear)
+CIS161c++
+4/1/2019
+Lab 7
+Version 2
+*/
+
+
 #include "Person.h"
 #include <iostream>
 #include <string>
 
 Person::Person()
 {
-    //ctor
+    //default
 }
 
 Person::Person(std::string First_Name, std::string Last_Name, std::string Address)
 {
-
+    setFirstName(First_Name);
+    setLastName(Last_Name);
+    setAddress(Address);
 }
 
-std::string Person::get_First_Name()
+std::string Person::getFirstName()
 {
-    //stub
-    return this->First_Name;
+    return First_Name;
 }
 
-void Person::set_First_Name()
+void Person::setFirstName(std::string set_account_first_name)
 {
-    //stub
+    First_Name = set_account_first_name;
 }
 
-std::string Person::get_Last_Name()
+std::string Person::getLastName()
 {
-    //stub
-    return this->Last_Name;
+    return Last_Name;
 }
 
-void Person::set_Last_Name()
+void Person::setLastName(std::string set_account_last_name)
 {
-    //stub
+    Last_Name = set_account_last_name;
 }
 
-std::string Person::get_Address()
+std::string Person::getAddress()
 {
     //stub
-    return this->Address;
+    return Address;
 }
 
-void Person::set_Address()
+void Person::setAddress(std::string set_account_Address)
 {
-    //stub
+    Address = set_account_Address;
 }
