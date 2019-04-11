@@ -3,7 +3,7 @@ Christy Ganger(wear)
 CIS161c++
 4/1/2019
 Lab 7
-Version 2
+Version 3
 */
 
 

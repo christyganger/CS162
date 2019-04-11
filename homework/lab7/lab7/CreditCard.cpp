@@ -3,7 +3,7 @@ Christy Ganger(wear)
 CIS161c++
 4/1/2019
 Lab 7
-Version 2
+Version 3
 */
 
 
@@ -19,7 +19,7 @@ CreditCard::CreditCard()
 }
 */
 
-CreditCard::CreditCard(string first, string last, string address, double CCNumber, int Climit)
+CreditCard::CreditCard(string first, string last, string address, int CCNumber, double Climit)
 {
     obj_for_data.setFirstName(first);
     obj_for_data.setLastName(last);
@@ -35,7 +35,7 @@ double CreditCard::getBalance()
     return Balance;
 }
 
-double CreditCard::getCardNumber()
+int CreditCard::getCardNumber()
 {
     return Card_Number;
 }
