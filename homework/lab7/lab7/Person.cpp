@@ -8,8 +8,6 @@ Version 3
 
 
 #include "Person.h"
-#include <iostream>
-#include <string>
 
 Person::Person()
 {

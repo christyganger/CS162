@@ -3,7 +3,7 @@ Created by Christy Ganger
 4/7/2019
 cis 162c++
 Lab 8
-version 1
+version 2
 */
 #include "CarList.h"
 #include "Car.h"
@@ -75,7 +75,7 @@ bool CarList::recfind(Link * ptr, Car temp_car)
 {
     //empty
         if (ptr == nullptr)
-            return -1;
+            return 0;
         // not empty
        if (ptr->this_car == temp_car)
         {return true;}

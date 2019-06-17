@@ -1,0 +1,8 @@
+
+This week, I am combining the labs for the BlackJack game into a single lab.
+
+I will provide the materials for Card, Deck, and Hand.  You will need to use them to create Player and Dealer.
+
+You should build a Player class and test it.  Once it works properly, create a Dealer class that is a child of Player and test it.  When both test properly, you can use the supplied game to see if everything works correctly.
+
+jim

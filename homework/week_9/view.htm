@@ -1,0 +1,1181 @@
+<!DOCTYPE html>
+
+<html  dir="ltr" lang="en-us" xml:lang="en-us">
+<head>
+    <title>CS 162C+ W19 (Bailey Meta 33185 33186 33197): Test Drivers for Player, Dealer, and Game</title>
+    <link rel="shortcut icon" href="https://classes.lanecc.edu/theme/image.php/boost/theme/1555042912/favicon" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={xpid:"XQYFUlBACgUGUVlWBw=="};window.NREUM||(NREUM={}),__nr_require=function(t,n,e){function r(e){if(!n[e]){var o=n[e]={exports:{}};t[e][0].call(o.exports,function(n){var o=t[e][1][n];return r(o||n)},o,o.exports)}return n[e].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<e.length;o++)r(e[o]);return r}({1:[function(t,n,e){function r(t){try{s.console&&console.log(t)}catch(n){}}var o,i=t("ee"),a=t(16),s={};try{o=localStorage.getItem("__nr_flags").split(","),console&&"function"==typeof console.log&&(s.console=!0,o.indexOf("dev")!==-1&&(s.dev=!0),o.indexOf("nr_dev")!==-1&&(s.nrDev=!0))}catch(c){}s.nrDev&&i.on("internal-error",function(t){r(t.stack)}),s.dev&&i.on("fn-err",function(t,n,e){r(e.stack)}),s.dev&&(r("NR AGENT IN DEVELOPMENT MODE"),r("flags: "+a(s,function(t,n){return t}).join(", ")))},{}],2:[function(t,n,e){function r(t,n,e,r,s){try{p?p-=1:o(s||new UncaughtException(t,n,e),!0)}catch(f){try{i("ierr",[f,c.now(),!0])}catch(d){}}return"function"==typeof u&&u.apply(this,a(arguments))}function UncaughtException(t,n,e){this.message=t||"Uncaught error with no additional information",this.sourceURL=n,this.line=e}function o(t,n){var e=n?null:c.now();i("err",[t,e])}var i=t("handle"),a=t(17),s=t("ee"),c=t("loader"),f=t("gos"),u=window.onerror,d=!1,l="nr@seenError",p=0;c.features.err=!0,t(1),window.onerror=r;try{throw new Error}catch(h){"stack"in h&&(t(8),t(7),"addEventListener"in window&&t(5),c.xhrWrappable&&t(9),d=!0)}s.on("fn-start",function(t,n,e){d&&(p+=1)}),s.on("fn-err",function(t,n,e){d&&!e[l]&&(f(e,l,function(){return!0}),this.thrown=!0,o(e))}),s.on("fn-end",function(){d&&!this.thrown&&p>0&&(p-=1)}),s.on("internal-error",function(t){i("ierr",[t,c.now(),!0])})},{}],3:[function(t,n,e){t("loader").features.ins=!0},{}],4:[function(t,n,e){function r(t){}if(window.performance&&window.performance.timing&&window.performance.getEntriesByType){var o=t("ee"),i=t("handle"),a=t(8),s=t(7),c="learResourceTimings",f="addEventListener",u="resourcetimingbufferfull",d="bstResource",l="resource",p="-start",h="-end",m="fn"+p,v="fn"+h,w="bstTimer",y="pushState",g=t("loader");g.features.stn=!0,t(6);var b=NREUM.o.EV;o.on(m,function(t,n){var e=t[0];e instanceof b&&(this.bstStart=g.now())}),o.on(v,function(t,n){var e=t[0];e instanceof b&&i("bst",[e,n,this.bstStart,g.now()])}),a.on(m,function(t,n,e){this.bstStart=g.now(),this.bstType=e}),a.on(v,function(t,n){i(w,[n,this.bstStart,g.now(),this.bstType])}),s.on(m,function(){this.bstStart=g.now()}),s.on(v,function(t,n){i(w,[n,this.bstStart,g.now(),"requestAnimationFrame"])}),o.on(y+p,function(t){this.time=g.now(),this.startPath=location.pathname+location.hash}),o.on(y+h,function(t){i("bstHist",[location.pathname+location.hash,this.startPath,this.time])}),f in window.performance&&(window.performance["c"+c]?window.performance[f](u,function(t){i(d,[window.performance.getEntriesByType(l)]),window.performance["c"+c]()},!1):window.performance[f]("webkit"+u,function(t){i(d,[window.performance.getEntriesByType(l)]),window.performance["webkitC"+c]()},!1)),document[f]("scroll",r,{passive:!0}),document[f]("keypress",r,!1),document[f]("click",r,!1)}},{}],5:[function(t,n,e){function r(t){for(var n=t;n&&!n.hasOwnProperty(u);)n=Object.getPrototypeOf(n);n&&o(n)}function o(t){s.inPlace(t,[u,d],"-",i)}function i(t,n){return t[1]}var a=t("ee").get("events"),s=t(19)(a,!0),c=t("gos"),f=XMLHttpRequest,u="addEventListener",d="removeEventListener";n.exports=a,"getPrototypeOf"in Object?(r(document),r(window),r(f.prototype)):f.prototype.hasOwnProperty(u)&&(o(window),o(f.prototype)),a.on(u+"-start",function(t,n){var e=t[1],r=c(e,"nr@wrapped",function(){function t(){if("function"==typeof e.handleEvent)return e.handleEvent.apply(e,arguments)}var n={object:t,"function":e}[typeof e];return n?s(n,"fn-",null,n.name||"anonymous"):e});this.wrapped=t[1]=r}),a.on(d+"-start",function(t){t[1]=this.wrapped||t[1]})},{}],6:[function(t,n,e){var r=t("ee").get("history"),o=t(19)(r);n.exports=r,o.inPlace(window.history,["pushState","replaceState"],"-")},{}],7:[function(t,n,e){var r=t("ee").get("raf"),o=t(19)(r),i="equestAnimationFrame";n.exports=r,o.inPlace(window,["r"+i,"mozR"+i,"webkitR"+i,"msR"+i],"raf-"),r.on("raf-start",function(t){t[0]=o(t[0],"fn-")})},{}],8:[function(t,n,e){function r(t,n,e){t[0]=a(t[0],"fn-",null,e)}function o(t,n,e){this.method=e,this.timerDuration=isNaN(t[1])?0:+t[1],t[0]=a(t[0],"fn-",this,e)}var i=t("ee").get("timer"),a=t(19)(i),s="setTimeout",c="setInterval",f="clearTimeout",u="-start",d="-";n.exports=i,a.inPlace(window,[s,"setImmediate"],s+d),a.inPlace(window,[c],c+d),a.inPlace(window,[f,"clearImmediate"],f+d),i.on(c+u,r),i.on(s+u,o)},{}],9:[function(t,n,e){function r(t,n){d.inPlace(n,["onreadystatechange"],"fn-",s)}function o(){var t=this,n=u.context(t);t.readyState>3&&!n.resolved&&(n.resolved=!0,u.emit("xhr-resolved",[],t)),d.inPlace(t,y,"fn-",s)}function i(t){g.push(t),h&&(x?x.then(a):v?v(a):(E=-E,O.data=E))}function a(){for(var t=0;t<g.length;t++)r([],g[t]);g.length&&(g=[])}function s(t,n){return n}function c(t,n){for(var e in t)n[e]=t[e];return n}t(5);var f=t("ee"),u=f.get("xhr"),d=t(19)(u),l=NREUM.o,p=l.XHR,h=l.MO,m=l.PR,v=l.SI,w="readystatechange",y=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"],g=[];n.exports=u;var b=window.XMLHttpRequest=function(t){var n=new p(t);try{u.emit("new-xhr",[n],n),n.addEventListener(w,o,!1)}catch(e){try{u.emit("internal-error",[e])}catch(r){}}return n};if(c(p,b),b.prototype=p.prototype,d.inPlace(b.prototype,["open","send"],"-xhr-",s),u.on("send-xhr-start",function(t,n){r(t,n),i(n)}),u.on("open-xhr-start",r),h){var x=m&&m.resolve();if(!v&&!m){var E=1,O=document.createTextNode(E);new h(a).observe(O,{characterData:!0})}}else f.on("fn-end",function(t){t[0]&&t[0].type===w||a()})},{}],10:[function(t,n,e){function r(t){var n=this.params,e=this.metrics;if(!this.ended){this.ended=!0;for(var r=0;r<d;r++)t.removeEventListener(u[r],this.listener,!1);if(!n.aborted){if(e.duration=a.now()-this.startTime,4===t.readyState){n.status=t.status;var i=o(t,this.lastSize);if(i&&(e.rxSize=i),this.sameOrigin){var c=t.getResponseHeader("X-NewRelic-App-Data");c&&(n.cat=c.split(", ").pop())}}else n.status=0;e.cbTime=this.cbTime,f.emit("xhr-done",[t],t),s("xhr",[n,e,this.startTime])}}}function o(t,n){var e=t.responseType;if("json"===e&&null!==n)return n;var r="arraybuffer"===e||"blob"===e||"json"===e?t.response:t.responseText;return h(r)}function i(t,n){var e=c(n),r=t.params;r.host=e.hostname+":"+e.port,r.pathname=e.pathname,t.sameOrigin=e.sameOrigin}var a=t("loader");if(a.xhrWrappable){var s=t("handle"),c=t(11),f=t("ee"),u=["load","error","abort","timeout"],d=u.length,l=t("id"),p=t(14),h=t(13),m=window.XMLHttpRequest;a.features.xhr=!0,t(9),f.on("new-xhr",function(t){var n=this;n.totalCbs=0,n.called=0,n.cbTime=0,n.end=r,n.ended=!1,n.xhrGuids={},n.lastSize=null,p&&(p>34||p<10)||window.opera||t.addEventListener("progress",function(t){n.lastSize=t.loaded},!1)}),f.on("open-xhr-start",function(t){this.params={method:t[0]},i(this,t[1]),this.metrics={}}),f.on("open-xhr-end",function(t,n){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&n.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid)}),f.on("send-xhr-start",function(t,n){var e=this.metrics,r=t[0],o=this;if(e&&r){var i=h(r);i&&(e.txSize=i)}this.startTime=a.now(),this.listener=function(t){try{"abort"===t.type&&(o.params.aborted=!0),("load"!==t.type||o.called===o.totalCbs&&(o.onloadCalled||"function"!=typeof n.onload))&&o.end(n)}catch(e){try{f.emit("internal-error",[e])}catch(r){}}};for(var s=0;s<d;s++)n.addEventListener(u[s],this.listener,!1)}),f.on("xhr-cb-time",function(t,n,e){this.cbTime+=t,n?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof e.onload||this.end(e)}),f.on("xhr-load-added",function(t,n){var e=""+l(t)+!!n;this.xhrGuids&&!this.xhrGuids[e]&&(this.xhrGuids[e]=!0,this.totalCbs+=1)}),f.on("xhr-load-removed",function(t,n){var e=""+l(t)+!!n;this.xhrGuids&&this.xhrGuids[e]&&(delete this.xhrGuids[e],this.totalCbs-=1)}),f.on("addEventListener-end",function(t,n){n instanceof m&&"load"===t[0]&&f.emit("xhr-load-added",[t[1],t[2]],n)}),f.on("removeEventListener-end",function(t,n){n instanceof m&&"load"===t[0]&&f.emit("xhr-load-removed",[t[1],t[2]],n)}),f.on("fn-start",function(t,n,e){n instanceof m&&("onload"===e&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=a.now()))}),f.on("fn-end",function(t,n){this.xhrCbStart&&f.emit("xhr-cb-time",[a.now()-this.xhrCbStart,this.onload,n],n)})}},{}],11:[function(t,n,e){n.exports=function(t){var n=document.createElement("a"),e=window.location,r={};n.href=t,r.port=n.port;var o=n.href.split("://");!r.port&&o[1]&&(r.port=o[1].split("/")[0].split("@").pop().split(":")[1]),r.port&&"0"!==r.port||(r.port="https"===o[0]?"443":"80"),r.hostname=n.hostname||e.hostname,r.pathname=n.pathname,r.protocol=o[0],"/"!==r.pathname.charAt(0)&&(r.pathname="/"+r.pathname);var i=!n.protocol||":"===n.protocol||n.protocol===e.protocol,a=n.hostname===document.domain&&n.port===e.port;return r.sameOrigin=i&&(!n.hostname||a),r}},{}],12:[function(t,n,e){function r(){}function o(t,n,e){return function(){return i(t,[f.now()].concat(s(arguments)),n?null:this,e),n?void 0:this}}var i=t("handle"),a=t(16),s=t(17),c=t("ee").get("tracer"),f=t("loader"),u=NREUM;"undefined"==typeof window.newrelic&&(newrelic=u);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],l="api-",p=l+"ixn-";a(d,function(t,n){u[n]=o(l+n,!0,"api")}),u.addPageAction=o(l+"addPageAction",!0),u.setCurrentRouteName=o(l+"routeName",!0),n.exports=newrelic,u.interaction=function(){return(new r).get()};var h=r.prototype={createTracer:function(t,n){var e={},r=this,o="function"==typeof n;return i(p+"tracer",[f.now(),t,e],r),function(){if(c.emit((o?"":"no-")+"fn-start",[f.now(),r,o],e),o)try{return n.apply(this,arguments)}catch(t){throw c.emit("fn-err",[arguments,this,t],e),t}finally{c.emit("fn-end",[f.now()],e)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(t,n){h[n]=o(p+n)}),newrelic.noticeError=function(t,n){"string"==typeof t&&(t=new Error(t)),i("err",[t,f.now(),!1,n])}},{}],13:[function(t,n,e){n.exports=function(t){if("string"==typeof t&&t.length)return t.length;if("object"==typeof t){if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if(!("undefined"!=typeof FormData&&t instanceof FormData))try{return JSON.stringify(t).length}catch(n){return}}}},{}],14:[function(t,n,e){var r=0,o=navigator.userAgent.match(/Firefox[\/\s](\d+\.\d+)/);o&&(r=+o[1]),n.exports=r},{}],15:[function(t,n,e){function r(t,n){if(!o)return!1;if(t!==o)return!1;if(!n)return!0;if(!i)return!1;for(var e=i.split("."),r=n.split("."),a=0;a<r.length;a++)if(r[a]!==e[a])return!1;return!0}var o=null,i=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var s=navigator.userAgent,c=s.match(a);c&&s.indexOf("Chrome")===-1&&s.indexOf("Chromium")===-1&&(o="Safari",i=c[1])}n.exports={agent:o,version:i,match:r}},{}],16:[function(t,n,e){function r(t,n){var e=[],r="",i=0;for(r in t)o.call(t,r)&&(e[i]=n(r,t[r]),i+=1);return e}var o=Object.prototype.hasOwnProperty;n.exports=r},{}],17:[function(t,n,e){function r(t,n,e){n||(n=0),"undefined"==typeof e&&(e=t?t.length:0);for(var r=-1,o=e-n||0,i=Array(o<0?0:o);++r<o;)i[r]=t[n+r];return i}n.exports=r},{}],18:[function(t,n,e){n.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],19:[function(t,n,e){function r(t){return!(t&&t instanceof Function&&t.apply&&!t[a])}var o=t("ee"),i=t(17),a="nr@original",s=Object.prototype.hasOwnProperty,c=!1;n.exports=function(t,n){function e(t,n,e,o){function nrWrapper(){var r,a,s,c;try{a=this,r=i(arguments),s="function"==typeof e?e(r,a):e||{}}catch(f){l([f,"",[r,a,o],s])}u(n+"start",[r,a,o],s);try{return c=t.apply(a,r)}catch(d){throw u(n+"err",[r,a,d],s),d}finally{u(n+"end",[r,a,c],s)}}return r(t)?t:(n||(n=""),nrWrapper[a]=t,d(t,nrWrapper),nrWrapper)}function f(t,n,o,i){o||(o="");var a,s,c,f="-"===o.charAt(0);for(c=0;c<n.length;c++)s=n[c],a=t[s],r(a)||(t[s]=e(a,f?s+o:o,i,s))}function u(e,r,o){if(!c||n){var i=c;c=!0;try{t.emit(e,r,o,n)}catch(a){l([a,e,r,o])}c=i}}function d(t,n){if(Object.defineProperty&&Object.keys)try{var e=Object.keys(t);return e.forEach(function(e){Object.defineProperty(n,e,{get:function(){return t[e]},set:function(n){return t[e]=n,n}})}),n}catch(r){l([r])}for(var o in t)s.call(t,o)&&(n[o]=t[o]);return n}function l(n){try{t.emit("internal-error",n)}catch(e){}}return t||(t=o),e.inPlace=f,e.flag=a,e}},{}],ee:[function(t,n,e){function r(){}function o(t){function n(t){return t&&t instanceof r?t:t?c(t,s,i):i()}function e(e,r,o,i){if(!l.aborted||i){t&&t(e,r,o);for(var a=n(o),s=m(e),c=s.length,f=0;f<c;f++)s[f].apply(a,r);var d=u[g[e]];return d&&d.push([b,e,r,a]),a}}function p(t,n){y[t]=m(t).concat(n)}function h(t,n){var e=y[t];if(e)for(var r=0;r<e.length;r++)e[r]===n&&e.splice(r,1)}function m(t){return y[t]||[]}function v(t){return d[t]=d[t]||o(e)}function w(t,n){f(t,function(t,e){n=n||"feature",g[e]=n,n in u||(u[n]=[])})}var y={},g={},b={on:p,addEventListener:p,removeEventListener:h,emit:e,get:v,listeners:m,context:n,buffer:w,abort:a,aborted:!1};return b}function i(){return new r}function a(){(u.api||u.feature)&&(l.aborted=!0,u=l.backlog={})}var s="nr@context",c=t("gos"),f=t(16),u={},d={},l=n.exports=o();l.backlog=u},{}],gos:[function(t,n,e){function r(t,n,e){if(o.call(t,n))return t[n];var r=e();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,n,{value:r,writable:!0,enumerable:!1}),r}catch(i){}return t[n]=r,r}var o=Object.prototype.hasOwnProperty;n.exports=r},{}],handle:[function(t,n,e){function r(t,n,e,r){o.buffer([t],r),o.emit(t,n,e)}var o=t("ee").get("handle");n.exports=r,r.ee=o},{}],id:[function(t,n,e){function r(t){var n=typeof t;return!t||"object"!==n&&"function"!==n?-1:t===window?0:a(t,i,function(){return o++})}var o=1,i="nr@id",a=t("gos");n.exports=r},{}],loader:[function(t,n,e){function r(){if(!E++){var t=x.info=NREUM.info,n=p.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(t&&t.licenseKey&&t.applicationID&&n))return u.abort();f(g,function(n,e){t[n]||(t[n]=e)}),c("mark",["onload",a()+x.offset],null,"api");var e=p.createElement("script");e.src="https://"+t.agent,n.parentNode.insertBefore(e,n)}}function o(){"complete"===p.readyState&&i()}function i(){c("mark",["domContent",a()+x.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(s=Math.max((new Date).getTime(),s))-x.offset}var s=(new Date).getTime(),c=t("handle"),f=t(16),u=t("ee"),d=t(15),l=window,p=l.document,h="addEventListener",m="attachEvent",v=l.XMLHttpRequest,w=v&&v.prototype;NREUM.o={ST:setTimeout,SI:l.setImmediate,CT:clearTimeout,XHR:v,REQ:l.Request,EV:l.Event,PR:l.Promise,MO:l.MutationObserver};var y=""+location,g={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1118.min.js"},b=v&&w&&w[h]&&!/CriOS/.test(navigator.userAgent),x=n.exports={offset:s,now:a,origin:y,features:{},xhrWrappable:b,userAgent:d};t(12),p[h]?(p[h]("DOMContentLoaded",i,!1),l[h]("load",r,!1)):(p[m]("onreadystatechange",o),l[m]("onload",r)),c("mark",["firstbyte",s],null,"api");var E=0,O=t(18)},{}]},{},["loader",2,10,4,3]);</script>
+<meta name="keywords" content="moodle, CS 162C+ W19 (Bailey Meta 33185 33186 33197): Test Drivers for Player, Dealer, and Game" />
+<link rel="stylesheet" type="text/css" href="https://classes.lanecc.edu/theme/yui_combo.php?rollup/3.17.2/yui-moodlesimple-min.css" /><script id="firstthemesheet" type="text/css">/** Required in order to fix style inclusion problems in IE with YUI **/</script><link rel="stylesheet" type="text/css" href="https://classes.lanecc.edu/theme/styles.php/boost/1555042912_1550135000/all" />
+<script type="text/javascript">
+//<![CDATA[
+var M = {}; M.yui = {};
+M.pageloadstarttime = new Date();
+M.cfg = {"wwwroot":"https:\/\/classes.lanecc.edu","sesskey":"XaZgEdtwsy","themerev":"1555042912","slasharguments":1,"theme":"boost","iconsystemmodule":"core\/icon_system_fontawesome","jsrev":"1555042912","admin":"admin","svgicons":true,"usertimezone":"America\/Los_Angeles","contextid":3394879};var yui1ConfigFn = function(me) {if(/-skin|reset|fonts|grids|base/.test(me.name)){me.type='css';me.path=me.path.replace(/\.js/,'.css');me.path=me.path.replace(/\/yui2-skin/,'/assets/skins/sam/yui2-skin')}};
+var yui2ConfigFn = function(me) {var parts=me.name.replace(/^moodle-/,'').split('-'),component=parts.shift(),module=parts[0],min='-min';if(/-(skin|core)$/.test(me.name)){parts.pop();me.type='css';min=''}
+if(module){var filename=parts.join('-');me.path=component+'/'+module+'/'+filename+min+'.'+me.type}else{me.path=component+'/'+component+'.'+me.type}};
+YUI_config = {"debug":false,"base":"https:\/\/classes.lanecc.edu\/lib\/yuilib\/3.17.2\/","comboBase":"https:\/\/classes.lanecc.edu\/theme\/yui_combo.php?","combine":true,"filter":null,"insertBefore":"firstthemesheet","groups":{"yui2":{"base":"https:\/\/classes.lanecc.edu\/lib\/yuilib\/2in3\/2.9.0\/build\/","comboBase":"https:\/\/classes.lanecc.edu\/theme\/yui_combo.php?","combine":true,"ext":false,"root":"2in3\/2.9.0\/build\/","patterns":{"yui2-":{"group":"yui2","configFn":yui1ConfigFn}}},"moodle":{"name":"moodle","base":"https:\/\/classes.lanecc.edu\/theme\/yui_combo.php?m\/1555042912\/","combine":true,"comboBase":"https:\/\/classes.lanecc.edu\/theme\/yui_combo.php?","ext":false,"root":"m\/1555042912\/","patterns":{"moodle-":{"group":"moodle","configFn":yui2ConfigFn}},"filter":null,"modules":{"moodle-core-maintenancemodetimer":{"requires":["base","node"]},"moodle-core-tooltip":{"requires":["base","node","io-base","moodle-core-notification-dialogue","json-parse","widget-position","widget-position-align","event-outside","cache-base"]},"moodle-core-dragdrop":{"requires":["base","node","io","dom","dd","event-key","event-focus","moodle-core-notification"]},"moodle-core-event":{"requires":["event-custom"]},"moodle-core-lockscroll":{"requires":["plugin","base-build"]},"moodle-core-actionmenu":{"requires":["base","event","node-event-simulate"]},"moodle-core-chooserdialogue":{"requires":["base","panel","moodle-core-notification"]},"moodle-core-handlebars":{"condition":{"trigger":"handlebars","when":"after"}},"moodle-core-languninstallconfirm":{"requires":["base","node","moodle-core-notification-confirm","moodle-core-notification-alert"]},"moodle-core-popuphelp":{"requires":["moodle-core-tooltip"]},"moodle-core-dock":{"requires":["base","node","event-custom","event-mouseenter","event-resize","escape","moodle-core-dock-loader","moodle-core-event"]},"moodle-core-dock-loader":{"requires":["escape"]},"moodle-core-checknet":{"requires":["base-base","moodle-core-notification-alert","io-base"]},"moodle-core-blocks":{"requires":["base","node","io","dom","dd","dd-scroll","moodle-core-dragdrop","moodle-core-notification"]},"moodle-core-formchangechecker":{"requires":["base","event-focus","moodle-core-event"]},"moodle-core-notification":{"requires":["moodle-core-notification-dialogue","moodle-core-notification-alert","moodle-core-notification-confirm","moodle-core-notification-exception","moodle-core-notification-ajaxexception"]},"moodle-core-notification-dialogue":{"requires":["base","node","panel","escape","event-key","dd-plugin","moodle-core-widget-focusafterclose","moodle-core-lockscroll"]},"moodle-core-notification-alert":{"requires":["moodle-core-notification-dialogue"]},"moodle-core-notification-confirm":{"requires":["moodle-core-notification-dialogue"]},"moodle-core-notification-exception":{"requires":["moodle-core-notification-dialogue"]},"moodle-core-notification-ajaxexception":{"requires":["moodle-core-notification-dialogue"]},"moodle-core_availability-form":{"requires":["base","node","event","event-delegate","panel","moodle-core-notification-dialogue","json"]},"moodle-backup-confirmcancel":{"requires":["node","node-event-simulate","moodle-core-notification-confirm"]},"moodle-backup-backupselectall":{"requires":["node","event","node-event-simulate","anim"]},"moodle-course-modchooser":{"requires":["moodle-core-chooserdialogue","moodle-course-coursebase"]},"moodle-course-dragdrop":{"requires":["base","node","io","dom","dd","dd-scroll","moodle-core-dragdrop","moodle-core-notification","moodle-course-coursebase","moodle-course-util"]},"moodle-course-formatchooser":{"requires":["base","node","node-event-simulate"]},"moodle-course-util":{"requires":["node"],"use":["moodle-course-util-base"],"submodules":{"moodle-course-util-base":{},"moodle-course-util-section":{"requires":["node","moodle-course-util-base"]},"moodle-course-util-cm":{"requires":["node","moodle-course-util-base"]}}},"moodle-course-categoryexpander":{"requires":["node","event-key"]},"moodle-course-management":{"requires":["base","node","io-base","moodle-core-notification-exception","json-parse","dd-constrain","dd-proxy","dd-drop","dd-delegate","node-event-delegate"]},"moodle-form-shortforms":{"requires":["node","base","selector-css3","moodle-core-event"]},"moodle-form-dateselector":{"requires":["base","node","overlay","calendar"]},"moodle-form-showadvanced":{"requires":["node","base","selector-css3"]},"moodle-form-passwordunmask":{"requires":[]},"moodle-core_outcome-mapoutcomeset":{"requires":["widget","model","model-list","handlebars","json-parse","json-stringify","moodle-core_outcome-models","moodle-core-notification-dialogue","moodle-core-notification-exception","moodle-core-notification-alert","moodle-core_outcome-simpleio"]},"moodle-core_outcome-dynamicpanel":{"requires":["base","moodle-core_outcome-simpleio","classnamemanager","moodle-core-notification-dialogue","moodle-core_outcome-scrollpanel"]},"moodle-core_outcome-editoutcome":{"requires":["widget","event-valuechange","handlebars","json-parse","json-stringify","moodle-core_outcome-models","moodle-core-notification-dialogue","moodle-core-notification-exception"]},"moodle-core_outcome-models":{"requires":["base","model","model-list","moodle-core_outcome-simpleio","json-stringify"]},"moodle-core_outcome-scrollpanel":{"requires":["plugin","widget","panel"]},"moodle-core_outcome-simpleio":{"requires":["base","io-base","json-parse","moodle-core-notification-exception","moodle-core-notification-ajaxexception"]},"moodle-core_outcome-mapoutcome":{"requires":["widget","handlebars","json-parse","json-stringify","moodle-core_outcome-models","moodle-core_outcome-outcomepanel","moodle-core-notification-exception"]},"moodle-core_outcome-ariacontrol":{"requires":["plugin","widget","escape"]},"moodle-core_outcome-ariacontrolled":{"requires":["plugin","widget"]},"moodle-core_outcome-outcomepanel":{"requires":["base","handlebars","moodle-core_outcome-models","moodle-core_outcome-scrollpanel","moodle-core_outcome-ariacontrol","moodle-core_outcome-ariacontrolled","moodle-core-notification-dialogue","moodle-core-notification-alert","moodle-core_outcome-simpleio"]},"moodle-question-chooser":{"requires":["moodle-core-chooserdialogue"]},"moodle-question-qbankmanager":{"requires":["node","selector-css3"]},"moodle-question-preview":{"requires":["base","dom","event-delegate","event-key","core_question_engine"]},"moodle-question-searchform":{"requires":["base","node"]},"moodle-availability_completion-form":{"requires":["base","node","event","moodle-core_availability-form"]},"moodle-availability_date-form":{"requires":["base","node","event","io","moodle-core_availability-form"]},"moodle-availability_grade-form":{"requires":["base","node","event","moodle-core_availability-form"]},"moodle-availability_group-form":{"requires":["base","node","event","moodle-core_availability-form"]},"moodle-availability_grouping-form":{"requires":["base","node","event","moodle-core_availability-form"]},"moodle-availability_profile-form":{"requires":["base","node","event","moodle-core_availability-form"]},"moodle-availability_releasecode-form":{"requires":["base","node","event","event-valuechange","moodle-core_availability-form"]},"moodle-qtype_ddimageortext-dd":{"requires":["node","dd","dd-drop","dd-constrain"]},"moodle-qtype_ddimageortext-form":{"requires":["moodle-qtype_ddimageortext-dd","form_filepicker"]},"moodle-qtype_ddmarker-dd":{"requires":["node","event-resize","dd","dd-drop","dd-constrain","graphics"]},"moodle-qtype_ddmarker-form":{"requires":["moodle-qtype_ddmarker-dd","form_filepicker","graphics","escape"]},"moodle-qtype_ddwtos-dd":{"requires":["node","dd","dd-drop","dd-constrain"]},"moodle-mod_assign-history":{"requires":["node","transition"]},"moodle-mod_attendance-groupfilter":{"requires":["base","node"]},"moodle-mod_customcert-rearrange":{"requires":["dd-delegate","dd-drag"]},"moodle-mod_forum-subscriptiontoggle":{"requires":["base-base","io-base"]},"moodle-mod_hsuforum-io":{"requires":["base","io-base","io-form","io-upload-iframe","json-parse"]},"moodle-mod_hsuforum-livelog":{"requires":["widget"]},"moodle-mod_hsuforum-article":{"requires":["base","node","event","router","core_rating","querystring","moodle-mod_hsuforum-io","moodle-mod_hsuforum-livelog","moodle-core-formchangechecker"]},"moodle-mod_iassign-history":{"requires":["node","transition"]},"moodle-mod_quiz-dragdrop":{"requires":["base","node","io","dom","dd","dd-scroll","moodle-core-dragdrop","moodle-core-notification","moodle-mod_quiz-quizbase","moodle-mod_quiz-util-base","moodle-mod_quiz-util-page","moodle-mod_quiz-util-slot","moodle-course-util"]},"moodle-mod_quiz-modform":{"requires":["base","node","event"]},"moodle-mod_quiz-questionchooser":{"requires":["moodle-core-chooserdialogue","moodle-mod_quiz-util","querystring-parse"]},"moodle-mod_quiz-toolboxes":{"requires":["base","node","event","event-key","io","moodle-mod_quiz-quizbase","moodle-mod_quiz-util-slot","moodle-core-notification-ajaxexception"]},"moodle-mod_quiz-autosave":{"requires":["base","node","event","event-valuechange","node-event-delegate","io-form"]},"moodle-mod_quiz-util":{"requires":["node","moodle-core-actionmenu"],"use":["moodle-mod_quiz-util-base"],"submodules":{"moodle-mod_quiz-util-base":{},"moodle-mod_quiz-util-slot":{"requires":["node","moodle-mod_quiz-util-base"]},"moodle-mod_quiz-util-page":{"requires":["node","moodle-mod_quiz-util-base"]}}},"moodle-mod_quiz-repaginate":{"requires":["base","event","node","io","moodle-core-notification-dialogue"]},"moodle-mod_quiz-quizbase":{"requires":["base","node"]},"moodle-message_airnotifier-toolboxes":{"requires":["base","node","io"]},"moodle-block_gapps-popup":{"requires":["base","event"]},"moodle-block_gapps-gmail":{"requires":["base","event","handlebars"]},"moodle-filter_glossary-autolinker":{"requires":["base","node","io-base","json-parse","event-delegate","overlay","moodle-core-event","moodle-core-notification-alert","moodle-core-notification-exception","moodle-core-notification-ajaxexception"]},"moodle-filter_mathjaxloader-loader":{"requires":["moodle-core-event"]},"moodle-editor_atto-rangy":{"requires":[]},"moodle-editor_atto-editor":{"requires":["node","transition","io","overlay","escape","event","event-simulate","event-custom","node-event-html5","node-event-simulate","yui-throttle","moodle-core-notification-dialogue","moodle-core-notification-confirm","moodle-editor_atto-rangy","handlebars","timers","querystring-stringify"]},"moodle-editor_atto-plugin":{"requires":["node","base","escape","event","event-outside","handlebars","event-custom","timers","moodle-editor_atto-menu"]},"moodle-editor_atto-menu":{"requires":["moodle-core-notification-dialogue","node","event","event-custom"]},"moodle-report_eventlist-eventfilter":{"requires":["base","event","node","node-event-delegate","datatable","autocomplete","autocomplete-filters"]},"moodle-report_loglive-fetchlogs":{"requires":["base","event","node","io","node-event-delegate"]},"moodle-report_outcome-autocomplete":{"requires":["base","autocomplete","autocomplete-filters","autocomplete-highlighters"]},"moodle-report_outcome-resetoptions":{"requires":["base","moodle-core_outcome-simpleio"]},"moodle-gradereport_grader-gradereporttable":{"requires":["base","node","event","handlebars","overlay","event-hover"]},"moodle-gradereport_history-userselector":{"requires":["escape","event-delegate","event-key","handlebars","io-base","json-parse","moodle-core-notification-dialogue"]},"moodle-tool_capability-search":{"requires":["base","node"]},"moodle-tool_lp-dragdrop-reorder":{"requires":["moodle-core-dragdrop"]},"moodle-tool_monitor-dropdown":{"requires":["base","event","node"]},"moodle-tool_mrooms-siteuserschart":{"requires":["base","node","event-resize"]},"moodle-assignfeedback_editpdf-editor":{"requires":["base","event","node","io","graphics","json","event-move","event-resize","transition","querystring-stringify-simple","moodle-core-notification-dialog","moodle-core-notification-alert","moodle-core-notification-exception","moodle-core-notification-ajaxexception"]},"moodle-iassignfeedback_editpdf-editor":{"requires":["base","event","node","io","graphics","json","event-move","event-resize","transition","querystring-stringify-simple","moodle-core-notification-dialog","moodle-core-notification-alert","moodle-core-notification-exception","moodle-core-notification-ajaxexception"]},"moodle-atto_accessibilitychecker-button":{"requires":["color-base","moodle-editor_atto-plugin"]},"moodle-atto_accessibilityhelper-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_align-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_bold-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_bsgrid-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_charmap-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_chemistry-button":{"requires":["moodle-editor_atto-plugin","moodle-core-event","io","event-valuechange","tabview","array-extras"]},"moodle-atto_clear-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_collapse-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_count-button":{"requires":["io","json-parse","moodle-editor_atto-plugin"]},"moodle-atto_emoticon-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_equation-button":{"requires":["moodle-editor_atto-plugin","moodle-core-event","io","event-valuechange","tabview","array-extras"]},"moodle-atto_filedragdrop-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_fullscreen-button":{"requires":["event-resize","moodle-editor_atto-plugin"]},"moodle-atto_hr-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_html-button":{"requires":["moodle-editor_atto-plugin","event-valuechange"]},"moodle-atto_htmlplus-button":{"requires":["moodle-editor_atto-plugin","moodle-atto_htmlplus-beautify","moodle-atto_htmlplus-codemirror","event-valuechange"]},"moodle-atto_htmlplus-beautify":{},"moodle-atto_htmlplus-codemirror":{"requires":["moodle-atto_htmlplus-codemirror-skin"]},"moodle-atto_image-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_imagedragdrop-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_indent-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_italic-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_kalturamedia-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_link-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_managefiles-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_managefiles-usedfiles":{"requires":["node","escape"]},"moodle-atto_media-button":{"requires":["moodle-editor_atto-plugin","moodle-form-shortforms"]},"moodle-atto_noautolink-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_orderedlist-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_recordrtc-button":{"requires":["moodle-editor_atto-plugin","moodle-atto_recordrtc-recording"]},"moodle-atto_recordrtc-recording":{"requires":["moodle-atto_recordrtc-button"]},"moodle-atto_rtl-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_strike-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_subscript-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_superscript-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_table-button":{"requires":["moodle-editor_atto-plugin","moodle-editor_atto-menu","event","event-valuechange"]},"moodle-atto_title-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_underline-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_undo-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_unorderedlist-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-local_kaltura-ltiservice":{"requires":["base","node","node-event-simulate"]},"moodle-local_kaltura-ltitinymcepanel":{"requires":["base","node","panel","node-event-simulate"]},"moodle-local_kaltura-ltipanel":{"requires":["base","node","panel","node-event-simulate"]},"moodle-local_kaltura-lticontainer":{"requires":["base","node"]}}},"gallery":{"name":"gallery","base":"https:\/\/classes.lanecc.edu\/lib\/yuilib\/gallery\/","combine":true,"comboBase":"https:\/\/classes.lanecc.edu\/theme\/yui_combo.php?","ext":false,"root":"gallery\/1555042912\/","patterns":{"gallery-":{"group":"gallery"}}}},"modules":{"core_filepicker":{"name":"core_filepicker","fullpath":"https:\/\/classes.lanecc.edu\/lib\/javascript.php\/1555042912\/repository\/filepicker.js","requires":["base","node","node-event-simulate","json","async-queue","io-base","io-upload-iframe","io-form","yui2-treeview","panel","cookie","datatable","datatable-sort","resize-plugin","dd-plugin","escape","moodle-core_filepicker","moodle-core-notification-dialogue"]},"core_comment":{"name":"core_comment","fullpath":"https:\/\/classes.lanecc.edu\/lib\/javascript.php\/1555042912\/comment\/comment.js","requires":["base","io-base","node","json","yui2-animation","overlay","escape"]},"mathjax":{"name":"mathjax","fullpath":"https:\/\/cdnjs.cloudflare.com\/ajax\/libs\/mathjax\/2.7.2\/MathJax.js?delayStartupUntil=configured"}}};
+M.yui.loader = {modules: {}};
+
+//]]>
+</script>
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MB7R9T8');</script>
+<!-- End Google Tag Manager -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body  id="page-mod-folder-view" class="format-topcoll  path-mod path-mod-folder safari dir-ltr lang-en_us yui-skin-sam yui3-skin-sam classes-lanecc-edu pagelayout-incourse course-92744 context-3394879 cmid-2143757 category-77 ">
+
+<div id="page-wrapper">
+
+    <div>
+    <a class="sr-only sr-only-focusable" href="#maincontent">Skip to main content</a>
+</div><script type="text/javascript" src="https://classes.lanecc.edu/theme/yui_combo.php?rollup/3.17.2/yui-moodlesimple-min.js"></script><script type="text/javascript" src="https://classes.lanecc.edu/lib/javascript.php/1555042912/lib/javascript-static.js"></script>
+<script type="text/javascript">
+//<![CDATA[
+document.body.className += ' jsenabled';
+//]]>
+</script>
+
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MB7R9T8"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+    <nav class="fixed-top navbar navbar-light bg-white navbar-expand moodle-has-zindex" aria-label="Site navigation">
+    
+            <div data-region="drawer-toggle" class="d-inline-block mr-3">
+                <button aria-expanded="false" aria-controls="nav-drawer" type="button" class="btn nav-link float-sm-left mr-1 btn-secondary" data-action="toggle-drawer" data-side="left" data-preference="drawer-open-nav"><i class="icon fa fa-bars fa-fw " aria-hidden="true"  aria-label=""></i><span class="sr-only">Side panel</span></button>
+            </div>
+    
+            <a href="https://classes.lanecc.edu" class="navbar-brand 
+                    d-none d-sm-inline
+                    ">
+                <span class="site-name d-none d-md-inline">LaneOnline</span>
+            </a>
+    
+            <ul class="navbar-nav d-none d-md-flex">
+                <!-- custom_menu -->
+                <li class="dropdown nav-item">
+    <a class="dropdown-toggle nav-link" id="drop-down-5cb463ced29dd5cb463ced12fd2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#" aria-controls="drop-down-menu-5cb463ced29dd5cb463ced12fd2">
+        ? GET HELP
+    </a>
+    <div class="dropdown-menu" role="menu" id="drop-down-menu-5cb463ced29dd5cb463ced12fd2" aria-labelledby="drop-down-5cb463ced29dd5cb463ced12fd2">
+                <a class="dropdown-item" role="menuitem" href="https://help.lanecc.edu/SHED/Knowledgebase/List/Index/73/student-help-desk-students" target="_blank" title="SHED (Student Help Desk)">SHED (Student Help Desk)</a>
+                <a class="dropdown-item" role="menuitem" href="https://help.lanecc.edu/ATC/Knowledgebase/List/Index/74/academic-technology-faculty" target="_blank" title="ATC (Instructor Help Desk)">ATC (Instructor Help Desk)</a>
+                <a class="dropdown-item" role="menuitem" href="https://classes.lanecc.edu/course/view.php?id=73923%22%20target%3D%22_blank" title="How to use Moodle (Basics for Students)">How to use Moodle (Basics for Students)</a>
+                <div class="dropdown-divider" role="presentation"></div>
+                <a class="dropdown-item" role="menuitem" href="https://www.lanecc.edu/it/contact-us" target="_blank" title="IT Services">IT Services</a>
+                <a class="dropdown-item" role="menuitem" href="http://www.lanecc.edu/it/computerlabs" target="_blank" title="Computer Labs">Computer Labs</a>
+                <a class="dropdown-item" role="menuitem" href="http://www.lanecc.edu/tutor" target="_blank" title="Tutoring Services">Tutoring Services</a>
+                <a class="dropdown-item" role="menuitem" href="https://library.lanecc.edu/" target="_blank" title="Library">Library</a>
+    </div>
+</li>
+                <!-- page_heading_menu -->
+                
+            </ul>
+            <ul class="nav navbar-nav ml-auto">
+                <div class="d-none d-lg-block">
+                <div class="search-input-wrapper nav-link" id="5cb463ced2bcc"><div role="button" tabindex="0"><i class="icon fa fa-search fa-fw " aria-hidden="true" title="Search" aria-label="Search"></i></div><form class="search-input-form" action="https://classes.lanecc.edu/search/index.php"><label for="id_q_5cb463ced2bcc" class="accesshide">Enter your search query</label><input type="text" name="q" placeholder="Search" size="13" tabindex="-1" id="id_q_5cb463ced2bcc" class="form-control"></input><input type="hidden" name="context" value="3394879" /></form></div>
+            </div>
+                <!-- navbar_plugin_output -->
+                <li class="nav-item">
+                <div class="popover-region collapsed popover-region-messages"
+    id="nav-message-popover-container" data-userid="121040"
+    data-region="popover-region">
+    <div class="popover-region-toggle nav-link"
+        data-region="popover-region-toggle"
+        aria-role="button"
+        aria-controls="popover-region-container-5cb463ced3a195cb463ced12fd3"
+        aria-haspopup="true"
+        aria-label="Show message window with no new messages"
+        tabindex="0">
+                <i class="icon fa fa-comment fa-fw " aria-hidden="true" title="Toggle messages menu" aria-label="Toggle messages menu"></i>
+        <div class="count-container hidden" data-region="count-container">0</div>
+
+    </div>
+    <div 
+        id="popover-region-container-5cb463ced3a195cb463ced12fd3"
+        class="popover-region-container"
+        data-region="popover-region-container"
+        aria-expanded="false"
+        aria-hidden="true"
+        aria-label="Notification window"
+        role="region">
+        <div class="popover-region-header-container">
+            <h3 class="popover-region-header-text" data-region="popover-region-header-text">Messages</h3>
+            <div class="popover-region-header-actions" data-region="popover-region-header-actions">        <div class="newmessage-link">
+            <a href="https://classes.lanecc.edu/message/index.php?contactsfirst=1">New message
+            </a>
+        </div>
+        <a class="mark-all-read-button"
+           href="#"
+           role="button"
+           title="Mark all as read"
+           data-action="mark-all-read">
+            <span class="normal-icon"><i class="icon fa fa-check fa-fw " aria-hidden="true" title="Mark all as read" aria-label="Mark all as read"></i></span>
+            <span class="loading-icon"><i class="icon fa fa-circle-o-notch fa-spin fa-fw " aria-hidden="true" title="Loading" aria-label="Loading"></i></span>
+        </a>
+        <a href="https://classes.lanecc.edu/message/edit.php?id=121040"
+           title="Message preferences">
+            <i class="icon fa fa-cog fa-fw " aria-hidden="true" title="Message preferences" aria-label="Message preferences"></i>
+        </a>
+</div>
+        </div>
+        <div class="popover-region-content-container" data-region="popover-region-content-container">
+            <div class="popover-region-content" data-region="popover-region-content">
+                        <div class="messages" data-region="messages" role="log" aria-busy="false" aria-atomic="false" aria-relevant="additions"></div>
+        <div class="empty-message" data-region="empty-message" tabindex="0">No messages</div>
+
+            </div>
+            <span class="loading-icon"><i class="icon fa fa-circle-o-notch fa-spin fa-fw " aria-hidden="true" title="Loading" aria-label="Loading"></i></span>
+        </div>
+                <a class="see-all-link"
+                    href="https://classes.lanecc.edu/message/index.php">
+                    <div class="popover-region-footer-container">
+                        <div class="popover-region-seeall-text">See all</div>
+                    </div>
+                </a>
+    </div>
+</div><div class="popover-region collapsed popover-region-notifications"
+    id="nav-notification-popover-container" data-userid="121040"
+    data-region="popover-region">
+    <div class="popover-region-toggle nav-link"
+        data-region="popover-region-toggle"
+        aria-role="button"
+        aria-controls="popover-region-container-5cb463ced4de95cb463ced12fd4"
+        aria-haspopup="true"
+        aria-label="Show notification window with no new notifications"
+        tabindex="0">
+                <i class="icon fa fa-bell fa-fw " aria-hidden="true" title="Toggle notifications menu" aria-label="Toggle notifications menu"></i>
+        <div class="count-container hidden" data-region="count-container">0</div>
+
+    </div>
+    <div 
+        id="popover-region-container-5cb463ced4de95cb463ced12fd4"
+        class="popover-region-container"
+        data-region="popover-region-container"
+        aria-expanded="false"
+        aria-hidden="true"
+        aria-label="Notification window"
+        role="region">
+        <div class="popover-region-header-container">
+            <h3 class="popover-region-header-text" data-region="popover-region-header-text">Notifications</h3>
+            <div class="popover-region-header-actions" data-region="popover-region-header-actions">        <a class="mark-all-read-button"
+           href="#"
+           title="Mark all as read"
+           data-action="mark-all-read"
+           role="button">
+            <span class="normal-icon"><i class="icon fa fa-check fa-fw " aria-hidden="true" title="Mark all as read" aria-label="Mark all as read"></i></span>
+            <span class="loading-icon"><i class="icon fa fa-circle-o-notch fa-spin fa-fw " aria-hidden="true" title="Loading" aria-label="Loading"></i></span>
+        </a>
+        <a href="https://classes.lanecc.edu/message/notificationpreferences.php?userid=121040"
+           title="Notification preferences">
+            <i class="icon fa fa-cog fa-fw " aria-hidden="true" title="Notification preferences" aria-label="Notification preferences"></i>
+        </a>
+</div>
+        </div>
+        <div class="popover-region-content-container" data-region="popover-region-content-container">
+            <div class="popover-region-content" data-region="popover-region-content">
+                        <div class="all-notifications"
+            data-region="all-notifications"
+            role="log"
+            aria-busy="false"
+            aria-atomic="false"
+            aria-relevant="additions"></div>
+        <div class="empty-message" tabindex="0" data-region="empty-message">You have no notifications</div>
+
+            </div>
+            <span class="loading-icon"><i class="icon fa fa-circle-o-notch fa-spin fa-fw " aria-hidden="true" title="Loading" aria-label="Loading"></i></span>
+        </div>
+                <a class="see-all-link"
+                    href="https://classes.lanecc.edu/message/output/popup/notifications.php">
+                    <div class="popover-region-footer-container">
+                        <div class="popover-region-seeall-text">See all</div>
+                    </div>
+                </a>
+    </div>
+</div>
+                </li>
+                <!-- user_menu -->
+                <li class="nav-item d-flex align-items-center">
+                    <div class="usermenu"><div class="action-menu moodle-actionmenu nowrap-items d-inline" id="action-menu-1" data-enhance="moodle-core-actionmenu">
+
+        <div class="menubar d-flex " id="action-menu-1-menubar" role="menubar">
+
+            
+
+
+                <div class="action-menu-trigger">
+                    <div class="dropdown">
+                        <a tabindex="0" class=" dropdown-toggle icon-no-margin" id="dropdown-1" aria-label="User menu" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" aria-controls="action-menu-1-menu">
+                            
+                            <span class="userbutton"><span class="usertext mr-1">Christy Ganger</span><span class="avatars"><span class="avatar current"><img src="https://classes.lanecc.edu/pluginfile.php/2945625/user/icon/boost/f2?rev=17834419" alt="Yay beach!" title="Yay beach!" class="userpicture" width="35" height="35" role="presentation" /></span></span></span>
+                                
+                            <b class="caret"></b>
+                        </a>
+                            <div class="dropdown-menu dropdown-menu-right menu  align-tr-br" id="action-menu-1-menu" data-rel="menu-content" aria-labelledby="action-menu-toggle-1" role="menu" data-align="tr-br" id="dropdown-menu-1">
+                                        <a href="https://classes.lanecc.edu/my/" class="dropdown-item menu-action" role="menuitem" data-title="mymoodle,admin" aria-labelledby="actionmenuaction-1">
+                                                <i class="icon fa fa-tachometer fa-fw " aria-hidden="true" title="Dashboard" aria-label="Dashboard"></i>
+                                            <span class="menu-action-text" id="actionmenuaction-1">
+                                                Dashboard
+                                            </span>
+                                        </a>
+                                        <div class="dropdown-divider" role="presentation"><span class="filler">&nbsp;</span></div>
+                                        <a href="https://classes.lanecc.edu/user/profile.php?id=121040" class="dropdown-item menu-action" role="menuitem" data-title="profile,moodle" aria-labelledby="actionmenuaction-2">
+                                                <i class="icon fa fa-user fa-fw " aria-hidden="true" title="Profile" aria-label="Profile"></i>
+                                            <span class="menu-action-text" id="actionmenuaction-2">
+                                                Profile
+                                            </span>
+                                        </a>
+                                        <a href="https://classes.lanecc.edu/grade/report/overview/index.php" class="dropdown-item menu-action" role="menuitem" data-title="grades,grades" aria-labelledby="actionmenuaction-3">
+                                                <i class="icon fa fa-table fa-fw " aria-hidden="true" title="Grades" aria-label="Grades"></i>
+                                            <span class="menu-action-text" id="actionmenuaction-3">
+                                                Grades
+                                            </span>
+                                        </a>
+                                        <a href="https://classes.lanecc.edu/message/index.php" class="dropdown-item menu-action" role="menuitem" data-title="messages,message" aria-labelledby="actionmenuaction-4">
+                                                <i class="icon fa fa-comment fa-fw " aria-hidden="true" title="Messages" aria-label="Messages"></i>
+                                            <span class="menu-action-text" id="actionmenuaction-4">
+                                                Messages
+                                            </span>
+                                        </a>
+                                        <a href="https://classes.lanecc.edu/user/preferences.php" class="dropdown-item menu-action" role="menuitem" data-title="preferences,moodle" aria-labelledby="actionmenuaction-5">
+                                                <i class="icon fa fa-wrench fa-fw " aria-hidden="true" title="Preferences" aria-label="Preferences"></i>
+                                            <span class="menu-action-text" id="actionmenuaction-5">
+                                                Preferences
+                                            </span>
+                                        </a>
+                                        <div class="dropdown-divider" role="presentation"><span class="filler">&nbsp;</span></div>
+                                        <a href="https://classes.lanecc.edu/login/logout.php?sesskey=XaZgEdtwsy" class="dropdown-item menu-action" role="menuitem" data-title="logout,moodle" aria-labelledby="actionmenuaction-6">
+                                                <i class="icon fa fa-sign-out fa-fw " aria-hidden="true" title="Log out" aria-label="Log out"></i>
+                                            <span class="menu-action-text" id="actionmenuaction-6">
+                                                Log out
+                                            </span>
+                                        </a>
+                            </div>
+                    </div>
+                </div>
+
+        </div>
+
+</div></div>
+                </li>
+            </ul>
+            <!-- search_box -->
+    </nav>
+    
+
+    <div id="page" class="container-fluid">
+        <header id="page-header" class="row">
+    <div class="col-12 pt-3 pb-3">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex">
+                    <div class="mr-auto">
+                    <div class="page-context-header"><div class="page-header-headings"><h1> CS 162C+: Computer Science 2 W19 (Bailey Meta 33185 33186 33197)</h1></div></div>
+                    </div>
+
+                </div>
+                <div class="d-flex flex-wrap">
+                    <div id="page-navbar">
+                        <nav role="navigation">
+    <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="https://classes.lanecc.edu/" >Home</a>
+                </li>
+                <li class="breadcrumb-item">My courses</li>
+                <li class="breadcrumb-item">
+                    <a href="https://classes.lanecc.edu/course/view.php?id=92744" title=" CS 162C+: Computer Science 2 W19 (Bailey Meta 33185 33186 33197)">CS 162C+ W19 (Bailey Meta 33185 33186 33197)</a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a href="https://classes.lanecc.edu/course/view.php?id=92744#section-12" >Inheritance and Polymorphism</a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a href="https://classes.lanecc.edu/mod/folder/view.php?id=2143757" title="Folder">Test Drivers for Player, Dealer, and Game</a>
+                </li>
+    </ol>
+</nav>
+                    </div>
+                    <div class="ml-auto d-flex">
+                        
+                    </div>
+                    <div id="course-header">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+        <div id="page-content" class="row">
+            <div id="region-main-box" class="col-12">
+                <section id="region-main" >
+                    <div class="card">
+                        <div class="card-body">
+                            <span class="notifications" id="user-notifications"></span>
+                            <div role="main"><span id="maincontent"></span><h2>Test Drivers for Player, Dealer, and Game</h2><div class="box generalbox foldertree py-3"><div id="folder_tree0" class="filemanager"><ul><li><div class="fp-filename-icon"><span class="fp-icon"><img class="icon " alt="" src="https://classes.lanecc.edu/theme/image.php/boost/core/1555042912/f/folder-24" /></span><span class="fp-filename"></span></div><ul><li><span class="fp-filename-icon"><a href="https://classes.lanecc.edu/pluginfile.php/3394879/mod_folder/content/0/BlackJackGame.cpp?forcedownload=1"><span class="fp-icon"><img class="icon " alt="BlackJackGame.cpp" title="BlackJackGame.cpp" src="https://classes.lanecc.edu/theme/image.php/boost/core/1555042912/f/sourcecode-24" /></span><span class="fp-filename">BlackJackGame.cpp</span></a></span></li><li><span class="fp-filename-icon"><a href="https://classes.lanecc.edu/pluginfile.php/3394879/mod_folder/content/0/DealerTest.cpp?forcedownload=1"><span class="fp-icon"><img class="icon " alt="DealerTest.cpp" title="DealerTest.cpp" src="https://classes.lanecc.edu/theme/image.php/boost/core/1555042912/f/sourcecode-24" /></span><span class="fp-filename">DealerTest.cpp</span></a></span></li><li><span class="fp-filename-icon"><a href="https://classes.lanecc.edu/pluginfile.php/3394879/mod_folder/content/0/PlayerTest.cpp?forcedownload=1"><span class="fp-icon"><img class="icon " alt="PlayerTest.cpp" title="PlayerTest.cpp" src="https://classes.lanecc.edu/theme/image.php/boost/core/1555042912/f/sourcecode-24" /></span><span class="fp-filename">PlayerTest.cpp</span></a></span></li></ul></li></ul></div></div><div class="box generalbox folderbuttons py-3"><div class="singlebutton">
+    <form method="post" action="https://classes.lanecc.edu/mod/folder/download_folder.php" >
+            <input type="hidden" name="id" value="2143757">
+            <input type="hidden" name="sesskey" value="XaZgEdtwsy">
+        <button type="submit" class="btn btn-secondary"
+            id="single_button5cb463ced12fd15"
+            title=""
+            >Download folder</button>
+    </form>
+</div></div></div>
+                            <div class="m-t-2 m-b-1">
+<div class="row">
+    <div class="col-md-4">        <div class="pull-left">
+                <a href="https://classes.lanecc.edu/mod/folder/view.php?id=2152573&forceview=1" id="prev-activity-link" class="btn btn-link"  title="Source File for Card, Deck, and Hand" >&#x25C4; Source File for Card, Deck, and Hand</a>
+
+        </div>
+</div>
+    <div class="col-md-4">        <div class="mdl-align">
+            <div class="urlselect">
+    <form method="post" action="https://classes.lanecc.edu/course/jumpto.php" class="form-inline" id="url_select_f5cb463ced12fd13">
+        <input type="hidden" name="sesskey" value="XaZgEdtwsy">
+            <label for="jump-to-activity" class="sr-only">
+                Jump to...
+            </label>
+        <select id="jump-to-activity"  id="jump-to-activity" class="custom-select urlselect" name="jump">
+                    <option value="" selected>Jump to...</option>
+                    <option value="/mod/book/view.php?id=2188626&amp;forceview=1" >Course Description</option>
+                    <option value="/mod/book/view.php?id=2188627&amp;forceview=1" >Course Syllabus</option>
+                    <option value="/mod/forum/view.php?id=2109102&amp;forceview=1" >News and Announcements Forum</option>
+                    <option value="/mod/hsuforum/view.php?id=2109103&amp;forceview=1" >Introductions Forum</option>
+                    <option value="/mod/hsuforum/view.php?id=2109104&amp;forceview=1" >Course Q &amp;amp; A Forum</option>
+                    <option value="/mod/resource/view.php?id=2109106&amp;forceview=1" >Fundamentals of C++ Programming</option>
+                    <option value="/mod/resource/view.php?id=2109107&amp;forceview=1" >Programming Fundamentals A Modular Structured Approach</option>
+                    <option value="/mod/page/view.php?id=2109108&amp;forceview=1" >C++ Resources</option>
+                    <option value="/mod/page/view.php?id=2109109&amp;forceview=1" >CIT Lab and Tutoring Help</option>
+                    <option value="/mod/resource/view.php?id=2131511&amp;forceview=1" >Structs and pointers and arrays</option>
+                    <option value="/mod/page/view.php?id=2109111&amp;forceview=1" >Week 1 Overview</option>
+                    <option value="/mod/resource/view.php?id=2109115&amp;forceview=1" >Defining, Initializing, and Using Arrays</option>
+                    <option value="/mod/url/view.php?id=2109116&amp;forceview=1" >Introduction to Arrays, 3 video sequence</option>
+                    <option value="/mod/resource/view.php?id=2109118&amp;forceview=1" >Parallel and Multi-Dimensional Arrays</option>
+                    <option value="/mod/url/view.php?id=2109119&amp;forceview=1" >Multi-Dimensional Arrays -- two video set</option>
+                    <option value="/mod/resource/view.php?id=2109121&amp;forceview=1" >Passing Arrays to Functions</option>
+                    <option value="/mod/url/view.php?id=2109122&amp;forceview=1" >Passing Arrays to Functions Video</option>
+                    <option value="/mod/resource/view.php?id=2109125&amp;forceview=1" >Flattening Arrays</option>
+                    <option value="/mod/resource/view.php?id=2109128&amp;forceview=1" >Practice 1D Array Exercises</option>
+                    <option value="/mod/resource/view.php?id=2109129&amp;forceview=1" >Example Solutions to Practice 1D Array Exercises</option>
+                    <option value="/mod/resource/view.php?id=2109130&amp;forceview=1" >Practice 2D Array Exercises</option>
+                    <option value="/mod/resource/view.php?id=2109131&amp;forceview=1" >Example Solutions to Practice 2D Array Exercises</option>
+                    <option value="/mod/quiz/view.php?id=2109133&amp;forceview=1" >Quiz 1</option>
+                    <option value="/mod/resource/view.php?id=2109134&amp;forceview=1" >Solution to Quiz 1</option>
+                    <option value="/mod/resource/view.php?id=2109136&amp;forceview=1" >Lab 1</option>
+                    <option value="/mod/resource/view.php?id=2109137&amp;forceview=1" >TTT Suggestions</option>
+                    <option value="/mod/resource/view.php?id=2109138&amp;forceview=1" >Lab 1 Evaluation</option>
+                    <option value="/mod/assign/view.php?id=2109139&amp;forceview=1" >Lab 1 Submission</option>
+                    <option value="/mod/assign/view.php?id=2109140&amp;forceview=1" >Lab 1 Evaluation and Revision Submission</option>
+                    <option value="/mod/resource/view.php?id=2109142&amp;forceview=1" >Example Solution to TTT</option>
+                    <option value="/mod/page/view.php?id=2123570&amp;forceview=1" >Week 2 Overview</option>
+                    <option value="/mod/resource/view.php?id=2123573&amp;forceview=1" >Unordered Array Algorithms</option>
+                    <option value="/mod/resource/view.php?id=2123574&amp;forceview=1" >Ordered Array Algorithms</option>
+                    <option value="/mod/url/view.php?id=2123578&amp;forceview=1" >Binary Search Kahn Academy</option>
+                    <option value="/mod/url/view.php?id=2125086&amp;forceview=1" >Demonstration of comparison sorts</option>
+                    <option value="/mod/url/view.php?id=2125087&amp;forceview=1" >Fifteen sorts in six minutes</option>
+                    <option value="/mod/url/view.php?id=2123581&amp;forceview=1" >Selection Sort</option>
+                    <option value="/mod/url/view.php?id=2123582&amp;forceview=1" >Select Sort as dance</option>
+                    <option value="/mod/url/view.php?id=2123583&amp;forceview=1" >Insertion Sort</option>
+                    <option value="/mod/url/view.php?id=2123584&amp;forceview=1" >Insert Sort as dance</option>
+                    <option value="/mod/resource/view.php?id=2123588&amp;forceview=1" >Streams to and from strings (StringStream)</option>
+                    <option value="/mod/page/view.php?id=2125081&amp;forceview=1" >Practice searching problem</option>
+                    <option value="/mod/resource/view.php?id=2125054&amp;forceview=1" >Framework for searching</option>
+                    <option value="/mod/resource/view.php?id=2125065&amp;forceview=1" >Example Linear and Binary Search</option>
+                    <option value="/mod/page/view.php?id=2125083&amp;forceview=1" >Practice sorting problem</option>
+                    <option value="/mod/resource/view.php?id=2125043&amp;forceview=1" >Framework for sorting</option>
+                    <option value="/mod/resource/view.php?id=2125059&amp;forceview=1" >Example Selection and Insertion Sort</option>
+                    <option value="/mod/quiz/view.php?id=2123597&amp;forceview=1" >Quiz 2</option>
+                    <option value="/mod/resource/view.php?id=2123598&amp;forceview=1" >Solution to Quiz 2</option>
+                    <option value="/mod/resource/view.php?id=2123600&amp;forceview=1" >Lab 2</option>
+                    <option value="/mod/resource/view.php?id=2123601&amp;forceview=1" >Dungeon Suggestions</option>
+                    <option value="/mod/resource/view.php?id=2123602&amp;forceview=1" >Lab 2 Evaluation</option>
+                    <option value="/mod/assign/view.php?id=2123603&amp;forceview=1" >Lab 2 Submission</option>
+                    <option value="/mod/assign/view.php?id=2123604&amp;forceview=1" >Lab 2 Evaluation and Revision Submission</option>
+                    <option value="/mod/resource/view.php?id=2123606&amp;forceview=1" >Example Solution to Dungeon Crawl</option>
+                    <option value="/mod/page/view.php?id=2126721&amp;forceview=1" >Test Review Topics</option>
+                    <option value="/mod/quiz/view.php?id=2126723&amp;forceview=1" >Review Test One (Arrays)</option>
+                    <option value="/mod/resource/view.php?id=2129150&amp;forceview=1" >Answers to Review Test One (Arrays)</option>
+                    <option value="/mod/quiz/view.php?id=2129837&amp;forceview=1" >Review Test One Version Two</option>
+                    <option value="/mod/page/view.php?id=2126725&amp;forceview=1" >Week 3 Overview</option>
+                    <option value="/mod/resource/view.php?id=2126728&amp;forceview=1" >Recursive Functions</option>
+                    <option value="/mod/url/view.php?id=2126730&amp;forceview=1" >Khan Academy on Recursion</option>
+                    <option value="/mod/url/view.php?id=2126731&amp;forceview=1" >Animation of Factorial</option>
+                    <option value="/mod/resource/view.php?id=2126732&amp;forceview=1" >Towers of Hanoi</option>
+                    <option value="/mod/resource/view.php?id=2126735&amp;forceview=1" >Iterative vs Recursive Binary Search</option>
+                    <option value="/mod/resource/view.php?id=2126736&amp;forceview=1" >Iterative vs Recursive String Reversal</option>
+                    <option value="/mod/resource/view.php?id=2126737&amp;forceview=1" >Iterative vs Recursive conversion of int to string</option>
+                    <option value="/mod/quiz/view.php?id=2126739&amp;forceview=1" >Quiz 3</option>
+                    <option value="/mod/resource/view.php?id=2127319&amp;forceview=1" >Lab 3</option>
+                    <option value="/mod/resource/view.php?id=2128095&amp;forceview=1" >Recursion Lab Suggestions</option>
+                    <option value="/mod/resource/view.php?id=2126742&amp;forceview=1" >Lab 3 Evaluation</option>
+                    <option value="/mod/folder/view.php?id=2127578&amp;forceview=1" >Starting code for Lab 3</option>
+                    <option value="/mod/assign/view.php?id=2126773&amp;forceview=1" >Lab 3 Submission</option>
+                    <option value="/mod/assign/view.php?id=2126774&amp;forceview=1" >Lab 3 Evaluation and Revision Submission</option>
+                    <option value="/mod/assign/view.php?id=2130026&amp;forceview=1" >Lab 3 Extra credit</option>
+                    <option value="/mod/resource/view.php?id=2126744&amp;forceview=1" >Example solution to recursion lab</option>
+                    <option value="/mod/page/view.php?id=2143516&amp;forceview=1" >Week 4 Overview</option>
+                    <option value="/mod/url/view.php?id=2126749&amp;forceview=1" >C++ Pointer Tutorial</option>
+                    <option value="/mod/url/view.php?id=2126750&amp;forceview=1" >C++ References Tutorial</option>
+                    <option value="/mod/url/view.php?id=2126751&amp;forceview=1" >Introduction to Pointers Video</option>
+                    <option value="/mod/url/view.php?id=2126752&amp;forceview=1" >Follow-up Pointer Video</option>
+                    <option value="/mod/url/view.php?id=2126753&amp;forceview=1" >Another tutorial on Pointers</option>
+                    <option value="/mod/resource/view.php?id=2126755&amp;forceview=1" >Passing by value, reference, or pointer</option>
+                    <option value="/mod/url/view.php?id=2126756&amp;forceview=1" >Pass by Reference with Pointers Video</option>
+                    <option value="/mod/url/view.php?id=2126757&amp;forceview=1" >Pointer vs Reference discussion</option>
+                    <option value="/mod/url/view.php?id=2126760&amp;forceview=1" >Pointers and Array Locations -- Video</option>
+                    <option value="/mod/url/view.php?id=2126787&amp;forceview=1" >Pointers and Dynamic Memory Video</option>
+                    <option value="/mod/resource/view.php?id=2126789&amp;forceview=1" >Static vs Dynamic Arrays</option>
+                    <option value="/mod/quiz/view.php?id=2126768&amp;forceview=1" >Quiz 4</option>
+                    <option value="/mod/resource/view.php?id=2126769&amp;forceview=1" >Solution to Quiz 4</option>
+                    <option value="/mod/resource/view.php?id=2126771&amp;forceview=1" >Lab 4</option>
+                    <option value="/mod/resource/view.php?id=2126772&amp;forceview=1" >Lab 4 Evaluation</option>
+                    <option value="/mod/assign/view.php?id=2126811&amp;forceview=1" >Lab 4 Submission</option>
+                    <option value="/mod/assign/view.php?id=2126812&amp;forceview=1" >Lab 4 Evaluation and Revision Submission</option>
+                    <option value="/mod/resource/view.php?id=2126776&amp;forceview=1" >Example solution to Lab 4</option>
+                    <option value="/mod/page/view.php?id=2143534&amp;forceview=1" >Week 5 Overview</option>
+                    <option value="/mod/resource/view.php?id=2126791&amp;forceview=1" >Defining and using structs</option>
+                    <option value="/mod/resource/view.php?id=2126795&amp;forceview=1" >More structs</option>
+                    <option value="/mod/resource/view.php?id=2126798&amp;forceview=1" >Implementing a Linked List using Structs</option>
+                    <option value="/mod/url/view.php?id=2126792&amp;forceview=1" >Structs -- Tutorial</option>
+                    <option value="/mod/url/view.php?id=2126793&amp;forceview=1" >Introduction to Structs -- video</option>
+                    <option value="/mod/url/view.php?id=2126799&amp;forceview=1" >YouTube Linked Lists</option>
+                    <option value="/mod/resource/view.php?id=2130769&amp;forceview=1" >Example Partial Linked List code from class</option>
+                    <option value="/mod/resource/view.php?id=2131852&amp;forceview=1" >Completed Linked List code from class</option>
+                    <option value="/mod/quiz/view.php?id=2126807&amp;forceview=1" >Quiz 5</option>
+                    <option value="/mod/resource/view.php?id=2126809&amp;forceview=1" >Lab 5</option>
+                    <option value="/mod/resource/view.php?id=2126810&amp;forceview=1" >Lab 5 Evaluation</option>
+                    <option value="/mod/assign/view.php?id=2130770&amp;forceview=1" >Lab 5 Submission</option>
+                    <option value="/mod/assign/view.php?id=2130771&amp;forceview=1" >Lab 5 Evaluation and Revision Submission</option>
+                    <option value="/mod/resource/view.php?id=2126814&amp;forceview=1" >Example Solution to Memory</option>
+                    <option value="/mod/page/view.php?id=2143252&amp;forceview=1" >Review Topics</option>
+                    <option value="/mod/quiz/view.php?id=2143254&amp;forceview=1" >Review Test Two</option>
+                    <option value="/mod/quiz/view.php?id=2150540&amp;forceview=1" >Review Test Two -- Version 2</option>
+                    <option value="/mod/page/view.php?id=2143569&amp;forceview=1" >Week 6 Overview</option>
+                    <option value="/mod/url/view.php?id=2137358&amp;forceview=1" >Classes and Objects - Tutorial</option>
+                    <option value="/mod/url/view.php?id=2137359&amp;forceview=1" >Introduction to Classes - video</option>
+                    <option value="/mod/url/view.php?id=2137360&amp;forceview=1" >Classes with variables - video</option>
+                    <option value="/mod/url/view.php?id=2137361&amp;forceview=1" >Constructors - Video</option>
+                    <option value="/mod/url/view.php?id=2137363&amp;forceview=1" >Splitting classes into multiple files - video</option>
+                    <option value="/mod/resource/view.php?id=2137364&amp;forceview=1" >Creating a class and a project</option>
+                    <option value="/mod/url/view.php?id=2137366&amp;forceview=1" >Creating a project in codeblocks</option>
+                    <option value="/mod/resource/view.php?id=2137371&amp;forceview=1" >Rectangle Class Test Program</option>
+                    <option value="/mod/resource/view.php?id=2137372&amp;forceview=1" >Student Class Test program</option>
+                    <option value="/mod/quiz/view.php?id=2137376&amp;forceview=1" >Quiz 6</option>
+                    <option value="/mod/resource/view.php?id=2137378&amp;forceview=1" >Lab 6</option>
+                    <option value="/mod/resource/view.php?id=2137379&amp;forceview=1" >Triangle Class driver/test method</option>
+                    <option value="/mod/resource/view.php?id=2137380&amp;forceview=1" >Lab 6 Evaluation Form</option>
+                    <option value="/mod/assign/view.php?id=2137381&amp;forceview=1" >Lab 6 Submission</option>
+                    <option value="/mod/assign/view.php?id=2137382&amp;forceview=1" >Lab 6 Evaluation and Revision Submission</option>
+                    <option value="/mod/folder/view.php?id=2137384&amp;forceview=1" >Triangle Solution</option>
+                    <option value="/mod/page/view.php?id=2143601&amp;forceview=1" >Week 7 Overview</option>
+                    <option value="/mod/url/view.php?id=2143606&amp;forceview=1" >Bucky Tutorial on This</option>
+                    <option value="/mod/resource/view.php?id=2143607&amp;forceview=1" >Example of a static function and variable</option>
+                    <option value="/mod/resource/view.php?id=2143608&amp;forceview=1" >Example of static array of instances</option>
+                    <option value="/mod/folder/view.php?id=2143609&amp;forceview=1" >Example of a class that contains classes</option>
+                    <option value="/mod/folder/view.php?id=2143610&amp;forceview=1" >TTT as a class</option>
+                    <option value="/mod/resource/view.php?id=2143613&amp;forceview=1" >Rectangle Tester</option>
+                    <option value="/mod/page/view.php?id=2143614&amp;forceview=1" >Car exercise</option>
+                    <option value="/mod/quiz/view.php?id=2143617&amp;forceview=1" >Quiz 7</option>
+                    <option value="/mod/resource/view.php?id=2143619&amp;forceview=1" >Lab 7</option>
+                    <option value="/mod/resource/view.php?id=2143620&amp;forceview=1" >CreditCard and Person test driver</option>
+                    <option value="/mod/resource/view.php?id=2143621&amp;forceview=1" >Lab 7 Evaluation Form</option>
+                    <option value="/mod/assign/view.php?id=2143622&amp;forceview=1" >Lab 7 Submission</option>
+                    <option value="/mod/assign/view.php?id=2143623&amp;forceview=1" >Lab 7 Evaluation and Revision Submission</option>
+                    <option value="/mod/resource/view.php?id=2143625&amp;forceview=1" >CreditCard solution</option>
+                    <option value="/mod/page/view.php?id=2143627&amp;forceview=1" >Week 8 Overview</option>
+                    <option value="/mod/resource/view.php?id=2143631&amp;forceview=1" >Copying Classes</option>
+                    <option value="/mod/resource/view.php?id=2143632&amp;forceview=1" >Overloading Operators (==, +)</option>
+                    <option value="/mod/resource/view.php?id=2143633&amp;forceview=1" >Friend functions and overloading (+, ==, &amp;lt;&amp;lt;)</option>
+                    <option value="/mod/resource/view.php?id=2143635&amp;forceview=1" >Example of Copy Constructor</option>
+                    <option value="/mod/resource/view.php?id=2143636&amp;forceview=1" >Example of Assignment Operator</option>
+                    <option value="/mod/resource/view.php?id=2143637&amp;forceview=1" >Unsafe pass by reference</option>
+                    <option value="/mod/resource/view.php?id=2143638&amp;forceview=1" >Safe passing by reference</option>
+                    <option value="/mod/url/view.php?id=2143639&amp;forceview=1" >Bucky Tutorial on Overloading Operators</option>
+                    <option value="/mod/url/view.php?id=2143640&amp;forceview=1" >Bucky Overloading Continued</option>
+                    <option value="/mod/resource/view.php?id=2143641&amp;forceview=1" >Overloading addition</option>
+                    <option value="/mod/resource/view.php?id=2143642&amp;forceview=1" >Overloading equality</option>
+                    <option value="/mod/url/view.php?id=2143643&amp;forceview=1" >Bucky Tutorial on Class Friends</option>
+                    <option value="/mod/resource/view.php?id=2143644&amp;forceview=1" >Overloading &amp;lt;&amp;lt;</option>
+                    <option value="/mod/resource/view.php?id=2143645&amp;forceview=1" >Overloading + as friend</option>
+                    <option value="/mod/resource/view.php?id=2143646&amp;forceview=1" >Overloading == as friend</option>
+                    <option value="/mod/resource/view.php?id=2143647&amp;forceview=1" >Creating a Linked List Class</option>
+                    <option value="/mod/page/view.php?id=2143652&amp;forceview=1" >Broken Program</option>
+                    <option value="/mod/quiz/view.php?id=2143655&amp;forceview=1" >Quiz 8</option>
+                    <option value="/mod/resource/view.php?id=2143657&amp;forceview=1" >Lab 8</option>
+                    <option value="/mod/resource/view.php?id=2143658&amp;forceview=1" >CarList test driver</option>
+                    <option value="/mod/resource/view.php?id=2143659&amp;forceview=1" >Lab 8 Evaluation</option>
+                    <option value="/mod/folder/view.php?id=2143660&amp;forceview=1" >Example Code to Struct List as Class</option>
+                    <option value="/mod/assign/view.php?id=2143661&amp;forceview=1" >Lab 8 Submission</option>
+                    <option value="/mod/assign/view.php?id=2143662&amp;forceview=1" >Lab 8 Evaluation and Revision Submission</option>
+                    <option value="/mod/folder/view.php?id=2143664&amp;forceview=1" >Example Solution to CarList Problem</option>
+                    <option value="/mod/page/view.php?id=2143670&amp;forceview=1" >Week 9 Overview</option>
+                    <option value="/mod/resource/view.php?id=2143674&amp;forceview=1" >Virtual methods and abstract classes discussion</option>
+                    <option value="/mod/url/view.php?id=2143676&amp;forceview=1" >Bucky video Inheritance</option>
+                    <option value="/mod/url/view.php?id=2143678&amp;forceview=1" >Bucky Protected vs Private</option>
+                    <option value="/mod/url/view.php?id=2143680&amp;forceview=1" >Bucky Parent and Child Constructors and Destructors</option>
+                    <option value="/mod/folder/view.php?id=2143681&amp;forceview=1" >Example Inheritance with initialization list</option>
+                    <option value="/mod/url/view.php?id=2143684&amp;forceview=1" >Tutorial on Polymorphism</option>
+                    <option value="/mod/url/view.php?id=2143685&amp;forceview=1" >Bucky on Polymorphism</option>
+                    <option value="/mod/url/view.php?id=2143686&amp;forceview=1" >Link from BU on Polymorphism</option>
+                    <option value="/mod/resource/view.php?id=2143688&amp;forceview=1" >Example: Polymorphism - Vehicle Class</option>
+                    <option value="/mod/folder/view.php?id=2143689&amp;forceview=1" >circle example</option>
+                    <option value="/mod/url/view.php?id=2143691&amp;forceview=1" >Bucky Polymorphism and Virtual Methods</option>
+                    <option value="/mod/folder/view.php?id=2143693&amp;forceview=1" >Inheritance &amp;amp; Friend Examples</option>
+                    <option value="/mod/resource/view.php?id=2143696&amp;forceview=1" >In-class example: Vehicle, Car, Airplane</option>
+                    <option value="/mod/resource/view.php?id=2143697&amp;forceview=1" >Inheritance Problem</option>
+                    <option value="/mod/resource/view.php?id=2143698&amp;forceview=1" >Test Driver for Inheritance Problem</option>
+                    <option value="/mod/folder/view.php?id=2143699&amp;forceview=1" >Example Solution to Inheritance Problem</option>
+                    <option value="/mod/quiz/view.php?id=2143701&amp;forceview=1" >Quiz 9</option>
+                    <option value="/mod/resource/view.php?id=2143704&amp;forceview=1" >Lab 9</option>
+                    <option value="/mod/folder/view.php?id=2152573&amp;forceview=1" >Source File for Card, Deck, and Hand</option>
+                    <option value="/mod/resource/view.php?id=2143753&amp;forceview=1" >example player.h</option>
+                    <option value="/mod/resource/view.php?id=2143754&amp;forceview=1" >example dealer.h</option>
+                    <option value="/mod/resource/view.php?id=2143755&amp;forceview=1" >PlayerTest Output</option>
+                    <option value="/mod/resource/view.php?id=2143756&amp;forceview=1" >DealerTest Output</option>
+                    <option value="/mod/assign/view.php?id=2143710&amp;forceview=1" >Lab 9 Submission</option>
+                    <option value="/mod/folder/view.php?id=2143713&amp;forceview=1" >Example solution to PlayingCardDeck</option>
+                    <option value="/mod/page/view.php?id=2143715&amp;forceview=1" >Week 10 Overview</option>
+                    <option value="/mod/resource/view.php?id=2143718&amp;forceview=1" >Function Template Description</option>
+                    <option value="/mod/resource/view.php?id=2143719&amp;forceview=1" >Class Template Description</option>
+                    <option value="/mod/resource/view.php?id=2143720&amp;forceview=1" >Exception Discussion</option>
+                    <option value="/mod/resource/view.php?id=2143721&amp;forceview=1" >Inline FunctionsDiscussion</option>
+                    <option value="/mod/url/view.php?id=2143723&amp;forceview=1" >Template Tutorial</option>
+                    <option value="/mod/url/view.php?id=2143725&amp;forceview=1" >Bucky Function templates</option>
+                    <option value="/mod/url/view.php?id=2143726&amp;forceview=1" >Bucky Function Templates 2</option>
+                    <option value="/mod/url/view.php?id=2143728&amp;forceview=1" >Bucky Class Templates</option>
+                    <option value="/mod/url/view.php?id=2143729&amp;forceview=1" >Bucky Class Templates 2</option>
+                    <option value="/mod/url/view.php?id=2143731&amp;forceview=1" >Wikipedia on STL</option>
+                    <option value="/mod/url/view.php?id=2143732&amp;forceview=1" >Online discussion STL</option>
+                    <option value="/mod/url/view.php?id=2143734&amp;forceview=1" >On-line tuturial</option>
+                    <option value="/mod/url/view.php?id=2143735&amp;forceview=1" >Bucky Exceptions 1</option>
+                    <option value="/mod/url/view.php?id=2143736&amp;forceview=1" >Bucky Exceptions 2</option>
+                    <option value="/mod/url/view.php?id=2143737&amp;forceview=1" >Exceptions -- Plus &amp;amp; Minus</option>
+                    <option value="/mod/resource/view.php?id=2143738&amp;forceview=1" >Exception example</option>
+                    <option value="/mod/url/view.php?id=2143740&amp;forceview=1" >C++ Standard Exceptions</option>
+                    <option value="/mod/url/view.php?id=2143741&amp;forceview=1" >Tutorial showing extending exception class</option>
+                    <option value="/mod/url/view.php?id=2143743&amp;forceview=1" >On-line inline function tutorial</option>
+                    <option value="/mod/folder/view.php?id=2143746&amp;forceview=1" >Array Class before and with templates</option>
+                    <option value="/mod/page/view.php?id=2143763&amp;forceview=1" >Review of Topics for Final</option>
+                    <option value="/mod/resource/view.php?id=2143768&amp;forceview=1" >Dairy Problem</option>
+                    <option value="/mod/resource/view.php?id=2143769&amp;forceview=1" >Example Dairy Solution</option>
+                    <option value="/mod/resource/view.php?id=2143770&amp;forceview=1" >Rectangle Problem</option>
+                    <option value="/mod/resource/view.php?id=2143771&amp;forceview=1" >Example Rectangle Solution</option>
+                    <option value="/mod/quiz/view.php?id=2143772&amp;forceview=1" >Final</option>
+        </select>
+            <noscript>
+                <input type="submit" class="btn btn-secondary" value="Go">
+            </noscript>
+    </form>
+</div>
+
+        </div>
+</div>
+    <div class="col-md-4">        <div class="pull-right">
+                <a href="https://classes.lanecc.edu/mod/resource/view.php?id=2143753&forceview=1" id="next-activity-link" class="btn btn-link"  title="example player.h" >example player.h &#x25BA;</a>
+
+        </div>
+</div>
+</div>
+</div>
+                            
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+    <div id="nav-drawer" data-region="drawer" class="d-print-none moodle-has-zindex closed" aria-hidden="true" tabindex="-1">
+        <nav class="list-group">
+            <a class="list-group-item list-group-item-action " href="https://classes.lanecc.edu/course/view.php?id=92744" data-key="coursehome" data-isexpandable="0" data-indent="0" data-showdivider="0" data-type="60" data-nodetype="0" data-collapse="0" data-forceopen="0" data-isactive="0" data-hidden="0" data-preceedwithhr="0" >
+                <div class="m-l-0">
+                    <div class="media">
+                        <span class="media-left">
+                            <i class="icon fa fa-graduation-cap fa-fw " aria-hidden="true"  aria-label=""></i>
+                        </span>
+                        <span class="media-body ">CS 162C+ W19 (Bailey Meta 33185 33186 33197)</span>
+                    </div>
+                </div>
+            </a>
+            <a class="list-group-item list-group-item-action " href="https://classes.lanecc.edu/user/index.php?id=92744" data-key="participants" data-isexpandable="0" data-indent="0" data-showdivider="0" data-type="90" data-nodetype="1" data-collapse="0" data-forceopen="0" data-isactive="0" data-hidden="0" data-preceedwithhr="0" data-parent-key="92744">
+                <div class="m-l-0">
+                    <div class="media">
+                        <span class="media-left">
+                            <i class="icon fa fa-users fa-fw " aria-hidden="true"  aria-label=""></i>
+                        </span>
+                        <span class="media-body ">Participants</span>
+                    </div>
+                </div>
+            </a>
+            <a class="list-group-item list-group-item-action " href="https://classes.lanecc.edu/badges/view.php?type=2&amp;id=92744" data-key="badgesview" data-isexpandable="0" data-indent="0" data-showdivider="0" data-type="70" data-nodetype="0" data-collapse="0" data-forceopen="0" data-isactive="0" data-hidden="0" data-preceedwithhr="0" data-parent-key="92744">
+                <div class="m-l-0">
+                    <div class="media">
+                        <span class="media-left">
+                            <i class="icon fa fa-shield fa-fw " aria-hidden="true"  aria-label=""></i>
+                        </span>
+                        <span class="media-body ">Badges</span>
+                    </div>
+                </div>
+            </a>
+            <a class="list-group-item list-group-item-action " href="https://classes.lanecc.edu/admin/tool/lp/coursecompetencies.php?courseid=92744" data-key="competencies" data-isexpandable="0" data-indent="0" data-showdivider="0" data-type="70" data-nodetype="0" data-collapse="0" data-forceopen="0" data-isactive="0" data-hidden="0" data-preceedwithhr="0" data-parent-key="92744">
+                <div class="m-l-0">
+                    <div class="media">
+                        <span class="media-left">
+                            <i class="icon fa fa-check-square-o fa-fw " aria-hidden="true"  aria-label=""></i>
+                        </span>
+                        <span class="media-body ">Competencies</span>
+                    </div>
+                </div>
+            </a>
+            <a class="list-group-item list-group-item-action " href="https://classes.lanecc.edu/grade/report/index.php?id=92744" data-key="grades" data-isexpandable="0" data-indent="0" data-showdivider="0" data-type="70" data-nodetype="0" data-collapse="0" data-forceopen="0" data-isactive="0" data-hidden="0" data-preceedwithhr="0" data-parent-key="92744">
+                <div class="m-l-0">
+                    <div class="media">
+                        <span class="media-left">
+                            <i class="icon fa fa-table fa-fw " aria-hidden="true"  aria-label=""></i>
+                        </span>
+                        <span class="media-body ">Grades</span>
+                    </div>
+                </div>
+            </a>
+            <a class="list-group-item list-group-item-action " href="https://classes.lanecc.edu/course/view.php?id=92744#section-0" data-key="926404" data-isexpandable="0" data-indent="0" data-showdivider="0" data-type="30" data-nodetype="1" data-collapse="0" data-forceopen="0" data-isactive="0" data-hidden="0" data-preceedwithhr="0" data-parent-key="92744">
+                <div class="m-l-0">
+                    <div class="media">
+                        <span class="media-left">
+                            <i class="icon fa fa-folder-o fa-fw " aria-hidden="true"  aria-label=""></i>
+                        </span>
+                        <span class="media-body ">General</span>
+                    </div>
+                </div>
+            </a>
+            <a class="list-group-item list-group-item-action " href="https://classes.lanecc.edu/course/view.php?id=92744#section-1" data-key="926405" data-isexpandable="0" data-indent="0" data-showdivider="0" data-type="30" data-nodetype="1" data-collapse="0" data-forceopen="0" data-isactive="0" data-hidden="0" data-preceedwithhr="0" data-parent-key="92744">
+                <div class="m-l-0">
+                    <div class="media">
+                        <span class="media-left">
+                            <i class="icon fa fa-folder-o fa-fw " aria-hidden="true"  aria-label=""></i>
+                        </span>
+                        <span class="media-body ">Grouping Data in Arrays</span>
+                    </div>
+                </div>
+            </a>
+            <a class="list-group-item list-group-item-action " href="https://classes.lanecc.edu/course/view.php?id=92744#section-2" data-key="926406" data-isexpandable="0" data-indent="0" data-showdivider="0" data-type="30" data-nodetype="1" data-collapse="0" data-forceopen="0" data-isactive="0" data-hidden="0" data-preceedwithhr="0" data-parent-key="92744">
+                <div class="m-l-0">
+                    <div class="media">
+                        <span class="media-left">
+                            <i class="icon fa fa-folder-o fa-fw " aria-hidden="true"  aria-label=""></i>
+                        </span>
+                        <span class="media-body ">Array Algorithms (Searching and Sorting)</span>
+                    </div>
+                </div>
+            </a>
+            <a class="list-group-item list-group-item-action " href="https://classes.lanecc.edu/course/view.php?id=92744#section-3" data-key="926407" data-isexpandable="0" data-indent="0" data-showdivider="0" data-type="30" data-nodetype="1" data-collapse="0" data-forceopen="0" data-isactive="0" data-hidden="0" data-preceedwithhr="0" data-parent-key="92744">
+                <div class="m-l-0">
+                    <div class="media">
+                        <span class="media-left">
+                            <i class="icon fa fa-folder-o fa-fw " aria-hidden="true"  aria-label=""></i>
+                        </span>
+                        <span class="media-body ">Review Test One -- Arrays</span>
+                    </div>
+                </div>
+            </a>
+            <a class="list-group-item list-group-item-action " href="https://classes.lanecc.edu/course/view.php?id=92744#section-4" data-key="926408" data-isexpandable="0" data-indent="0" data-showdivider="0" data-type="30" data-nodetype="1" data-collapse="0" data-forceopen="0" data-isactive="0" data-hidden="0" data-preceedwithhr="0" data-parent-key="92744">
+                <div class="m-l-0">
+                    <div class="media">
+                        <span class="media-left">
+                            <i class="icon fa fa-folder-o fa-fw " aria-hidden="true"  aria-label=""></i>
+                        </span>
+                        <span class="media-body ">Recursion</span>
+                    </div>
+                </div>
+            </a>
+            <a class="list-group-item list-group-item-action " href="https://classes.lanecc.edu/course/view.php?id=92744#section-5" data-key="926409" data-isexpandable="0" data-indent="0" data-showdivider="0" data-type="30" data-nodetype="1" data-collapse="0" data-forceopen="0" data-isactive="0" data-hidden="0" data-preceedwithhr="0" data-parent-key="92744">
+                <div class="m-l-0">
+                    <div class="media">
+                        <span class="media-left">
+                            <i class="icon fa fa-folder-o fa-fw " aria-hidden="true"  aria-label=""></i>
+                        </span>
+                        <span class="media-body ">Pointers and Dynamic Memory</span>
+                    </div>
+                </div>
+            </a>
+            <a class="list-group-item list-group-item-action " href="https://classes.lanecc.edu/course/view.php?id=92744#section-6" data-key="926410" data-isexpandable="0" data-indent="0" data-showdivider="0" data-type="30" data-nodetype="1" data-collapse="0" data-forceopen="0" data-isactive="0" data-hidden="0" data-preceedwithhr="0" data-parent-key="92744">
+                <div class="m-l-0">
+                    <div class="media">
+                        <span class="media-left">
+                            <i class="icon fa fa-folder-o fa-fw " aria-hidden="true"  aria-label=""></i>
+                        </span>
+                        <span class="media-body ">Structs and Linked Lists</span>
+                    </div>
+                </div>
+            </a>
+            <a class="list-group-item list-group-item-action " href="https://classes.lanecc.edu/course/view.php?id=92744#section-7" data-key="926412" data-isexpandable="0" data-indent="0" data-showdivider="0" data-type="30" data-nodetype="1" data-collapse="0" data-forceopen="0" data-isactive="0" data-hidden="0" data-preceedwithhr="0" data-parent-key="92744">
+                <div class="m-l-0">
+                    <div class="media">
+                        <span class="media-left">
+                            <i class="icon fa fa-folder-o fa-fw " aria-hidden="true"  aria-label=""></i>
+                        </span>
+                        <span class="media-body ">Review Test Two (Recursion, Pointers, Dynamic Memory, Structs)</span>
+                    </div>
+                </div>
+            </a>
+            <a class="list-group-item list-group-item-action " href="https://classes.lanecc.edu/course/view.php?id=92744#section-8" data-key="926411" data-isexpandable="0" data-indent="0" data-showdivider="0" data-type="30" data-nodetype="1" data-collapse="0" data-forceopen="0" data-isactive="0" data-hidden="0" data-preceedwithhr="0" data-parent-key="92744">
+                <div class="m-l-0">
+                    <div class="media">
+                        <span class="media-left">
+                            <i class="icon fa fa-folder-o fa-fw " aria-hidden="true"  aria-label=""></i>
+                        </span>
+                        <span class="media-body ">Introduction to Classes and Objects</span>
+                    </div>
+                </div>
+            </a>
+            <a class="list-group-item list-group-item-action " href="https://classes.lanecc.edu/course/view.php?id=92744#section-9" data-key="926413" data-isexpandable="0" data-indent="0" data-showdivider="0" data-type="30" data-nodetype="1" data-collapse="0" data-forceopen="0" data-isactive="0" data-hidden="0" data-preceedwithhr="0" data-parent-key="92744">
+                <div class="m-l-0">
+                    <div class="media">
+                        <span class="media-left">
+                            <i class="icon fa fa-folder-o fa-fw " aria-hidden="true"  aria-label=""></i>
+                        </span>
+                        <span class="media-body ">More Objects and Classes</span>
+                    </div>
+                </div>
+            </a>
+            <a class="list-group-item list-group-item-action " href="https://classes.lanecc.edu/course/view.php?id=92744#section-10" data-key="926414" data-isexpandable="0" data-indent="0" data-showdivider="0" data-type="30" data-nodetype="1" data-collapse="0" data-forceopen="0" data-isactive="0" data-hidden="0" data-preceedwithhr="0" data-parent-key="92744">
+                <div class="m-l-0">
+                    <div class="media">
+                        <span class="media-left">
+                            <i class="icon fa fa-folder-o fa-fw " aria-hidden="true"  aria-label=""></i>
+                        </span>
+                        <span class="media-body ">Even more Classes and Objects</span>
+                    </div>
+                </div>
+            </a>
+            <a class="list-group-item list-group-item-action active" href="https://classes.lanecc.edu/course/view.php?id=92744#section-12" data-key="940814" data-isexpandable="0" data-indent="0" data-showdivider="0" data-type="30" data-nodetype="1" data-collapse="0" data-forceopen="1" data-isactive="1" data-hidden="0" data-preceedwithhr="0" data-parent-key="92744">
+                <div class="m-l-0">
+                    <div class="media">
+                        <span class="media-left">
+                            <i class="icon fa fa-folder-o fa-fw " aria-hidden="true"  aria-label=""></i>
+                        </span>
+                        <span class="media-body font-weight-bold">Inheritance and Polymorphism</span>
+                    </div>
+                </div>
+            </a>
+            <a class="list-group-item list-group-item-action " href="https://classes.lanecc.edu/course/view.php?id=92744#section-13" data-key="940815" data-isexpandable="0" data-indent="0" data-showdivider="0" data-type="30" data-nodetype="1" data-collapse="0" data-forceopen="0" data-isactive="0" data-hidden="0" data-preceedwithhr="0" data-parent-key="92744">
+                <div class="m-l-0">
+                    <div class="media">
+                        <span class="media-left">
+                            <i class="icon fa fa-folder-o fa-fw " aria-hidden="true"  aria-label=""></i>
+                        </span>
+                        <span class="media-body ">Templates and Exceptions</span>
+                    </div>
+                </div>
+            </a>
+            <a class="list-group-item list-group-item-action " href="https://classes.lanecc.edu/course/view.php?id=92744#section-14" data-key="940816" data-isexpandable="0" data-indent="0" data-showdivider="0" data-type="30" data-nodetype="1" data-collapse="0" data-forceopen="0" data-isactive="0" data-hidden="0" data-preceedwithhr="0" data-parent-key="92744">
+                <div class="m-l-0">
+                    <div class="media">
+                        <span class="media-left">
+                            <i class="icon fa fa-folder-o fa-fw " aria-hidden="true"  aria-label=""></i>
+                        </span>
+                        <span class="media-body ">Final</span>
+                    </div>
+                </div>
+            </a>
+            <a class="list-group-item list-group-item-action " href="https://classes.lanecc.edu/local/kalturamediagallery/index.php?courseid=92744" data-key="kalturacoursegallerylink-mycourses" data-isexpandable="0" data-indent="0" data-showdivider="0" data-type="0" data-nodetype="0" data-collapse="0" data-forceopen="0" data-isactive="0" data-hidden="0" data-preceedwithhr="0" data-parent-key="92744">
+                <div class="m-l-0">
+                    <div class="media">
+                        <span class="media-left">
+                            <img class="icon " alt="" src="https://classes.lanecc.edu/theme/image.php/boost/local_kalturamediagallery/1555042912/media-gallery" />
+                        </span>
+                        <span class="media-body ">Media Gallery</span>
+                    </div>
+                </div>
+            </a>
+        </nav>
+        <nav class="list-group m-t-1">
+            <a class="list-group-item list-group-item-action " href="https://classes.lanecc.edu/" data-key="home" data-isexpandable="0" data-indent="0" data-showdivider="1" data-type="1" data-nodetype="1" data-collapse="0" data-forceopen="1" data-isactive="0" data-hidden="0" data-preceedwithhr="0" >
+                <div class="m-l-0">
+                    <div class="media">
+                        <span class="media-left">
+                            <i class="icon fa fa-home fa-fw " aria-hidden="true"  aria-label=""></i>
+                        </span>
+                        <span class="media-body ">Home</span>
+                    </div>
+                </div>
+            </a>
+            <a class="list-group-item list-group-item-action " href="https://classes.lanecc.edu/my/" data-key="home" data-isexpandable="0" data-indent="0" data-showdivider="0" data-type="70" data-nodetype="1" data-collapse="0" data-forceopen="0" data-isactive="0" data-hidden="0" data-preceedwithhr="0" data-parent-key="home">
+                <div class="m-l-0">
+                    <div class="media">
+                        <span class="media-left">
+                            <i class="icon fa fa-tachometer fa-fw " aria-hidden="true"  aria-label=""></i>
+                        </span>
+                        <span class="media-body ">Dashboard</span>
+                    </div>
+                </div>
+            </a>
+            <a class="list-group-item list-group-item-action " href="https://classes.lanecc.edu/local/mymedia/mymedia.php" data-key="mymedia" data-isexpandable="0" data-indent="0" data-showdivider="0" data-type="0" data-nodetype="0" data-collapse="0" data-forceopen="0" data-isactive="0" data-hidden="0" data-preceedwithhr="0" data-parent-key="home">
+                <div class="m-l-0">
+                    <div class="media">
+                        <span class="media-left">
+                            <img class="icon " alt="" src="https://classes.lanecc.edu/theme/image.php/boost/local_mymedia/1555042912/my-media" />
+                        </span>
+                        <span class="media-body ">My Media</span>
+                    </div>
+                </div>
+            </a>
+            <a class="list-group-item list-group-item-action " href="https://classes.lanecc.edu/calendar/view.php?view=month&amp;course=92744" data-key="calendar" data-isexpandable="0" data-indent="0" data-showdivider="0" data-type="60" data-nodetype="0" data-collapse="0" data-forceopen="0" data-isactive="0" data-hidden="0" data-preceedwithhr="0" data-parent-key="1">
+                <div class="m-l-0">
+                    <div class="media">
+                        <span class="media-left">
+                            <i class="icon fa fa-calendar fa-fw " aria-hidden="true"  aria-label=""></i>
+                        </span>
+                        <span class="media-body ">Calendar</span>
+                    </div>
+                </div>
+            </a>
+            <a class="list-group-item list-group-item-action " href="https://classes.lanecc.edu/user/files.php" data-key="privatefiles" data-isexpandable="0" data-indent="0" data-showdivider="0" data-type="70" data-nodetype="0" data-collapse="0" data-forceopen="0" data-isactive="0" data-hidden="0" data-preceedwithhr="0" data-parent-key="1">
+                <div class="m-l-0">
+                    <div class="media">
+                        <span class="media-left">
+                            <i class="icon fa fa-file-o fa-fw " aria-hidden="true"  aria-label=""></i>
+                        </span>
+                        <span class="media-body ">Private files</span>
+                    </div>
+                </div>
+            </a>
+            <div class="list-group-item" data-key="mycourses" data-isexpandable="1" data-indent="0" data-showdivider="0" data-type="0" data-nodetype="1" data-collapse="0" data-forceopen="1" data-isactive="0" data-hidden="0" data-preceedwithhr="0" data-parent-key="home">
+                <div class="m-l-0">
+                    <div class="media">
+                        <span class="media-left">
+                            <i class="icon fa fa-graduation-cap fa-fw " aria-hidden="true"  aria-label=""></i>
+                        </span>
+                        <span class="media-body">My courses</span>
+                    </div>
+                </div>
+            </div>
+            <a class="list-group-item list-group-item-action " href="https://classes.lanecc.edu/course/view.php?id=95580" data-key="95580" data-isexpandable="1" data-indent="1" data-showdivider="0" data-type="20" data-nodetype="1" data-collapse="0" data-forceopen="0" data-isactive="0" data-hidden="0" data-preceedwithhr="0" data-parent-key="mycourses">
+                <div class="m-l-1">
+                    <div class="media">
+                        <span class="media-left">
+                            <i class="icon fa fa-graduation-cap fa-fw " aria-hidden="true"  aria-label=""></i>
+                        </span>
+                        <span class="media-body ">YACD A1C Sp19 (Hampton 48324)</span>
+                    </div>
+                </div>
+            </a>
+            <a class="list-group-item list-group-item-action " href="https://classes.lanecc.edu/course/view.php?id=92744" data-key="92744" data-isexpandable="1" data-indent="1" data-showdivider="0" data-type="20" data-nodetype="1" data-collapse="0" data-forceopen="1" data-isactive="0" data-hidden="0" data-preceedwithhr="0" data-parent-key="mycourses">
+                <div class="m-l-1">
+                    <div class="media">
+                        <span class="media-left">
+                            <i class="icon fa fa-graduation-cap fa-fw " aria-hidden="true"  aria-label=""></i>
+                        </span>
+                        <span class="media-body ">CS 162C+ W19 (Bailey Meta 33185 33186 33197)</span>
+                    </div>
+                </div>
+            </a>
+        </nav>
+    </div>
+</div>
+
+<footer id="page-footer" class="py-3 bg-dark text-light">
+    <div class="container">
+        <div id="course-footer"></div>
+
+
+        <div class="logininfo">You are logged in as <a href="https://classes.lanecc.edu/user/profile.php?id=121040" title="View profile">Christy Ganger</a> (<a href="https://classes.lanecc.edu/login/logout.php?sesskey=XaZgEdtwsy">Log out</a>)</div>
+        <div class="tool_usertours-resettourcontainer"></div>
+        <div class="homelink"><a href="https://classes.lanecc.edu/course/view.php?id=92744">CS 162C+ W19 (Bailey Meta 33185 33186 33197)</a></div>
+        <nav class="nav navbar-nav d-md-none">
+                <ul class="list-unstyled pt-3">
+                                    <li>? GET HELP</li>
+                                <li>
+                                    <ul class="list-unstyled ml-3">
+                                                        <li><a href="https://help.lanecc.edu/SHED/Knowledgebase/List/Index/73/student-help-desk-students" target="_blank" title="SHED (Student Help Desk)">SHED (Student Help Desk)</a></li>
+                                                        <li><a href="https://help.lanecc.edu/ATC/Knowledgebase/List/Index/74/academic-technology-faculty" target="_blank" title="ATC (Instructor Help Desk)">ATC (Instructor Help Desk)</a></li>
+                                                        <li><a href="https://classes.lanecc.edu/course/view.php?id=73923%22%20target%3D%22_blank" title="How to use Moodle (Basics for Students)">How to use Moodle (Basics for Students)</a></li>
+                                                        <li><a href="https://www.lanecc.edu/it/contact-us" target="_blank" title="IT Services">IT Services</a></li>
+                                                        <li><a href="http://www.lanecc.edu/it/computerlabs" target="_blank" title="Computer Labs">Computer Labs</a></li>
+                                                        <li><a href="http://www.lanecc.edu/tutor" target="_blank" title="Tutoring Services">Tutoring Services</a></li>
+                                                        <li><a href="https://library.lanecc.edu/" target="_blank" title="Library">Library</a></li>
+                                    </ul>
+                                </li>
+                </ul>
+        </nav>
+        <a href="https://download.moodle.org/mobile?version=2018051703.13&amp;lang=en_us&amp;iosappid=633359593&amp;androidappid=com.moodle.moodlemobile">Get the mobile app</a>
+        
+<script>
+$(document).ready(function() {
+    //These lines relate to the maintenance message
+    //They're in UTC to accommodate people from outside our timezone
+    var start = new Date(Date.UTC(2018, 5, 2, 1, 0, 0));
+    var end = new Date(Date.UTC(2018, 5, 2, 5, 0, 0));
+    var now = Date.now();
+
+    //Uncomment these to force everything onto CAS
+    /*
+    $('.snap-login-button').click(function(e){
+        e.stopImmediatePropagation();
+        window.location = "https://"+window.location.hostname + '/login/index.php';
+    });
+    */
+    var emailNote = 
+    '<div style="border-top: black solid 1px;margin-top:1em;padding-top:1em;">' +
+      '<h1 style="font-size:1.5em"><a href="https://mail.google.com/a/my.lanecc.edu" class="btn btn-default">Check your student gmail</a></h1>' +
+      '<p>Important registration, financial, and course notices are being sent to your student email.</p>' +
+      '<p><a href="https://www.lanecc.edu/gsuite" style="text-decoration:underline;">Find your email address</a> or <a style="text-decoration:underline;" href="https://help.lanecc.edu/SHED/Knowledgebase/Article/View/582/0/student-edu-email--g-suite-accounts">learn about student email at Lane.</p>' + 
+    '</div>';
+    //leave this line alone
+    if(now > start && now < end){
+      var maintenanceNote =
+      '<div style="border-top: black solid 1px;margin-top:1em;padding-top:1em;">' +
+        '<h2>Network Maintenance Tonight</h2>' +
+        '<p>Lane is performing network upgrades tonight between 6pm and 10pm. Moodle may not be available during this time.</p>' +
+      '</div>';
+      $('#page-site-index #page-mast').append(maintenanceNote);    
+    }
+    //change this to false to hide the emial message
+    else if(true){
+      $('#page-site-index #page-mast').append(emailNote);
+    }
+
+    //Adjust this line to change the welcome message across the Moodle homepage
+//use default of: Welcome to Moodle, Lane's Learning Management System.
+    $('.snap-site-description').html("Welcome to Moodle, Lane's Learning Management System.");
+
+    var eTutoring =
+    '<a href="https://www.lanecc.edu/tutor/etutoring" class="btn btn-default" target="_blank">Free online tutoring available through the weekend!</a>';
+    if(true){
+      $('#page-site-index #page-mast').append(eTutoring);
+    }
+
+    var registrationNote =
+    '<a href="https://mylane.lanecc.edu" target="_blank" class="register-bug" style="float: left;width: 145px;text-align: center;line-height: 1.15em;background-color: #0179b8;margin-right: 10px;">' +
+      '<svg style="background-color:#0179b8;width:100%;" height="20">' +
+        '<polygon style="fill:#01539c;stroke-width:4" points="0,0 0,17 200,03 200,0"></polygon>' +
+        '<line x1="0" x2="200" style="stroke-width:3;stroke:white" y1="17" y2="3"></line>' +
+      '</svg>' +
+      // Adjust Winter as appropriate
+      '<strong>Register<br><span class="extra-em" style="font-size: 1.75em;">Now</span></strong><br> for Winter Term!' +
+
+      '<svg width="200" style="background-color:#feb913;margin-bottom: -6px;width:100%;" height="20">' +
+        '<polygon style="fill:#0179b8;stroke-width:4" points="0,0 0,17 200,3 200,0"></polygon>' +
+        '<line x1="0" x2="200" y2="3" style="stroke-width:3;stroke:white" y1="17"></line>' +
+      '</svg>' +
+    '</a>';
+    //change true to false to hide the registration reminder
+    if(false){
+      $('#fixy-user').prepend(registrationNote);
+    }
+});
+</script>
+            <script>
+                var ally_module_maps = {"file_resources":[],"assignment_files":[],"forum_files":[],"folder_files":{"3394879\/mod_folder\/content\/0\/BlackJackGame.cpp":"60dc1a6272658a278e7181c93146c8a5c5bfc552","3394879\/mod_folder\/content\/0\/DealerTest.cpp":"27b0925547203661fb14f73ad4c394a1eb07b7bc","3394879\/mod_folder\/content\/0\/PlayerTest.cpp":"9d06f1a902c536066ebf08d055662da9e4f7510d"},"glossary_files":[],"lesson_files":[]};
+                var ally_section_maps = [];
+                var ally_annotation_maps = {"mod_page":{"intros":{"2109108":"page:page:intro:209808","2123570":"page:page:intro:211278","2126725":"page:page:intro:211484","2143516":"page:page:intro:212393","2143534":"page:page:intro:212395","2143569":"page:page:intro:212398","2143601":"page:page:intro:212405","2143627":"page:page:intro:212407","2143670":"page:page:intro:212411","2143715":"page:page:intro:212412","2143763":"page:page:intro:212413"},"content":{"2109108":"page:page:content:209808","2109109":"page:page:content:209809","2109111":"page:page:content:209810","2123570":"page:page:content:211278","2125081":"page:page:content:211353","2125083":"page:page:content:211354","2126721":"page:page:content:211483","2126725":"page:page:content:211484","2143252":"page:page:content:212378","2143516":"page:page:content:212393","2143534":"page:page:content:212395","2143569":"page:page:content:212398","2143601":"page:page:content:212405","2143614":"page:page:content:212406","2143627":"page:page:content:212407","2143650":"page:page:content:212408","2143652":"page:page:content:212409","2143667":"page:page:content:212410","2143670":"page:page:content:212411","2143715":"page:page:content:212412","2143763":"page:page:content:212413"}},"mod_book":{"intros":{"2188627":"book:book:intro:19696"},"chapters":[]},"mod_hsuforum":{"posts":[],"intros":{"2109103":"hsuforum:hsuforum:intro:8226","2109104":"hsuforum:hsuforum:intro:8227"}},"mod_lesson":[],"mod_forum":{"posts":[],"intros":[]},"mod_glossary":{"entries":[],"intros":[]}};
+            </script><script type="text/javascript">
+//<![CDATA[
+var require = {
+    baseUrl : 'https://classes.lanecc.edu/lib/requirejs.php/1555042912/',
+    // We only support AMD modules with an explicit define() statement.
+    enforceDefine: true,
+    skipDataMain: true,
+    waitSeconds : 0,
+
+    paths: {
+        jquery: 'https://classes.lanecc.edu/lib/javascript.php/1555042912/lib/jquery/jquery-3.2.1.min',
+        jqueryui: 'https://classes.lanecc.edu/lib/javascript.php/1555042912/lib/jquery/ui-1.12.1/jquery-ui.min',
+        jqueryprivate: 'https://classes.lanecc.edu/lib/javascript.php/1555042912/lib/requirejs/jquery-private'
+    },
+
+    // Custom jquery config map.
+    map: {
+      // '*' means all modules will get 'jqueryprivate'
+      // for their 'jquery' dependency.
+      '*': { jquery: 'jqueryprivate' },
+      // Stub module for 'process'. This is a workaround for a bug in MathJax (see MDL-60458).
+      '*': { process: 'core/first' },
+
+      // 'jquery-private' wants the real jQuery module
+      // though. If this line was not here, there would
+      // be an unresolvable cyclic dependency.
+      jqueryprivate: { jquery: 'jquery' }
+    }
+};
+
+//]]>
+</script>
+<script type="text/javascript" src="https://classes.lanecc.edu/lib/javascript.php/1555042912/lib/requirejs/require.min.js"></script>
+<script type="text/javascript">
+//<![CDATA[
+require(['core/first'], function() {
+;
+require(["media_videojs/loader"], function(loader) {
+    loader.setUp(function(videojs) {
+        videojs.options.flash.swf = "https://classes.lanecc.edu/media/player/videojs/videojs/video-js.swf";
+videojs.addLanguage("en",{
+ "Audio Player": "Audio Player",
+ "Video Player": "Video Player",
+ "Play": "Play",
+ "Pause": "Pause",
+ "Replay": "Replay",
+ "Current Time": "Current Time",
+ "Duration Time": "Duration Time",
+ "Remaining Time": "Remaining Time",
+ "Stream Type": "Stream Type",
+ "LIVE": "LIVE",
+ "Loaded": "Loaded",
+ "Progress": "Progress",
+ "Progress Bar": "Progress Bar",
+ "progress bar timing: currentTime={1} duration={2}": "{1} of {2}",
+ "Fullscreen": "Fullscreen",
+ "Non-Fullscreen": "Non-Fullscreen",
+ "Mute": "Mute",
+ "Unmute": "Unmute",
+ "Playback Rate": "Playback Rate",
+ "Subtitles": "Subtitles",
+ "subtitles off": "subtitles off",
+ "Captions": "Captions",
+ "captions off": "captions off",
+ "Chapters": "Chapters",
+ "Descriptions": "Descriptions",
+ "descriptions off": "descriptions off",
+ "Audio Track": "Audio Track",
+ "Volume Level": "Volume Level",
+ "You aborted the media playback": "You aborted the media playback",
+ "A network error caused the media download to fail part-way.": "A network error caused the media download to fail part-way.",
+ "The media could not be loaded, either because the server or network failed or because the format is not supported.": "The media could not be loaded, either because the server or network failed or because the format is not supported.",
+ "The media playback was aborted due to a corruption problem or because the media used features your browser did not support.": "The media playback was aborted due to a corruption problem or because the media used features your browser did not support.",
+ "No compatible source was found for this media.": "No compatible source was found for this media.",
+ "The media is encrypted and we do not have the keys to decrypt it.": "The media is encrypted and we do not have the keys to decrypt it.",
+ "Play Video": "Play Video",
+ "Close": "Close",
+ "Close Modal Dialog": "Close Modal Dialog",
+ "Modal Window": "Modal Window",
+ "This is a modal window": "This is a modal window",
+ "This modal can be closed by pressing the Escape key or activating the close button.": "This modal can be closed by pressing the Escape key or activating the close button.",
+ ", opens captions settings dialog": ", opens captions settings dialog",
+ ", opens subtitles settings dialog": ", opens subtitles settings dialog",
+ ", opens descriptions settings dialog": ", opens descriptions settings dialog",
+ ", selected": ", selected",
+ "captions settings": "captions settings",
+ "subtitles settings": "subititles settings",
+ "descriptions settings": "descriptions settings",
+ "Text": "Text",
+ "White": "White",
+ "Black": "Black",
+ "Red": "Red",
+ "Green": "Green",
+ "Blue": "Blue",
+ "Yellow": "Yellow",
+ "Magenta": "Magenta",
+ "Cyan": "Cyan",
+ "Background": "Background",
+ "Window": "Window",
+ "Transparent": "Transparent",
+ "Semi-Transparent": "Semi-Transparent",
+ "Opaque": "Opaque",
+ "Font Size": "Font Size",
+ "Text Edge Style": "Text Edge Style",
+ "None": "None",
+ "Raised": "Raised",
+ "Depressed": "Depressed",
+ "Uniform": "Uniform",
+ "Dropshadow": "Dropshadow",
+ "Font Family": "Font Family",
+ "Proportional Sans-Serif": "Proportional Sans-Serif",
+ "Monospace Sans-Serif": "Monospace Sans-Serif",
+ "Proportional Serif": "Proportional Serif",
+ "Monospace Serif": "Monospace Serif",
+ "Casual": "Casual",
+ "Script": "Script",
+ "Small Caps": "Small Caps",
+ "Reset": "Reset",
+ "restore all settings to the default values": "restore all settings to the default values",
+ "Done": "Done",
+ "Caption Settings Dialog": "Caption Settings Dialog",
+ "Beginning of dialog window. Escape will cancel and close the window.": "Beginning of dialog window. Escape will cancel and close the window.",
+ "End of dialog window.": "End of dialog window."
+});
+
+    });
+});;
+require(["filter_ally/main"], function(amd) { amd.init("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1NTUzMjU5MDIsImNvdXJzZV9pZCI6OTI3NDQsInJvbGVzIjoidXJuOmx0aTpyb2xlOmltc1wvbGlzXC9MZWFybmVyIiwidXNlcl9pZCI6MTIxMDQwLCJsb2NhbGUiOiJlbl91cyIsInJldHVybl91cmwiOiJodHRwczpcL1wvY2xhc3Nlcy5sYW5lY2MuZWR1In0.OsUuyT1fqS3Dp0xH0kPSXnOf5dXbqQP-HNFJZ6NL0QE", {"adminurl":"https:\/\/prod.ally.ac\/api\/v1\/3783\/lti\/institution","pushurl":"https:\/\/prod.ally.ac\/api\/v1\/events","clientid":"3783"}, false, true, "92744", {}); });;
+function legacy_activity_onclick_handler_1(e) { e.halt(); window.open('https://classes.lanecc.edu/mod/page/view.php?id=11&inpopup=1', '', 'width=800,height=600,toolbar=no,location=no,menubar=no,copyhistory=no,status=no,directories=no,scrollbars=yes,resizable=yes'); return false; };
+function legacy_activity_onclick_handler_2(e) { e.halt(); window.open('https://classes.lanecc.edu/mod/page/view.php?id=12&inpopup=1', '', 'width=800,height=600,toolbar=no,location=no,menubar=no,copyhistory=no,status=no,directories=no,scrollbars=yes,resizable=yes'); return false; };
+function legacy_activity_onclick_handler_3(e) { e.halt(); window.open('https://classes.lanecc.edu/mod/page/view.php?id=13&inpopup=1', '', 'width=800,height=600,toolbar=no,location=no,menubar=no,copyhistory=no,status=no,directories=no,scrollbars=yes,resizable=yes'); return false; };
+function legacy_activity_onclick_handler_4(e) { e.halt(); window.open('https://classes.lanecc.edu/mod/page/view.php?id=14&inpopup=1', '', 'width=800,height=600,toolbar=no,location=no,menubar=no,copyhistory=no,status=no,directories=no,scrollbars=yes,resizable=yes'); return false; };
+function legacy_activity_onclick_handler_5(e) { e.halt(); window.open('https://classes.lanecc.edu/mod/page/view.php?id=15&inpopup=1', '', 'width=800,height=600,toolbar=no,location=no,menubar=no,copyhistory=no,status=no,directories=no,scrollbars=yes,resizable=yes'); return false; };
+function legacy_activity_onclick_handler_6(e) { e.halt(); window.open('https://classes.lanecc.edu/mod/page/view.php?id=16&inpopup=1', '', 'width=800,height=600,toolbar=no,location=no,menubar=no,copyhistory=no,status=no,directories=no,scrollbars=yes,resizable=yes'); return false; };
+function legacy_activity_onclick_handler_7(e) { e.halt(); window.open('https://classes.lanecc.edu/mod/url/view.php?id=17&redirect=1', '', 'width=800,height=600,toolbar=no,location=no,menubar=no,copyhistory=no,status=no,directories=no,scrollbars=yes,resizable=yes'); return false; };
+function legacy_activity_onclick_handler_8(e) { e.halt(); window.open('https://classes.lanecc.edu/mod/page/view.php?id=19&inpopup=1', '', 'width=800,height=600,toolbar=no,location=no,menubar=no,copyhistory=no,status=no,directories=no,scrollbars=yes,resizable=yes'); return false; };
+function legacy_activity_onclick_handler_9(e) { e.halt(); window.open('https://classes.lanecc.edu/mod/resource/view.php?id=2143688&redirect=1', '', 'width=800,height=600,toolbar=no,location=no,menubar=no,copyhistory=no,status=no,directories=no,scrollbars=yes,resizable=yes'); return false; };
+function legacy_activity_onclick_handler_10(e) { e.halt(); window.open('https://classes.lanecc.edu/mod/resource/view.php?id=2143696&redirect=1', '', 'width=800,height=600,toolbar=no,location=no,menubar=no,copyhistory=no,status=no,directories=no,scrollbars=yes,resizable=yes'); return false; };
+function legacy_activity_onclick_handler_11(e) { e.halt(); window.open('https://classes.lanecc.edu/mod/resource/view.php?id=2143704&redirect=1', '', 'width=800,height=600,toolbar=no,location=no,menubar=no,copyhistory=no,status=no,directories=no,scrollbars=yes,resizable=yes'); return false; };
+require(["core/search-input"], function(amd) { amd.init("5cb463ced2bcc"); });;
+
+require(['jquery', 'message_popup/message_popover_controller'], function($, controller) {
+    var container = $('#nav-message-popover-container');
+    var controller = new controller(container);
+    controller.registerEventListeners();
+    controller.registerListNavigationEventListeners();
+});
+;
+
+require(['jquery', 'message_popup/notification_popover_controller'], function($, controller) {
+    var container = $('#nav-notification-popover-container');
+    var controller = new controller(container);
+    controller.registerEventListeners();
+    controller.registerListNavigationEventListeners();
+});
+;
+
+        require(['jquery'], function($) {
+            $('#jump-to-activity').change(function() {
+                $('#url_select_f5cb463ced12fd13').submit();
+            });
+        });
+    ;
+
+require(['theme_boost/loader']);
+require(['theme_boost/drawer'], function(mod) {
+    mod.init();
+});
+;
+require(["core/notification"], function(amd) { amd.init(3394879, []); });;
+require(["core/log"], function(amd) { amd.setConfig({"level":"warn"}); });
+});
+//]]>
+</script>
+<script type="text/javascript">
+//<![CDATA[
+M.yui.add_module({"mod_folder":{"name":"mod_folder","fullpath":"https:\/\/classes.lanecc.edu\/lib\/javascript.php\/1555042912\/mod\/folder\/module.js","requires":[]}});
+
+//]]>
+</script>
+<script type="text/javascript">
+//<![CDATA[
+M.str = {"moodle":{"lastmodified":"Last modified","name":"Name","error":"Error","info":"Information","yes":"Yes","no":"No","ok":"OK","cancel":"Cancel","confirm":"Confirm","areyousure":"Are you sure?","closebuttontitle":"Close","unknownerror":"Unknown error"},"repository":{"type":"Type","size":"Size","invalidjson":"Invalid JSON string","nofilesattached":"No files attached","filepicker":"File picker","logout":"Logout","nofilesavailable":"No files available","norepositoriesavailable":"Sorry, none of your current repositories can return files in the required format.","fileexistsdialogheader":"File exists","fileexistsdialog_editor":"A file with that name has already been attached to the text you are editing.","fileexistsdialog_filemanager":"A file with that name has already been attached","renameto":"Rename to \"{$a}\"","referencesexist":"There are {$a} alias\/shortcut files that use this file as their source","select":"Select"},"admin":{"confirmdeletecomments":"You are about to delete comments, are you sure?","confirmation":"Confirmation"}};
+//]]>
+</script>
+<script type="text/javascript">
+//<![CDATA[
+(function() {Y.use("moodle-filter_glossary-autolinker",function() {M.filter_glossary.init_filter_autolinking({"courseid":0});
+});
+Y.use("moodle-filter_mathjaxloader-loader",function() {M.filter_mathjaxloader.configure({"mathjaxconfig":"\nMathJax.Hub.Config({\n    config: [\"Accessible.js\", \"Safe.js\"],\n    errorSettings: { message: [\"!\"] },\n    skipStartupTypeset: true,\n    messageStyle: \"none\"\n});\n","lang":"en"});
+});
+M.util.help_popups.setup(Y);
+ M.util.js_pending('random5cb463ced12fd14'); Y.use('mod_folder', function(Y) { M.mod_folder.init_tree(Y, "folder_tree0", false);  M.util.js_complete('random5cb463ced12fd14'); });
+ M.util.js_pending('random5cb463ced12fd16'); Y.on('domready', function() { M.util.js_complete("init");  M.util.js_complete('random5cb463ced12fd16'); });
+})();
+//]]>
+</script>
+
+    </div>
+</footer>
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"06560f3a30","applicationID":"2665840,112414867,6084072","transactionName":"YFxbZkVQW0ZRARBaDlkWbEBeHlhaVE0CXA1TXEsdQVhQQh4SDEM=","queueTime":0,"applicationTime":350,"atts":"TBtMEA1KSBkSA0YJGkpE","errorBeacon":"bam.nr-data.net","agent":""}</script></body>
+</html>
